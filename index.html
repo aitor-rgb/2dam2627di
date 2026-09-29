@@ -1,0 +1,365 @@
+<!-- 
+  PROYECTO: Velvet Mood Jazz Club - Control de Aforo
+  AUTOR: Aitor Zancada Aparicio
+  PRÁCTICA: Mi primera app Cuenta personas
+-->
+<!DOCTYPE html>
+
+<html class="h-full" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Velvet Mood Jazz Club - Control de Aforo</title>
+<!-- Google Fonts: Cinzel & Montserrat -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&amp;family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['Cinzel', 'serif'],
+            sans: ['Montserrat', 'sans-serif'],
+          },
+          colors: {
+            gold: {
+              300: '#f5d77f',
+              400: '#e5be49',
+              500: '#D4AF37',
+              600: '#b89025',
+            }
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: CustomStyles -->
+<style data-purpose="custom-fx">
+    /* Subtle pulsing effect for live status dot */
+    @keyframes pulse-gold {
+      0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+      50% { opacity: 0.6; transform: scale(1.15); box-shadow: 0 0 12px 3px rgba(212, 175, 55, 0.4); }
+    }
+    .status-pulse {
+      animation: pulse-gold 2.2s infinite ease-in-out;
+    }
+
+    /* Subtle glow for the glass card */
+    .lux-glass {
+      background: rgba(8, 8, 13, 0.78);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9), 0 0 35px 2px rgba(138, 43, 226, 0.15);
+    }
+
+    /* Metallic text reflection animation */
+    .gold-gradient-text {
+      background: linear-gradient(180deg, #FFF1BD 0%, #D4AF37 50%, #8D6714 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Custom subtle border glow */
+    .border-glow-gold {
+      border: 1px solid rgba(212, 175, 55, 0.28);
+    }
+    .border-glow-gold:hover {
+      border-color: rgba(212, 175, 55, 0.5);
+    }
+  </style>
+<!-- END: CustomStyles -->
+</head>
+<body class="h-screen w-screen overflow-hidden bg-black text-zinc-100 font-sans select-none relative">
+<!-- BEGIN: BackgroundLayer -->
+<div class="absolute inset-0 z-0" data-purpose="background-container">
+<!-- Atmospheric Jazz Lounge Background -->
+<img alt="Atmospheric dark moody luxury jazz club interior, vintage saxophone and brass instruments resting on a dark velvet surface" class="w-full h-full object-cover object-center filter brightness-90 contrast-105 scale-105 transition-transform duration-1000" src="https://lh3.googleusercontent.com/aida/AEtjO1VnYFxy8r2f00_t8J_I9cB4DZpeq2HGPo6bh5P-NOPd0v1WxMHumi2bpnqY6DJywofuVysgZx94xU_dYWZqyprC4Xu-NhTpJrbTNlsm9TSNTz4iq_KLvB4X7su2ZWeGm_NpRqC7qH7lF9NE-M6vCQPDIHgLYHopNafKoS2TP7IEX6dGgt6WTao2XnYGV9FK6C71SsQ7AZeu1Etm1vdP_QvxkmoJvta-Ovq8EcTTSWceTB9TU7e9JXzRxA"/>
+<!-- Deep speakeasy overlay with soft violet and warm gold vignette -->
+<div class="absolute inset-0 bg-gradient-to-t from-[#060609] via-[rgba(10,9,16,0.86)] to-[#07060b] mix-blend-multiply"></div>
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(138,43,226,0.12)_0%,transparent_70%)] pointer-events-none"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/90 pointer-events-none"></div>
+</div>
+<!-- END: BackgroundLayer -->
+<!-- BEGIN: MainContainer -->
+<div class="relative z-10 h-full flex flex-col justify-between px-6 py-5 max-w-7xl mx-auto">
+<!-- BEGIN: TopHeader -->
+<header class="flex items-center justify-between border-b border-white/10 pb-4 pt-1">
+<!-- Brand & Club Title -->
+<div class="flex items-center space-x-3.5">
+<div class="w-10 h-10 rounded-full border border-gold-500/40 flex items-center justify-center bg-zinc-950/60 shadow-lg shadow-black/50">
+<span class="text-gold-400 text-lg font-serif font-bold">V</span>
+</div>
+<div>
+<div class="flex items-center space-x-2.5">
+<h1 class="font-serif text-xl md:text-2xl font-bold tracking-[0.25em] text-white">VELVET MOOD</h1>
+<span class="text-[10px] tracking-widest font-semibold px-2 py-0.5 rounded-full bg-amber-500/10 text-gold-300 border border-gold-500/30">
+              LIVE MUSIC • TONIGHT
+            </span>
+</div>
+<p class="text-[10px] tracking-[0.3em] uppercase text-zinc-400 font-medium">Exclusive Jazz Club &amp; Speakeasy</p>
+</div>
+</div>
+<!-- Live Aforo Status Indicator -->
+<div class="flex items-center space-x-4 bg-zinc-950/50 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10">
+<div class="flex items-center space-x-2">
+<span class="w-2.5 h-2.5 rounded-full bg-gold-400 status-pulse inline-block"></span>
+<span class="text-xs uppercase tracking-widest text-zinc-300 font-medium">Aforo en Vivo</span>
+</div>
+<span class="text-zinc-600">|</span>
+<div class="flex items-center text-xs text-amber-200/90 font-mono tracking-wider" id="current-clock">
+          23:45 HRS
+        </div>
+</div>
+</header>
+<!-- END: TopHeader -->
+<!-- BEGIN: FloatingCardSection -->
+<main class="flex-1 flex items-center justify-center py-2">
+<!-- Center Premium Glass Card -->
+<section class="lux-glass border-glow-gold rounded-3xl w-full max-w-lg p-6 sm:p-8 flex flex-col items-center relative transition-all duration-300" data-purpose="capacity-control-card">
+<!-- Card Subtle Header -->
+<div class="text-center mb-1">
+<span class="text-[11px] font-serif uppercase tracking-[0.35em] text-gold-400/90 font-semibold drop-shadow">
+            • Aforo Actual •
+          </span>
+</div>
+<!-- Big Total Counter -->
+<div class="my-1 flex flex-col items-center justify-center">
+<span class="font-serif text-8xl md:text-9xl font-extrabold tracking-tight gold-gradient-text leading-none drop-shadow-2xl select-none" id="total-count">
+            0
+          </span>
+<span class="text-xs md:text-sm uppercase tracking-[0.28em] text-zinc-300 font-light mt-2 transition-all duration-200" id="label-personas">
+            Personas en el Club
+          </span>
+</div>
+<!-- Capacity Progress Indicator -->
+<div class="w-full max-w-xs mt-3 mb-6">
+<div class="flex justify-between items-center text-[10px] uppercase tracking-wider text-zinc-400 mb-1.5 font-medium">
+<span>Ocupación</span>
+<span id="capacity-text">0 / 120 pax (0%)</span>
+</div>
+<div class="w-full bg-zinc-900/90 h-1.5 rounded-full overflow-hidden border border-white/10 p-[1px]">
+<div class="h-full rounded-full bg-gradient-to-r from-amber-600 via-amber-400 to-amber-200 transition-all duration-300 ease-out" id="capacity-bar" style="width: 0%;"></div>
+</div>
+</div>
+<!-- BEGIN: SecondaryGenderCounters -->
+<!-- Two horizontal gender count capsules -->
+<div class="w-full grid grid-cols-2 gap-3.5 mb-6">
+<!-- Men Subcounter Capsule -->
+<div class="bg-zinc-950/60 rounded-2xl border border-sky-900/30 p-3.5 flex flex-col items-center relative overflow-hidden group transition-all duration-200 hover:border-sky-500/40">
+<div class="flex items-center space-x-1.5 text-sky-400 mb-1">
+<span class="text-sm font-bold">♂</span>
+<span class="text-[11px] uppercase tracking-wider font-semibold text-zinc-300">Hombres</span>
+</div>
+<span class="font-serif text-3xl font-bold text-sky-100 tracking-wide" id="men-count">
+              0
+            </span>
+<div class="absolute bottom-0 inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-sky-500/50 to-transparent opacity-50 group-hover:opacity-100"></div>
+</div>
+<!-- Women Subcounter Capsule -->
+<div class="bg-zinc-950/60 rounded-2xl border border-pink-900/30 p-3.5 flex flex-col items-center relative overflow-hidden group transition-all duration-200 hover:border-pink-500/40">
+<div class="flex items-center space-x-1.5 text-pink-400 mb-1">
+<span class="text-sm font-bold">♀</span>
+<span class="text-[11px] uppercase tracking-wider font-semibold text-zinc-300">Mujeres</span>
+</div>
+<span class="font-serif text-3xl font-bold text-pink-100 tracking-wide" id="women-count">
+              0
+            </span>
+<div class="absolute bottom-0 inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-pink-500/50 to-transparent opacity-50 group-hover:opacity-100"></div>
+</div>
+</div>
+<!-- END: SecondaryGenderCounters -->
+<!-- BEGIN: ActionButtonsGroup -->
+<!-- Buttons row: + Men, + Women, - 1 Person -->
+<div class="w-full grid grid-cols-3 gap-2.5 mb-4">
+<!-- Button Add Male -->
+<button class="flex flex-col sm:flex-row items-center justify-center space-y-0.5 sm:space-y-0 sm:space-x-1.5 py-3 px-2 rounded-xl bg-gradient-to-b from-sky-950/80 to-blue-950/90 border border-sky-500/30 text-sky-200 font-medium text-xs tracking-wider uppercase transition-all duration-200 hover:bg-sky-900/60 hover:border-sky-400 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed disabled:pointer-events-none shadow-md shadow-sky-950/30" data-purpose="add-male-button" id="btn-add-male" type="button">
+<span class="text-base font-bold text-sky-300">+ ♂</span>
+<span class="text-[11px] font-semibold">Hombre</span>
+</button>
+<!-- Button Add Female -->
+<button class="flex flex-col sm:flex-row items-center justify-center space-y-0.5 sm:space-y-0 sm:space-x-1.5 py-3 px-2 rounded-xl bg-gradient-to-b from-purple-950/80 to-pink-950/90 border border-pink-500/30 text-pink-200 font-medium text-xs tracking-wider uppercase transition-all duration-200 hover:bg-pink-900/60 hover:border-pink-400 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed disabled:pointer-events-none shadow-md shadow-pink-950/30" data-purpose="add-female-button" id="btn-add-female" type="button">
+<span class="text-base font-bold text-pink-300">+ ♀</span>
+<span class="text-[11px] font-semibold">Mujer</span>
+</button>
+<!-- Button Decrement One -->
+<button class="flex flex-col sm:flex-row items-center justify-center space-y-0.5 sm:space-y-0 sm:space-x-1 py-3 px-2 rounded-xl bg-zinc-900/80 border border-zinc-700/50 text-zinc-300 font-medium text-xs tracking-wider uppercase transition-all duration-200 hover:bg-zinc-800 hover:text-white hover:border-zinc-500 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed disabled:pointer-events-none" data-purpose="subtract-button" disabled="" id="btn-subtract" type="button">
+<span class="text-base font-bold text-zinc-400">-1</span>
+<span class="text-[11px]">Salida</span>
+</button>
+</div>
+<!-- END: ActionButtonsGroup -->
+<!-- Reset Button Option -->
+<button class="inline-flex items-center space-x-1.5 text-[11px] uppercase tracking-widest text-zinc-500 hover:text-amber-400 transition-colors duration-200 pt-1 focus:outline-none" data-purpose="reset-counter-button" id="btn-reset" type="button">
+<svg class="w-3.5 h-3.5 stroke-current" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>Reiniciar Aforo</span>
+</button>
+</section>
+</main>
+<!-- END: FloatingCardSection -->
+<!-- BEGIN: FooterBar -->
+<footer class="flex items-center justify-between text-[11px] text-zinc-500 border-t border-white/5 pt-3">
+<div class="flex items-center space-x-2">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-gold-500"></span>
+<span class="font-serif tracking-wider text-zinc-400">Atmosphere &amp; Cocktails</span>
+</div>
+<div class="tracking-widest uppercase text-[10px] text-zinc-500">
+        Control de Acceso • Servicio de Puerta
+      </div>
+</footer>
+<!-- END: FooterBar -->
+</div>
+<!-- END: MainContainer -->
+<!-- BEGIN: LogicScript -->
+<script data-purpose="capacity-counter-logic">
+    (function initCapacityApp() {
+      // Internal Counter States
+      let menCount = 0;
+      let womenCount = 0;
+      const MAX_CAPACITY = 120;
+      
+      // History of entries to allow natural decrementing
+      let historyStack = [];
+
+      // DOM Elements
+      const totalCountEl = document.getElementById('total-count');
+      const labelPersonasEl = document.getElementById('label-personas');
+      const menCountEl = document.getElementById('men-count');
+      const womenCountEl = document.getElementById('women-count');
+      const capacityBarEl = document.getElementById('capacity-bar');
+      const capacityTextEl = document.getElementById('capacity-text');
+      const clockEl = document.getElementById('current-clock');
+
+      const btnAddMale = document.getElementById('btn-add-male');
+      const btnAddFemale = document.getElementById('btn-add-female');
+      const btnSubtract = document.getElementById('btn-subtract');
+      const btnReset = document.getElementById('btn-reset');
+
+      // Update UI elements based on state
+      function updateDisplay() {
+        const total = menCount + womenCount;
+        
+        // Update numbers
+        totalCountEl.textContent = total;
+        menCountEl.textContent = menCount;
+        womenCountEl.textContent = womenCount;
+
+        // Dynamic singular / plural label
+        if (total === 1) {
+          labelPersonasEl.textContent = "Persona en el Club";
+        } else {
+          labelPersonasEl.textContent = "Personas en el Club";
+        }
+
+        // Capacity limit controls (Restriction 1)
+        if (total >= MAX_CAPACITY) {
+          btnAddMale.disabled = true;
+          btnAddFemale.disabled = true;
+        } else {
+          btnAddMale.disabled = false;
+          btnAddFemale.disabled = false;
+        }
+
+        // Subtraction button disabling at 0 (Restriction 3)
+        if (total <= 0) {
+          btnSubtract.disabled = true;
+        } else {
+          btnSubtract.disabled = false;
+        }
+
+        // Calculate occupancy percentage
+        const percentage = Math.min(Math.round((total / MAX_CAPACITY) * 100), 100);
+        capacityBarEl.style.width = `${percentage}%`;
+        capacityTextEl.textContent = `${total} / ${MAX_CAPACITY} pax (${percentage}%)`;
+
+        // Update color alert if near capacity
+        if (percentage >= 95) {
+          capacityBarEl.className = "h-full rounded-full bg-gradient-to-r from-red-600 via-rose-500 to-amber-400 transition-all duration-300";
+        } else {
+          capacityBarEl.className = "h-full rounded-full bg-gradient-to-r from-amber-600 via-amber-400 to-amber-200 transition-all duration-300 ease-out";
+        }
+      }
+
+      // Add Man
+      btnAddMale.addEventListener('click', () => {
+        if (menCount + womenCount >= MAX_CAPACITY) return;
+        menCount++;
+        historyStack.push('male');
+        updateDisplay();
+      });
+
+      // Add Woman
+      btnAddFemale.addEventListener('click', () => {
+        if (menCount + womenCount >= MAX_CAPACITY) return;
+        womenCount++;
+        historyStack.push('female');
+        updateDisplay();
+      });
+
+      // Subtract 1 Person
+      btnSubtract.addEventListener('click', () => {
+        const total = menCount + womenCount;
+        if (total <= 0) return;
+
+        // Try to decrement using historical sequence, or fall back to whichever is > 0
+        let decremented = false;
+        while (historyStack.length > 0 && !decremented) {
+          const lastAdded = historyStack.pop();
+          if (lastAdded === 'male' && menCount > 0) {
+            menCount--;
+            decremented = true;
+          } else if (lastAdded === 'female' && womenCount > 0) {
+            womenCount--;
+            decremented = true;
+          }
+        }
+
+        // Fallback check to prevent negative values
+        if (!decremented) {
+          if (menCount > 0) {
+            menCount--;
+          } else if (womenCount > 0) {
+            womenCount--;
+          }
+        }
+
+        // Ensure non-negative bounds
+        menCount = Math.max(0, menCount);
+        womenCount = Math.max(0, womenCount);
+
+        updateDisplay();
+      });
+
+      // Reset
+      btnReset.addEventListener('click', () => {
+        const total = menCount + womenCount;
+        if (total === 0) return;
+
+        if (confirm('¿Desea reiniciar el conteo del club a cero?')) {
+          menCount = 0;
+          womenCount = 0;
+          historyStack = [];
+          updateDisplay();
+        }
+      });
+
+      // Clock function for speakeasy ambiance
+      function updateClock() {
+        const now = new Date();
+        const hrs = String(now.getHours()).padStart(2, '0');
+        const mins = String(now.getMinutes()).padStart(2, '0');
+        const secs = String(now.getSeconds()).padStart(2, '0');
+        clockEl.textContent = `${hrs}:${mins}:${secs} HRS`;
+      }
+      setInterval(updateClock, 1000);
+      updateClock();
+
+      // Initial render
+      updateDisplay();
+    })();
+  </script>
+<!-- END: LogicScript -->
+</body></html>
