@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<!-- Aitor Zancada Aparicio -->
+<html lang="es" class="h-full scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proceso de Resolución & DevLog | App Pomodoro - Aitor Zancada</title>
+  <!-- Tailwind CSS v3 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Material Symbols for Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"Fira Code"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .glass-nav {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .glass-card {
+      background: rgba(30, 41, 59, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #f87171 0%, #ef4444 50%, #f59e0b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-200 font-sans antialiased selection:bg-red-500 selection:text-white relative min-h-full">
+
+  <!-- Glow Decorativo de fondo -->
+  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-red-600/10 blur-[140px] pointer-events-none rounded-full"></div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="sticky top-0 z-50 glass-nav border-b border-slate-800/80 px-6 py-4">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <span class="text-2xl">🍅</span>
+        <div>
+          <h1 class="font-bold text-white text-base tracking-tight">Pomodoro DevLog</h1>
+          <p class="text-xs text-slate-400">Proceso de Resolución con Inteligencia Artificial</p>
+        </div>
+      </div>
+      <div class="flex items-center space-x-4 text-xs font-semibold">
+        <span class="px-3 py-1 rounded-full bg-red-500/10 text-red-400 border border-red-500/20">Aitor Zancada Aparicio • 2º DAM</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-6 py-12 relative z-10">
+    
+    <!-- Hero Section de Presentación -->
+    <section class="text-center mb-16 space-y-4">
+      <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-slate-400 text-xs font-mono">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>Asignatura: Desarrollo de Interfaces</span>
+      </div>
+      <h2 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
+        Documentación del Proceso de <span class="gradient-text">Resolución & Prompts</span>
+      </h2>
+      <p class="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+        Registro detallado paso a paso del flujo de trabajo, prompts aplicados e IAs utilizadas para construir de forma interactiva la aplicación web <strong class="text-white">Soft Tomato Pomodoro</strong>.
+      </p>
+
+      <!-- Tarjetas de Resumen Técnico -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto pt-6 text-left">
+        <div class="glass-card p-4 rounded-2xl">
+          <span class="text-xs text-slate-400 font-medium block">IAs Utilizadas</span>
+          <span class="text-sm font-bold text-white mt-1 block">Stitch / Gemini</span>
+        </div>
+        <div class="glass-card p-4 rounded-2xl">
+          <span class="text-xs text-slate-400 font-medium block">Versiones</span>
+          <span class="text-sm font-bold text-white mt-1 block">8 Iteraciones</span>
+        </div>
+        <div class="glass-card p-4 rounded-2xl">
+          <span class="text-xs text-slate-400 font-medium block">Tecnologías</span>
+          <span class="text-sm font-bold text-white mt-1 block">HTML5 + Tailwind + JS</span>
+        </div>
+        <div class="glass-card p-4 rounded-2xl">
+          <span class="text-xs text-slate-400 font-medium block">Metodología</span>
+          <span class="text-sm font-bold text-white mt-1 block">Prompting Guiado</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Línea de Tiempo del Proceso -->
+    <section class="relative border-l-2 border-slate-800 ml-4 sm:ml-32 space-y-12">
+
+      <!-- VERSIÓN 1.0 -->
+      <div class="relative pl-6 sm:pl-10 group">
+        <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-slate-900 border-2 border-red-500 flex items-center justify-center text-xs font-bold text-red-400 group-hover:scale-110 transition-transform">v1</div>
+        <div class="hidden sm:block absolute -left-32 top-2 text-right w-24">
+          <span class="text-xs font-mono text-slate-500">Paso 01</span>
+          <span class="block text-[10px] uppercase tracking-wider text-red-400 font-semibold">Interfaz</span>
+        </div>
+        <div class="glass-card rounded-3xl p-6 sm:p-8 space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-4">
+            <h3 class="text-xl font-bold text-white flex items-center gap-2"><span>Versión 1.0:</span> Estructura Base y Diseño de Interfaz (HTML/CSS)</h3>
+            <span class="px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-400 text-xs font-mono border border-purple-500/20">IA: Stitch / Gemini</span>
+          </div>
+          <p class="text-sm text-slate-300 leading-relaxed">En la primera fase, se planteó a la IA la creación del prototipo visual estático. El objetivo principal fue evitar las interfaces oscuras genéricas y apostar por un diseño elegante basado en el concepto <em>"Soft Tomato"</em> con tonos crema, rojo coral y esquinas redondeadas.</p>
+          <div class="bg-slate-950/80 rounded-2xl p-4 border border-slate-800 font-mono text-xs">
+            <div class="flex items-center justify-between text-slate-500 mb-2 border-b border-slate-800/80 pb-2">
+              <span class="flex items-center gap-1.5">💬 Prompt Aplicado</span>
+              <span>Versión 1.0</span>
+            </div>
+            <p class="text-slate-300 leading-relaxed whitespace-pre-line">
+"Necesito diseñar la interfaz gráfica para una aplicación web de Pomodoro utilizando un lienzo responsivo. Quiero evitar los típicos diseños oscuros y planos que genera la IA por defecto. Crea una estética clara, limpia y moderna basada en un concepto 'soft tomato' (fondos en colores crema o blanco suave, bordes suavizados con CSS3 y pequeños acentos en rojo coral).
+
+La pantalla debe estructurarse con un contenedor central que incluya:
+1. Un encabezado limpio con el título del proyecto.
+2. Un selector de tres botones en la parte superior para los estados: 'Pomodoro', 'Short Break' y 'Long Break'.
+3. Un display central con el temporizador en números grandes y legibles marcando '25:00'.
+4. Dos botones de control inferiores separados para las acciones de 'Start' y 'Reset'.
+
+Integra iconos vectoriales limpios (estilo Font Awesome 5/6) para complementar los botones de control y el encabezado. De momento solo requiero la distribución visual estática en mobile y desktop."
+            </p>
+          </div>
+          <div class="space-y-2 pt-2">
+            <span class="text-xs font-semibold text-slate-400">Captura de Pantalla del Proceso (Versión 1.0):</span>
+            <div class="rounded-2xl overflow-hidden border border-slate-700/60 shadow-2xl bg-slate-900">
+              <img src="v1.png" alt="Captura Versión 1.0" class="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity" onerror="this.onerror=null; this.src='https://placehold.co/800x450/1e293b/ef4444?text=Captura+V1.0+-+Soft+Tomato+Base';">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VERSIÓN 2.0 -->
+      <div class="relative pl-6 sm:pl-10 group">
+        <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-slate-900 border-2 border-amber-500 flex items-center justify-center text-xs font-bold text-amber-400 group-hover:scale-110 transition-transform">v2</div>
+        <div class="hidden sm:block absolute -left-32 top-2 text-right w-24">
+          <span class="text-xs font-mono text-slate-500">Paso 02</span>
+          <span class="block text-[10px] uppercase tracking-wider text-amber-400 font-semibold">Estados</span>
+        </div>
+        <div class="glass-card rounded-3xl p-6 sm:p-8 space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-4">
+            <h3 class="text-xl font-bold text-white flex items-center gap-2"><span>Versión 2.0:</span> Los Estados de Descanso (Short & Long Break)</h3>
+            <span class="px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-400 text-xs font-mono border border-purple-500/20">IA: Stitch / Gemini</span>
+          </div>
+          <p class="text-sm text-slate-300 leading-relaxed">Una vez validado el diseño inicial, solicité ajustar las vistas previas de los descansos para asegurar que los cambios entre estados ('Short Break' a 05:00 y 'Long Break' a 15:00) mantuvieran coherencia visual y de color.</p>
+          <div class="bg-slate-950/80 rounded-2xl p-4 border border-slate-800 font-mono text-xs">
+            <div class="flex items-center justify-between text-slate-500 mb-2 border-b border-slate-800/80 pb-2">
+              <span class="flex items-center gap-1.5">💬 Prompt Aplicado</span>
+              <span>Versión 2.0</span>
+            </div>
+            <p class="text-slate-300 leading-relaxed whitespace-pre-line">
+"El diseño base es perfecto. Ahora necesito configurar los estados interactivos en el prototipo. Haz que al pulsar en las pestañas superiores de 'Short Break' y 'Long Break', el display central cambie el temporizador de forma coherente a '05:00' y '15:00' respectivamente, marcando visualmente cuál es la pestaña activa."
+            </p>
+          </div>
+          <div class="space-y-4 pt-2">
+            <span class="text-xs font-semibold text-slate-400">Capturas de Pantalla del Proceso (Versión 2.0 - 2 capturas):</span>
+            <div class="rounded-2xl overflow-hidden border border-slate-700/60 shadow-2xl bg-slate-900">
+              <img src="v2.png" alt="Captura Versión 2.0" class="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity" onerror="this.onerror=null; this.src='https://placehold.co/800x450/1e293b/f59e0b?text=Captura+V2.0+-+Estados+de+Descanso';">
+            </div>
+            <div class="rounded-2xl overflow-hidden border border-slate-700/60 shadow-2xl bg-slate-900">
+              <img src="v2.1.png" alt="Captura Versión 2.1" class="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity" onerror="this.onerror=null; this.src='https://placehold.co/800x450/1e293b/f59e0b?text=Captura+V2.1+-+Detalle+Descanso';">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VERSIÓN 3.0 -->
+      <div class="relative pl-6 sm:pl-10 group">
+        <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-slate-900 border-2 border-blue-500 flex items-center justify-center text-xs font-bold text-blue-400 group-hover:scale-110 transition-transform">v3</div>
+        <div class="hidden sm:block absolute -left-32 top-2 text-right w-24">
+          <span class="text-xs font-mono text-slate-500">Paso 03</span>
+          <span class="block text-[10px] uppercase tracking-wider text-blue-400 font-semibold">Lógica JS</span>
+        </div>
+        <div class="glass-card rounded-3xl p-6 sm:p-8 space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-4">
+            <h3 class="text-xl font-bold text-white flex items-center gap-2"><span>Versión 3.0:</span> Lógica de Tiempo Real con JavaScript Nativo</h3>
+            <span class="px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-400 text-xs font-mono border border-purple-500/20">IA: Stitch / Gemini</span>
+          </div>
+          <p class="text-sm text-slate-300 leading-relaxed">Se procedió a implementar el comportamiento dinámico. Le pedí a la IA escribir el script en JavaScript vanilla para gestionar el conteo regresivo en tiempo real, alternar los estados del botón (Start / Pause) y restablecer el temporizador mediante el botón Reset.</p>
+          <div class="bg-slate-950/80 rounded-2xl p-4 border border-slate-800 font-mono text-xs">
+            <div class="flex items-center justify-between text-slate-500 mb-2 border-b border-slate-800/80 pb-2">
+              <span class="flex items-center gap-1.5">💬 Prompt Aplicado</span>
+              <span>Versión 3.0</span>
+            </div>
+            <p class="text-slate-300 leading-relaxed whitespace-pre-line">
+"La interfaz visual está perfecta, pero ahora necesito implementar la lógica de programación real para que el temporizador funcione de verdad. Por favor, añade código JavaScript nativo (en la etiqueta al final) para activar los componentes:
+1. Cuenta atrás real: Al pulsar el botón 'Start', el temporizador debe empezar a descender segundo a segundo en tiempo real (MM:SS).
+2. Alternancia de botones: Al estar en marcha, el botón 'Start' debe transformarse en un botón de 'Pause'. Si se pulsa 'Pause', el tiempo debe detenerse por completo y el botón debe volver a decir 'Start'.
+3. Botón de Reset: Al pulsar 'Reset', el temporizador debe detenerse y volver al tiempo inicial del modo seleccionado (25:00, 05:00 o 15:00).
+4. Control de Ciclos: Al hacer clic en las pestañas superiores ('Pomodoro', 'Short Break', 'Long Break'), el temporizador debe actualizar su tiempo base correspondiente.
+Asegúrate de que todas las funciones queden totalmente operativas dentro del código final para poder usar la app en tiempo real."
+            </p>
+          </div>
+          <div class="space-y-2 pt-2">
+            <span class="text-xs font-semibold text-slate-400">Captura de Pantalla del Proceso (Versión 3.0):</span>
+            <div class="rounded-2xl overflow-hidden border border-slate-700/60 shadow-2xl bg-slate-900">
+              <img src="v3.png" alt="Captura Versión 3.0" class="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity" onerror="this.onerror=null; this.src='https://placehold.co/800x450/1e293b/3b82f6?text=Captura+V3.0+-+L%C3%B3gica+de+Tiempo+Real';">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VERSIÓN 4.0 -->
+      <div class="relative pl-6 sm:pl-10 group">
+        <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-slate-900 border-2 border-emerald-500 flex items-center justify-center text-xs font-bold text-emerald-400 group-hover:scale-110 transition-transform">v4</div>
+        <div class="hidden sm:block absolute -left-32 top-2 text-right w-24">
+          <span class="text-xs font-mono text-slate-500">Paso 04</span>
+          <span class="block text-[10px] uppercase tracking-wider text-emerald-400 font-semibold">Audio & Alerta</span>
+        </div>
+        <div class="glass-card rounded-3xl p-6 sm:p-8 space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-4">
+            <h3 class="text-xl font-bold text-white flex items-center gap-2"><span>Versión 4.0:</span> Sonido de Alarma y Avisos Finales</h3>
+            <span class="px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-400 text-xs font-mono border border-purple-500/20">IA: Stitch / Gemini</span>
+          </div>
+          <p class="text-sm text-slate-300 leading-relaxed">Para ofrecer un feedback completo al usuario al finalizar una sesión de 25 minutos o de descanso, pedí integrar la Audio API del navegador web para sintetizar un tono de campana sin depender de archivos de audio externos.</p>
+          <div class="bg-slate-950/80 rounded-2xl p-4 border border-slate-800 font-mono text-xs">
+            <div class="flex items-center justify-between text-slate-500 mb-2 border-b border-slate-800/80 pb-2">
+              <span class="flex items-center gap-1.5">💬 Prompt Aplicado</span>
+              <span>Versión 4.0</span>
+            </div>
+            <p class="text-slate-300 leading-relaxed whitespace-pre-line">
+"Para finalizar el desarrollo de la aplicación por completo, necesito añadir el sistema de alertas sonoras. Modifica el código JavaScript para que, en el instante exacto en el que la cuenta atrás llegue a 00:00 (ya sea en modo Pomodoro o en los descansos), se reproduzca un sonido de campana o alarma suave utilizando la API de audio del navegador (Audio API con un archivo de sonido integrado o un tono sintetizado limpio).
+
+Además, haz que salte un pequeño aviso visual sutil en pantalla que indique que la sesión ha terminado, invitando al usuario a cambiar al siguiente modo. Con esto la aplicación quedará 100% terminada y funcional."
+            </p>
+          </div>
+          <div class="space-y-2 pt-2">
+            <span class="text-xs font-semibold text-slate-400">Captura de Pantalla del Proceso (Versión 4.0):</span>
+            <div class="rounded-2xl overflow-hidden border border-slate-700/60 shadow-2xl bg-slate-900">
+              <img src="v4.png" alt="Captura Versión 4.0" class="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity" onerror="this.onerror=null; this.src='https://placehold.co/800x450/1e293b/10b981?text=Captura+V4.0+-+Sistema+de+Alerta+y+Sonido';">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VERSIÓN 5.0 -->
+      <div class="relative pl-6 sm:pl-10 group">
+        <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-slate-900 border-2 border-pink-500 flex items-center justify-center text-xs font-bold text-pink-400 group-hover:scale-110 transition-transform">v5</div>
+        <div class="hidden sm:block absolute -left-32 top-2 text-right w-24">
+          <span class="text-xs font-mono text-slate-500">Paso 05</span>
+          <span class="block text-[10px] uppercase tracking-wider text-pink-400 font-semibold">Estética</span>
+        </div>
+        <div class="glass-card rounded-3xl p-6 sm:p-8 space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-4">
+            <h3 class="text-xl font-bold text-white flex items-center gap-2"><span>Versión 5.0:</span> Fondo Estético y Mensajes Motivacionales</h3>
+            <span class="px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-400 text-xs font-mono border border-purple-500/20">IA: Stitch / Gemini</span>
+          </div>
+          <p class="text-sm text-slate-300 leading-relaxed">Realicé una actualización estética y funcional aplicando un fondo de estudio relajante (*cozy desk*), frases motivacionales dinámicas y efectos de cristal (*glassmorphism*), incorporando además un logotipo visual real.</p>
+          <div class="bg-slate-950/80 rounded-2xl p-4 border border-slate-800 font-mono text-xs">
+            <div class="flex items-center justify-between text-slate-500 mb-2 border-b border-slate-800/80 pb-2">
+              <span class="flex items-center gap-1.5">💬 Prompt Aplicado</span>
+              <span>Versión 5.0</span>
+            </div>
+            <p class="text-slate-300 leading-relaxed whitespace-pre-line">
+"Quiero realizar una actualización estética y funcional sobre la aplicación actual sin alterar la lógica de programación del temporizador ni el sistema de alertas que ya funcionan.
+Añade las siguientes mejoras:
+1. Fondo de pantalla (Background): Sustituye el fondo plano por una imagen suave, limpia y de alta calidad (estilo cozy desk, aesthetic study o una ilustración minimalista de tomates/estudio) con un filtro sutil encima para asegurar que los contenedores centrales sigan teniendo una legibilidad perfecta.
+2. Mensajes Motivacionales Dinámicos: Incorpora un pequeño contenedor de texto debajo del bloque principal que muestre frases motivacionales cortas de forma aleatoria (por ejemplo: '¡Tú puedes con este ciclo!', 'Mantén el enfoque, Aitor', 'Un paso más cerca de tus metas').
+3. Efecto de cristal (Glassmorphism): Aplica a las tarjetas y contenedores principales un efecto de fondo semitransparente con desenfoque suave (backdrop-filter: blur) usando CSS3 para que se integren de forma moderna con la nueva imagen de fondo.
+4. En lugar del texto plano de la esquina superior izquierda ('Soft Tomato Logo'), introduce un logotipo visual real.
+Por favor, asegúrate de mantener intacta toda la lógica del JavaScript anterior."
+            </p>
+          </div>
+          <div class="space-y-2 pt-2">
+            <span class="text-xs font-semibold text-slate-400">Captura de Pantalla del Proceso (Versión 5.0):</span>
+            <div class="rounded-2xl overflow-hidden border border-slate-700/60 shadow-2xl bg-slate-900">
+              <img src="v5.png" alt="Captura Versión 5.0" class="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity" onerror="this.onerror=null; this.src='https://placehold.co/800x450/1e293b/ec4899?text=Captura+V5.0+-+Fondo+Est%C3%A9tico';">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VERSIÓN 6.0 -->
+      <div class="relative pl-6 sm:pl-10 group">
+        <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-slate-900 border-2 border-violet-500 flex items-center justify-center text-xs font-bold text-violet-400 group-hover:scale-110 transition-transform">v6</div>
+        <div class="hidden sm:block absolute -left-32 top-2 text-right w-24">
+          <span class="text-xs font-mono text-slate-500">Paso 06</span>
+          <span class="block text-[10px] uppercase tracking-wider text-violet-400 font-semibold">Tareas e Insights</span>
+        </div>
+        <div class="glass-card rounded-3xl p-6 sm:p-8 space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-4">
+            <h3 class="text-xl font-bold text-white flex items-center gap-2"><span>Versión 6.0:</span> Rediseño Visual, Tareas e Insights</h3>
+            <span class="px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-400 text-xs font-mono border border-purple-500/20">IA: Stitch / Gemini</span>
+          </div>
+          <p class="text-sm text-slate-300 leading-relaxed">Se añadió el tallo superior vectorial (*tomato stem*), el gestor completo de tareas desplegable, las estadísticas en tiempo real y el sintetizador de ruido blanco ambiental para sesiones de estudio.</p>
+          <div class="bg-slate-950/80 rounded-2xl p-4 border border-slate-800 font-mono text-xs">
+            <div class="flex items-center justify-between text-slate-500 mb-2 border-b border-slate-800/80 pb-2">
+              <span class="flex items-center gap-1.5">💬 Prompt Aplicado</span>
+              <span>Versión 6.0</span>
+            </div>
+            <p class="text-slate-300 leading-relaxed whitespace-pre-line">
+"Necesito realizar una actualización funcional y estética sobre la aplicación Pomodoro 'Soft Tomato' sin romper la lógica del temporizador ni los sonidos de alerta que ya funcionan.
+Por favor, añade los siguientes cambios manteniendo una estética clara, limpia y fluida (efecto glassmorphism y tonos blanco/rojo coral):
+1. Anillo Visual 'Tomato Stem': Añade un detalle vectorial sutil (el tallo/corona de un tomate en SVG) en la parte superior del círculo del temporizador para reforzar la identidad de marca 'Soft Tomato'
+2. Rediseño del Input de Objetivo y Gestor de Tareas: Elimina el contenedor rectangular plano y reemplázalo por un selector de tarea activa desplegable con estética de tarjeta suave. Añade un panel desplegable de 'Tasks' (Gestor de tareas) donde el usuario pueda escribir nuevas tareas, marcarlas como completadas y seleccionar cuál es la activa para el temporizador.
+3. Frases Motivacionales con Auto-Rotate: Haz que el bloque inferior de mensajes motivacionales rote automáticamente cada 12 segundos con una transición suave (fade-in / fade-out) además de permitir cambiar al hacer clic.
+4. Pestaña 'Insights' Funcional: En la barra superior, haz que la pestaña 'Insights' abra una tarjeta desplegable con estadísticas en tiempo real: minutos enfocados hoy, pomodoros completados y racha de días.
+5. Audio Ambiental (Soundscape): Añade un pequeño botón toggle de sonido en la cabecera para activar/desactivar un ruido blanco sutil sintetizado con la Web Audio API.
+Asegúrate de que la pantalla no se sienta saturada y conserve el diseño 'single-page' limpio."
+            </p>
+          </div>
+          <div class="space-y-4 pt-2">
+            <span class="text-xs font-semibold text-slate-400">Capturas de Pantalla del Proceso (Versión 6.0 - 2 capturas):</span>
+            <div class="rounded-2xl overflow-hidden border border-slate-700/60 shadow-2xl bg-slate-900">
+              <img src="v6.png" alt="Captura Versión 6.0" class="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity" onerror="this.onerror=null; this.src='https://placehold.co/800x450/1e293b/8b5cf6?text=Captura+V6.0+-+Gestor+de+Tareas+e+Insights';">
+            </div>
+            <div class="rounded-2xl overflow-hidden border border-slate-700/60 shadow-2xl bg-slate-900">
+              <img src="v6.1.png" alt="Captura Versión 6.1" class="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity" onerror="this.onerror=null; this.src='https://placehold.co/800x450/1e293b/8b5cf6?text=Captura+V6.1+-+Modales+Detalle';">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VERSIÓN 7.0 -->
+      <div class="relative pl-6 sm:pl-10 group">
+        <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-slate-900 border-2 border-indigo-500 flex items-center justify-center text-xs font-bold text-indigo-400 group-hover:scale-110 transition-transform">v7</div>
+        <div class="hidden sm:block absolute -left-32 top-2 text-right w-24">
+          <span class="text-xs font-mono text-slate-500">Paso 07</span>
+          <span class="block text-[10px] uppercase tracking-wider text-indigo-400 font-semibold">Resumen & CSV</span>
+        </div>
+        <div class="glass-card rounded-3xl p-6 sm:p-8 space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-4">
+            <h3 class="text-xl font-bold text-white flex items-center gap-2"><span>Versión 7.0:</span> Resumen Semanal y Descarga de Informe</h3>
+            <span class="px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-400 text-xs font-mono border border-purple-500/20">IA: Stitch / Gemini</span>
+          </div>
+          <p class="text-sm text-slate-300 leading-relaxed">Versión que incorpora el desglose semanal de productividad de lunes a domingo y la funcionalidad de exportación automática de reportes en formato CSV, traduciendo los textos restantes al español y recolocando la imagen de fondo.</p>
+          <div class="bg-slate-950/80 rounded-2xl p-4 border border-slate-800 font-mono text-xs">
+            <div class="flex items-center justify-between text-slate-500 mb-2 border-b border-slate-800/80 pb-2">
+              <span class="flex items-center gap-1.5">💬 Prompt Aplicado</span>
+              <span>Versión 7.0</span>
+            </div>
+            <p class="text-slate-300 leading-relaxed whitespace-pre-line">
+"Quiero actualizar la aplicación Pomodoro 'Soft Tomato' a su Versión 7.0 final.
+Asegúrate de no romper NADA de la Versión 6.0. Añades:
+1. Pestaña 'Insights' con Resumen Semanal: En la vista de 'Insights', añade una tabla/tarjeta limpia que muestre el desglose semanal (de Lunes a Domingo) con los días, las horas dedicadas y el objetivo/asignatura trabajado.
+2. Exportación de Informe (Descarga): Añade en esa misma vista de 'Insights' un botón funcional llamado 'Descargar Resumen' que al hacer clic descargue automáticamente un archivo CSV con el registro de la semana para el usuario.
+3. Traduce los textos que están en inglés a español.
+4. Vuelve a colocar la imagen de fondo.
+Asegúrate de mantener el diseño limpio de una sola pantalla ('single-page') y la estética 'Soft Tomato' con bordes redondeados y efecto cristal."
+            </p>
+          </div>
+          <div class="space-y-4 pt-2">
+            <span class="text-xs font-semibold text-slate-400">Capturas de Pantalla del Proceso (Versión 7.0 - 2 capturas):</span>
+            <div class="rounded-2xl overflow-hidden border border-slate-700/60 shadow-2xl bg-slate-900">
+              <img src="v7.png" alt="Captura Versión 7.0" class="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity" onerror="this.onerror=null; this.src='https://placehold.co/800x450/1e293b/6366f1?text=Captura+V7.0+-+Resumen+Semanal';">
+            </div>
+            <div class="rounded-2xl overflow-hidden border border-slate-700/60 shadow-2xl bg-slate-900">
+              <img src="v7.1.png" alt="Captura Versión 7.1" class="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity" onerror="this.onerror=null; this.src='https://placehold.co/800x450/1e293b/6366f1?text=Captura+V7.1+-+Exportaci%C3%B3n+CSV';">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VERSIÓN 8.0 -->
+      <div class="relative pl-6 sm:pl-10 group">
+        <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-slate-900 border-2 border-teal-500 flex items-center justify-center text-xs font-bold text-teal-400 group-hover:scale-110 transition-transform">v8</div>
+        <div class="hidden sm:block absolute -left-32 top-2 text-right w-24">
+          <span class="text-xs font-mono text-slate-500">Paso 08</span>
+          <span class="block text-[10px] uppercase tracking-wider text-teal-400 font-semibold">Temas & Alertas</span>
+        </div>
+        <div class="glass-card rounded-3xl p-6 sm:p-8 space-y-4 border-teal-500/20">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-4">
+            <h3 class="text-xl font-bold text-white flex items-center gap-2"><span>Versión 8.0:</span> Gestión de Temas y Confirmación de Cancelación</h3>
+            <span class="px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-400 text-xs font-mono border border-purple-500/20">IA: Stitch / Gemini</span>
+          </div>
+          <p class="text-sm text-slate-300 leading-relaxed">Versión definitiva incorporando la limpieza del botón duplicado en Insights, el sistema interactivo de confirmación si hay un temporizador activo al cambiar de modo, y el selector desplegable de temas visuales para alternar entre distintas atmósferas relajantes.</p>
+          <div class="bg-slate-950/80 rounded-2xl p-4 border border-slate-800 font-mono text-xs">
+            <div class="flex items-center justify-between text-slate-500 mb-2 border-b border-slate-800/80 pb-2">
+              <span class="flex items-center gap-1.5">💬 Prompt Aplicado</span>
+              <span>Versión 8.0</span>
+            </div>
+            <p class="text-slate-300 leading-relaxed whitespace-pre-line">
+"Necesito actualizar la aplicación web Pomodoro 'Soft Tomato' a su Versión 8.0 final resolviendo tres aspectos clave:
+1. Limpieza en Estadísticas: Elimina el botón duplicado de descarga de resumen en la parte inferior del modal de 'Insights', dejando únicamente el botón superior principal 'Descargar Resumen' para evitar redundancias visuales.
+2. Alerta de Confirmación de Interrupción: Implementa una verificación interactiva en JavaScript de modo que, si hay un temporizador activo (en marcha), al intentar cambiar de pestaña ('Trabajo Enfoque', 'Pausa Breve', 'Descanso Largo') o pulsar 'Reiniciar', el sistema solicite una confirmación previa ('¿Estás seguro de que deseas cambiar de modo? Se cancelará el progreso del temporizador actual').
+3. Selector de Temas Visuales (Theme Switcher): Añade un selector desplegable o de botones en la cabecera para cambiar dinámicamente el fondo de pantalla y el ambiente visual entre varias atmósferas relajantes: Sala (Default), Bosque Nocturno, Ciudad, Otoñal, Playa, Backroom.
+Conserva intactos todos los elementos previos (efectos de cristal, sonido de campana, audio ambiental de lluvia, gestor de tareas y exportación CSV)."
+            </p>
+          </div>
+          <div class="space-y-4 pt-2">
+            <span class="text-xs font-semibold text-slate-400">Capturas de Pantalla del Proceso (Versión 8.0 - 2 capturas):</span>
+            <div class="rounded-2xl overflow-hidden border border-slate-700/60 shadow-2xl bg-slate-900">
+              <img src="v8.png" alt="Captura Versión 8.0" class="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity" onerror="this.onerror=null; this.src='https://placehold.co/800x450/1e293b/14b8a6?text=Captura+V8.0+-+Selector+de+Temas';">
+            </div>
+            <div class="rounded-2xl overflow-hidden border border-slate-700/60 shadow-2xl bg-slate-900">
+              <img src="v8.1.png" alt="Captura Versión 8.1" class="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity" onerror="this.onerror=null; this.src='https://placehold.co/800x450/1e293b/14b8a6?text=Captura+V8.1+-+Confirmaci%C3%B3n+y+Insights';">
+            </div>
+	    <div class="rounded-2xl overflow-hidden border border-slate-700/60 shadow-2xl bg-slate-900">
+              <img src="v8.2.png" alt="Captura Versión 8.2" class="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity" onerror="this.onerror=null; this.src='https://placehold.co/800x450/1e293b/14b8a6?text=Captura+V8.1+-+Confirmaci%C3%B3n+y+Insights';">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Conclusión & Reflexión Personal -->
+    <section class="mt-16 glass-card rounded-3xl p-8 space-y-4 border-red-500/20">
+      <h3 class="text-xl font-bold text-white flex items-center gap-2">
+        <span>💡</span> Conclusión y Aprendizaje Personal
+      </h3>
+      <p class="text-sm text-slate-300 leading-relaxed">
+        Hacer este proyecto me ha servido para ver que la IA te puede ahorrar muchísimo tiempo, pero solo si tienes claro qué es lo que quieres conseguir. El código casi nunca sale perfecto a la primera, y la clave ha sido ir poco a poco: primero el diseño, luego el temporizador y al final los extras como los sonidos.
+      </p>
+      <p class="text-sm text-slate-300 leading-relaxed">
+        Al final, me llevo una app que funciona bien y he aprendido a estructurar mejor los pasos a la hora de programar. Ver cómo la app iba cambiando con cada instrucción me ha ayudado un montón a entender el código de verdad en lugar de simplemente copiar y pegar.
+      </p>
+    </section>
+
+  </main>
+
+  <!-- Pie de página -->
+  <footer class="border-t border-slate-800/80 py-8 text-center text-xs text-slate-500">
+    <div class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p>© 2026 Aitor Zancada Aparicio — Desarrollo de Interfaces (2º DAM)</p>
+      <div class="flex items-center space-x-4">
+        <span class="hover:text-slate-300 transition-colors">Entrega Oficial</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
