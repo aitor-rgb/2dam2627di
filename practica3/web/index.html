@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<!-- Aitor Zancada Aparicio -->
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="web_standard" name="shell-type"/>
+  <title>25:00 · Soft Tomato</title>
+  
+  <link rel="preload" as="image" href="fondo_salon.png"/>
+  <link rel="preload" as="image" href="fondo_bosque.jpg"/>
+  <link rel="preload" as="image" href="fondo_ciudad.png"/>
+  <link rel="preload" as="image" href="fondo_otonal.png"/>
+  <link rel="preload" as="image" href="fondo_playa.png"/>
+  <link rel="preload" as="image" href="fondo_backrooms.jpg"/>
+
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      main>:first-child { margin-top: 0 !important; }
+      main>:last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config={darkMode:"class",theme:{extend:{"colors":{"tertiary-fixed-dim":"#8ed5b3","on-surface-variant":"#5a413f","surface-tint":"#b3272e","tertiary-container":"#3b8164","surface-container":"#f0ede9","background":"#fcf9f4","on-primary-fixed-variant":"#910719","on-secondary-container":"#6e5f5f","on-error-container":"#93000a","secondary-fixed-dim":"#d6c2c1","error":"#ba1a1a","on-secondary":"#ffffff","tertiary":"#1e684c","surface-container-low":"#f6f3ee","on-error":"#ffffff","primary":"#b0242c","on-primary-fixed":"#410005","on-secondary-fixed":"#241919","outline":"#8d706e","secondary-container":"#f0dbda","on-tertiary":"#ffffff","on-tertiary-container":"#f5fff7","primary-fixed":"#ffdad7","inverse-on-surface":"#f3f0eb","surface-bright":"#fcf9f4","on-background":"#1c1c19","on-secondary-fixed-variant":"#514343","surface-container-high":"#ebe8e3","surface-container-highest":"#e5e2dd","outline-variant":"#e2bebc","on-primary-container":"#fffbff","surface":"#fcf9f4","primary-fixed-dim":"#ffb3af","inverse-primary":"#ffb3af","secondary-fixed":"#f2dedd","inverse-surface":"#31302d","on-tertiary-fixed-variant":"#005139","surface-variant":"#e5e2dd","surface-dim":"#dcdad5","primary-container":"#d23e41","on-surface":"#1c1c19","on-tertiary-fixed":"#002115","on-primary":"#ffffff","surface-container-lowest":"#ffffff","secondary":"#6a5b5a","error-container":"#ffdad6","tertiary-fixed":"#a9f2ce"},"borderRadius":{"DEFAULT":"1rem","lg":"2rem","xl":"3rem","full":"9999px"},"spacing":{"space-md":"1rem","space-xs":"0.25rem","space-lg":"1.5rem","margin":"3rem","gutter":"1.5rem","space-xl":"2.5rem","margin-mobile":"1.25rem","gutter-mobile":"1rem","space-sm":"0.5rem"},"fontFamily":{"timer-display":["Space Mono"],"headline-md":["Plus Jakarta Sans"],"label-md":["Space Mono"],"label-sm":["Space Mono"],"headline-lg":["Plus Jakarta Sans"],"timer-display-mobile":["Space Mono"],"headline-sm":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"headline-lg-mobile":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"]},"fontSize":{"timer-display":["112px",{"lineHeight":"112px","fontWeight":"700"}],"headline-md":["24px",{"lineHeight":"32px","fontWeight":"600"}],"label-md":["12px",{"lineHeight":"16px","fontWeight":"700"}],"label-sm":["10px",{"lineHeight":"14px","fontWeight":"700"}],"headline-lg":["36px",{"lineHeight":"44px","fontWeight":"700"}],"timer-display-mobile":["68px",{"lineHeight":"72px","fontWeight":"700"}],"headline-sm":["20px",{"lineHeight":"28px","fontWeight":"600"}],"body-lg":["18px",{"lineHeight":"28px","fontWeight":"400"}],"body-md":["15px",{"lineHeight":"24px","fontWeight":"400"}],"headline-lg-mobile":["28px",{"lineHeight":"36px","fontWeight":"700"}],"body-sm":["13px",{"lineHeight":"20px","fontWeight":"400"}]}}}};</script>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-secondary-container selection:text-on-secondary-container relative bg-stone-900 text-on-surface">
+
+<!-- Capa Dinámica de Fondos (Sin filtros de borrosidad artificiales) -->
+<div class="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
+  <div id="theme-bg" class="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-500" style="background-image: url('fondo_salon.png');"></div>
+  <div class="absolute inset-0 bg-stone-950/35 backdrop-blur-[1.5px]"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-stone-900/40 via-transparent to-stone-900/60 pointer-events-none"></div>
+</div>
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-white/60 shadow-[0_4px_20px_rgba(0,0,0,0.06)]">
+  <div class="h-16 max-w-7xl mx-auto px-gutter-mobile md:px-gutter flex items-center justify-between">
+    <div class="flex items-center gap-space-sm md:gap-space-md">
+      <div class="flex items-center gap-2.5 cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+        <div class="w-8 h-8 rounded-full bg-secondary-container/80 border border-white/80 flex items-center justify-center shadow-sm backdrop-blur-sm flex-shrink-0">
+          <svg class="w-5 h-5 drop-shadow-sm" fill="none" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 6.5C16.8 4.2 19 3 21.5 3.2C20.8 4.8 19.5 6 17.5 6.6C19.5 6.2 22 7.2 23 8.8C21.2 9.2 19.2 8.5 17.8 7.5C17.6 9.8 16.5 11 15 11.5C15.2 9.8 15.6 8.2 16 6.5Z" fill="#10b981"></path>
+            <path d="M16 7C14.5 4.5 12.2 3.2 9.8 3.5C10.5 5 11.8 6.2 13.8 6.8C11.8 6.5 9.2 7.5 8.2 9.2C10 9.5 12 8.8 13.5 7.8C13.2 10 14.2 11.2 15.8 11.6C15.5 10 15.2 8.5 16 7Z" fill="#059669"></path>
+            <circle cx="16" cy="18" fill="#ee5253" r="10"></circle>
+            <ellipse cx="13" cy="15" fill="#ff7675" opacity="0.6" rx="2.5" ry="3"></ellipse>
+            <circle cx="12" cy="13.5" fill="#ffffff" opacity="0.7" r="1"></circle>
+          </svg>
+        </div>
+        <span class="font-headline-sm text-[20px] font-bold text-on-surface tracking-tight leading-tight select-none">Soft Tomato</span>
+      </div>
+      <span class="hidden sm:inline-flex items-center px-space-sm py-0.5 rounded-full bg-secondary-container/85 border border-white/60 text-on-secondary-container font-label-sm text-label-sm uppercase tracking-wider backdrop-blur-sm" id="header-session-tag">Sesión de Enfoque #1</span>
+    </div>
+
+    <nav class="hidden md:flex items-center gap-space-md">
+      <button class="transition-colors bg-secondary-container/90 px-3 py-1 rounded-full text-on-secondary-container font-headline-sm shadow-sm cursor-pointer" id="nav-timer-btn" type="button">Temporizador</button>
+      <button class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors px-2.5 py-1 rounded-full hover:bg-white/60 flex items-center gap-1.5 cursor-pointer" id="nav-tasks-btn" type="button">
+        <span>Tareas</span>
+      </button>
+      <button class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors px-2.5 py-1 rounded-full hover:bg-white/60 cursor-pointer" id="nav-insights-btn" type="button">Estadísticas</button>
+    </nav>
+
+    <div class="flex items-center gap-space-xs sm:gap-space-sm">
+      <!-- Selector de Temas Visuales -->
+      <div class="relative inline-block text-left">
+        <button id="theme-selector-btn" type="button" class="h-9 px-3 rounded-full flex items-center gap-1.5 text-on-surface-variant hover:bg-white/80 hover:text-on-surface transition-all border border-transparent hover:border-white/60 cursor-pointer" title="Cambiar Tema Visual">
+          <span class="material-symbols-outlined text-[18px]">palette</span>
+          <span class="hidden lg:inline font-label-sm text-label-sm uppercase tracking-wider" id="theme-btn-label">Sala</span>
+        </button>
+        <div id="theme-dropdown" class="hidden absolute right-0 mt-2 w-48 rounded-2xl bg-white/95 backdrop-blur-xl border border-white/80 shadow-[0_10px_30px_rgba(0,0,0,0.15)] py-2 z-50">
+          <button class="theme-opt-btn w-full text-left px-4 py-2 text-xs font-semibold text-on-surface hover:bg-surface-container-high transition-colors flex items-center justify-between" data-theme="sala">
+            <span>🏠 Sala (Default)</span>
+            <span class="check-icon text-primary font-bold">✓</span>
+          </button>
+          <button class="theme-opt-btn w-full text-left px-4 py-2 text-xs font-semibold text-on-surface hover:bg-surface-container-high transition-colors flex items-center justify-between" data-theme="bosque">
+            <span>🌲 Bosque Nocturno</span>
+            <span class="check-icon text-primary font-bold hidden">✓</span>
+          </button>
+          <button class="theme-opt-btn w-full text-left px-4 py-2 text-xs font-semibold text-on-surface hover:bg-surface-container-high transition-colors flex items-center justify-between" data-theme="ciudad">
+            <span>🏙️ Ciudad</span>
+            <span class="check-icon text-primary font-bold hidden">✓</span>
+          </button>
+          <button class="theme-opt-btn w-full text-left px-4 py-2 text-xs font-semibold text-on-surface hover:bg-surface-container-high transition-colors flex items-center justify-between" data-theme="otono">
+            <span>🍁 Otoñal</span>
+            <span class="check-icon text-primary font-bold hidden">✓</span>
+          </button>
+          <button class="theme-opt-btn w-full text-left px-4 py-2 text-xs font-semibold text-on-surface hover:bg-surface-container-high transition-colors flex items-center justify-between" data-theme="playa">
+            <span>🏖️ Playa</span>
+            <span class="check-icon text-primary font-bold hidden">✓</span>
+          </button>
+          <button class="theme-opt-btn w-full text-left px-4 py-2 text-xs font-semibold text-on-surface hover:bg-surface-container-high transition-colors flex items-center justify-between" data-theme="backroom">
+            <span>🟨 Backroom</span>
+            <span class="check-icon text-primary font-bold hidden">✓</span>
+          </button>
+        </div>
+      </div>
+
+      <button aria-label="Toggle ambient noise" class="h-9 px-3 rounded-full flex items-center gap-1.5 text-on-surface-variant hover:bg-white/80 hover:text-on-surface transition-all border border-transparent hover:border-white/60 cursor-pointer" id="ambient-toggle-btn" title="Sonido ambiental zen" type="button">
+        <span class="material-symbols-outlined text-[18px]" id="ambient-btn-icon">water_drop</span>
+        <span class="hidden sm:inline font-label-sm text-label-sm uppercase tracking-wider" id="ambient-btn-label">Lluvia: Apagada</span>
+      </button>
+      <button aria-label="Sound toggle" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-white/80 hover:text-on-surface transition-colors cursor-pointer" id="sound-toggle-btn" title="Alternar campanilla final" type="button">
+        <span class="material-symbols-outlined text-[20px]" id="sound-toggle-icon">volume_up</span>
+      </button>
+      <button aria-label="Abrir panel de tareas" class="md:hidden w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-white/80 hover:text-on-surface transition-colors cursor-pointer" id="mobile-tasks-toggle-btn" type="button"><span class="material-symbols-outlined text-[20px]">checklist</span></button>
+      <button aria-label="Abrir estadísticas Insights" class="md:hidden w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-white/80 hover:text-on-surface transition-colors cursor-pointer" id="mobile-insights-toggle-btn" type="button"><span class="material-symbols-outlined text-[20px]">insights</span></button>
+      <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-space-xs shadow-sm"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="flex-1 pt-16 flex flex-col items-center justify-center relative">
+  <div class="w-full max-w-[480px] md:max-w-[720px] mx-auto px-gutter-mobile md:px-gutter py-space-lg md:py-space-xl flex flex-col items-center justify-center">
+    <div class="flex flex-col w-full items-center justify-center">
+      
+      <div class="relative w-full max-w-[560px] flex flex-col items-center">
+        <div class="absolute -top-12 -left-12 w-64 h-64 bg-primary-fixed/40 rounded-full blur-3xl pointer-events-none -z-10"></div>
+        <div class="absolute -bottom-16 -right-12 w-72 h-72 bg-tertiary-fixed-dim/30 rounded-full blur-3xl pointer-events-none -z-10"></div>
+        
+        <div class="w-full bg-white/85 backdrop-blur-xl border border-white/75 rounded-xl shadow-[0_24px_50px_rgba(0,0,0,0.18),0_4px_16px_rgba(238,82,83,0.08)] p-space-lg md:p-space-xl flex flex-col items-center transition-all duration-300">
+          
+          <div class="w-full flex items-center justify-between mb-space-lg">
+            <div class="flex items-center gap-space-sm">
+              <div class="w-9 h-9 rounded-full bg-secondary-container/90 border border-white/60 flex items-center justify-center text-primary shadow-sm backdrop-blur-sm">
+                <svg aria-hidden="true" class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                  <path d="M12 2C12.55 2 13 2.45 13 3C13 3.65 13.25 4.3 13.71 4.76C14.17 5.22 14.82 5.47 15.47 5.47H16C16.55 5.47 17 5.92 17 6.47C17 7.02 16.55 7.47 16 7.47C14.28 7.47 12.65 6.78 11.44 5.56C10.22 4.35 9.53 2.72 9.53 1C9.53 0.45 9.98 0 10.53 0C11.08 0 11.53 0.45 11.53 1C11.53 1.34 11.66 1.67 11.9 1.9C11.93 1.93 11.96 1.97 12 2Z" opacity="0.85"></path>
+                  <path d="M12 5.5C7.3 5.5 3.5 9.3 3.5 14C3.5 18.7 7.3 22.5 12 22.5C16.7 22.5 20.5 18.7 20.5 14C20.5 9.3 16.7 5.5 12 5.5ZM12 20.5C8.42 20.5 5.5 17.58 5.5 14C5.5 10.42 8.42 7.5 12 7.5C15.58 7.5 18.5 10.42 18.5 14C18.5 17.58 15.58 20.5 12 20.5Z"></path>
+                </svg>
+              </div>
+              <div>
+                <h1 class="font-headline-sm text-headline-sm text-on-surface tracking-tight leading-tight">Soft Tomato</h1>
+                <p class="font-label-sm text-label-sm text-secondary tracking-wide uppercase" id="session-cycle-label">Sesión de Enfoque • Ciclo 1 de 4</p>
+              </div>
+            </div>
+            
+            <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/70 border border-white/60 shadow-sm backdrop-blur-sm" title="Ciclos completados en la sesión">
+              <span class="w-2.5 h-2.5 rounded-full bg-[#ee5253] shadow-[0_0_0_3px_#ffdad7] transition-all duration-300" id="pip-1"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-surface-container-highest transition-all duration-300" id="pip-2"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-surface-container-highest transition-all duration-300" id="pip-3"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-surface-container-highest transition-all duration-300" id="pip-4"></span>
+            </div>
+          </div>
+
+          <nav class="w-full bg-surface-container-low/75 border border-white/60 backdrop-blur-md p-1 rounded-full flex items-center justify-between gap-1 shadow-[inset_0_2px_4px_0_rgba(44,40,40,0.03)] mb-space-xl" id="mode-selector">
+            <button class="mode-btn flex-1 py-2 px-3 rounded-full font-headline-sm text-body-sm transition-all duration-200 bg-[#ee5253] text-white font-semibold shadow-[0_4px_14px_rgba(238,82,83,0.35)] cursor-pointer" data-mode="pomodoro" data-time="1500" type="button">Trabajo Enfoque</button>
+            <button class="mode-btn flex-1 py-2 px-3 rounded-full font-headline-sm text-body-sm transition-all duration-200 bg-transparent text-secondary hover:text-on-surface hover:bg-white/60 cursor-pointer" data-mode="shortBreak" data-time="300" type="button">Pausa Breve</button>
+            <button class="mode-btn flex-1 py-2 px-3 rounded-full font-headline-sm text-body-sm transition-all duration-200 bg-transparent text-secondary hover:text-on-surface hover:bg-white/60 cursor-pointer" data-mode="longBreak" data-time="900" type="button">Descanso Largo</button>
+          </nav>
+
+          <div class="relative w-72 h-72 sm:w-80 sm:h-80 flex flex-col items-center justify-center my-space-xs">
+            <div class="absolute -top-3.5 z-20 pointer-events-none drop-shadow-sm flex flex-col items-center transition-transform hover:scale-110 duration-300" id="tomato-stem-ornament">
+              <svg class="w-10 h-8" fill="none" viewBox="0 0 40 32" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 2C19.2 5.5 17.5 9 19.5 12" stroke="#10b981" stroke-linecap="round" stroke-width="2.5"></path>
+                <path d="M20 12C22.5 10 26.5 9.5 30 11C28 12.8 25.5 13.5 22 13.2" fill="#10b981" opacity="0.95"></path>
+                <path d="M20 12C17.5 10 13.5 9.5 10 11C12 12.8 14.5 13.5 18 13.2" fill="#059669" opacity="0.95"></path>
+                <path d="M20 12.5C23.5 13.5 26.8 16 28 19C25.5 18.5 23 17 21 14.5" fill="#34d399"></path>
+                <path d="M20 12.5C16.5 13.5 13.2 16 12 19C14.5 18.5 17 17 19 14.5" fill="#10b981"></path>
+                <circle cx="20" cy="12.5" fill="#047857" r="2.2"></circle>
+              </svg>
+            </div>
+            
+            <svg class="absolute inset-0 w-full h-full -rotate-90 pointer-events-none" viewBox="0 0 260 260">
+              <circle class="text-surface-container-low/90" cx="130" cy="130" fill="none" r="115" stroke="currentColor" stroke-width="10"></circle>
+              <circle class="text-[#ee5253] transition-all duration-500 ease-out" cx="130" cy="130" fill="none" id="progress-ring" r="115" stroke="currentColor" stroke-dasharray="722.566 722.566" stroke-dashoffset="0" stroke-linecap="round" stroke-width="10"></circle>
+            </svg>
+
+            <div class="w-56 h-56 rounded-full bg-white/90 backdrop-blur-md border border-white/80 shadow-[inset_0_4px_16px_rgba(68,51,46,0.03),0_8px_24px_rgba(0,0,0,0.03)] flex flex-col items-center justify-center z-10 select-none">
+              <span class="font-timer-display text-headline-lg sm:text-[76px] sm:leading-[76px] font-bold text-on-surface tracking-tighter tabular-nums drop-shadow-sm" id="timer-display">25:00</span>
+              <p class="font-body-sm text-body-sm text-secondary text-center px-4 mt-2" id="timer-subtitle">Bloque de concentración activo</p>
+            </div>
+          </div>
+
+          <div class="w-full flex items-center justify-center gap-space-md sm:gap-space-lg mt-space-lg mb-space-md">
+            <button aria-label="Reiniciar temporizador" class="group h-14 px-6 rounded-full bg-white/80 hover:bg-white border border-white/80 backdrop-blur-md text-on-surface-variant font-headline-sm text-body-md font-semibold flex items-center gap-2.5 transition-all duration-200 active:scale-95 shadow-sm cursor-pointer" id="reset-btn" type="button">
+              <svg aria-hidden="true" class="w-4 h-4 fill-current transition-transform duration-300 group-hover:-rotate-90" viewBox="0 0 512 512">
+                <path d="M48.5 224H40c-13.3 0-24-10.7-24-24V72c0-9.7 5.8-18.5 14.8-22.2s19.3-1.7 26.2 5.2L98.6 96.6c87.6-86.5 228-85 314.4 3.7c90.2 92.6 88.2 241.6-4.5 331.8s-240.2 86.8-330.4-5.8c-9.3-9.5-9.1-24.7 .4-34s24.7-9.1 34 .4c73.3 75.2 194.2 76.9 269.4 3.8s77.2-192.8 5-266.9c-69.6-71.4-182.2-72.6-253.2-3L175 148.3c6.9 6.9 8.9 17.2 5.2 26.2s-12.5 14.8-22.2 14.8H48.5z"></path>
+              </svg>
+              <span>Reiniciar</span>
+            </button>
+            <button aria-label="Iniciar temporizador" class="group h-14 px-10 rounded-full bg-primary-container hover:brightness-105 active:scale-95 text-on-primary font-headline-sm text-body-lg font-semibold flex items-center gap-3 shadow-[0_10px_24px_-4px_rgba(210,62,65,0.42)] transition-all duration-200 cursor-pointer" id="start-btn" type="button">
+              <svg aria-hidden="true" class="w-5 h-5 fill-current" id="start-icon-play" viewBox="0 0 384 512">
+                <path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"></path>
+              </svg>
+              <svg aria-hidden="true" class="w-5 h-5 fill-current hidden" id="start-icon-pause" viewBox="0 0 320 512">
+                <path d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z"></path>
+              </svg>
+              <span id="start-btn-label">Iniciar</span>
+            </button>
+          </div>
+
+          <div class="w-full mt-space-md">
+            <div class="w-full flex items-center justify-between gap-space-sm px-4 py-2.5 rounded-lg bg-white/75 hover:bg-white/90 border border-white/70 backdrop-blur-md shadow-sm transition-all duration-200 cursor-pointer group" id="open-tasks-card-btn" title="Hacer clic para gestionar tareas">
+              <div class="flex items-center gap-2.5 min-w-0 flex-1">
+                <span class="w-7 h-7 rounded-full bg-secondary-container/80 flex items-center justify-center text-primary text-sm flex-shrink-0 group-hover:scale-105 transition-transform">🎯</span>
+                <div class="min-w-0 flex-1 text-left">
+                  <div class="flex items-center gap-2">
+                    <span class="font-label-sm text-[10px] uppercase tracking-wider text-secondary">Tarea en curso</span>
+                    <span class="inline-flex items-center px-1.5 py-0.2 rounded-full text-[10px] font-semibold bg-tertiary-fixed-dim/40 text-tertiary" id="active-task-badge">En progreso</span>
+                  </div>
+                  <p class="font-body-sm text-body-sm font-medium text-on-surface truncate mt-0.5" id="active-task-title">Escribir informe semanal y revisión de notas</p>
+                </div>
+              </div>
+              <button aria-label="Abrir gestor de tareas" class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-low/90 text-on-surface-variant hover:text-on-surface hover:bg-white text-xs font-semibold border border-white/60 transition-colors flex-shrink-0 cursor-pointer" type="button">
+                <span>Tareas</span>
+                <span class="material-symbols-outlined text-[16px]">expand_more</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="w-full mt-space-sm flex items-center justify-between gap-2 px-3.5 py-2 rounded-full bg-white/60 hover:bg-white/80 border border-white/70 backdrop-blur-md shadow-sm transition-all duration-300">
+            <div class="flex items-center gap-2 min-w-0 overflow-hidden">
+              <span class="text-sm select-none transition-transform duration-300" id="quote-icon">✨</span>
+              <span class="font-body-sm text-body-sm text-on-surface-variant truncate transition-opacity duration-300 opacity-100" id="quote-text">¡Tú puedes con este ciclo!</span>
+            </div>
+            <button aria-label="Cambiar frase motivacional" class="w-6 h-6 rounded-full flex-shrink-0 flex items-center justify-center text-secondary hover:text-primary hover:bg-white/60 transition-colors cursor-pointer" id="quote-refresh-btn" title="Siguiente frase motivacional" type="button">
+              <span class="material-symbols-outlined text-[15px]">refresh</span>
+            </button>
+          </div>
+
+          <div class="w-full flex flex-wrap items-center justify-between gap-space-sm mt-space-md pt-space-sm text-secondary">
+            <button class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/70 hover:bg-white/95 border border-white/60 backdrop-blur-sm text-secondary hover:text-on-surface transition-colors font-label-sm text-label-sm uppercase tracking-wider shadow-sm cursor-pointer" id="auto-break-btn" type="button">
+              <svg aria-hidden="true" class="w-3.5 h-3.5 fill-current" viewBox="0 0 512 512">
+                <path d="M0 416c0-17.7 14.3-32 32-32l54.7 0c12.3-28.3 40.5-48 73.3-48s61 19.7 73.3 48L480 384c17.7 0 32 14.3 32 32s-14.3 32-32 32l-246.7 0c-12.3 28.3-40.5 48-73.3 48s-61-19.7-73.3-48L32 448c-17.7 0-32-14.3-32-32zm192 0a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM320 256a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm32-80c-32.8 0-61 19.7-73.3 48L32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l246.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48l126.7 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-126.7 0c-12.3-28.3-40.5-48-73.3-48zM480 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L265.3 32c-12.3-28.3-40.5-48-73.3-48S131 3.7 118.7 32L32 32C14.3 32 0 46.3 0 64S14.3 96 32 96l86.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 96zM192 64a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"></path>
+              </svg>
+              <span id="auto-break-text">Descanso Auto: Apagado</span>
+            </button>
+            <button class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/70 hover:bg-white/95 border border-white/60 backdrop-blur-sm text-secondary hover:text-on-surface transition-colors font-label-sm text-label-sm uppercase tracking-wider shadow-sm cursor-pointer" id="chime-btn" title="Probar o alternar sonido de campana" type="button">
+              <svg aria-hidden="true" class="w-3.5 h-3.5 fill-current text-primary" id="chime-icon-svg" viewBox="0 0 448 512">
+                <path d="M224 0c-17.7 0-32 14.3-32 32V49.9C119.5 61.4 64 124.2 64 200v33.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416H424c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4V200c0-75.8-55.5-138.6-128-150.1V32c0-17.7-14.3-32-32-32zm0 512c35.3 0 64-28.7 64-64H160c0 35.3 28.7 64 64 64z"></path>
+              </svg>
+              <span id="chime-text">Campana Suave</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- MODAL: GESTOR DE TAREAS -->
+<div aria-modal="true" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-on-surface/25 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300" id="tasks-modal" role="dialog">
+  <div class="relative w-full max-w-lg bg-white/95 backdrop-blur-2xl border border-white/80 rounded-2xl shadow-[0_24px_50px_rgba(44,40,40,0.18)] p-6 max-h-[88vh] flex flex-col transition-all duration-300 scale-95" id="tasks-modal-card">
+    <div class="flex items-center justify-between pb-4 border-b border-surface-container-highest/60">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-primary font-bold text-base">✓</div>
+        <div>
+          <h3 class="font-headline-sm text-body-lg font-bold text-on-surface">Gestor de Tareas</h3>
+          <p class="font-body-sm text-xs text-secondary">Selecciona tu objetivo activo para el temporizador</p>
+        </div>
+      </div>
+      <button aria-label="Cerrar modal de tareas" class="w-8 h-8 rounded-full flex items-center justify-center text-secondary hover:text-on-surface hover:bg-surface-container-high transition-colors cursor-pointer" id="close-tasks-modal-btn" type="button">
+        <span class="material-symbols-outlined text-[20px]">close</span>
+      </button>
+    </div>
+    
+    <div class="pt-4 pb-3">
+      <form class="flex items-center gap-2" id="new-task-form">
+        <input class="flex-1 px-4 py-2.5 rounded-xl bg-surface-container-low/90 border border-outline-variant/50 font-body-sm text-body-sm text-on-surface placeholder:text-secondary focus:outline-none focus:border-primary/60 focus:bg-white transition-all shadow-inner" id="task-input-text" placeholder="Añadir una nueva tarea y presionar Enter..." type="text"/>
+        <button class="px-4 py-2.5 rounded-xl bg-primary-container hover:brightness-105 active:scale-95 text-white font-headline-sm text-body-sm font-semibold flex items-center gap-1 shadow-sm transition-all flex-shrink-0 cursor-pointer" type="submit">
+          <span class="material-symbols-outlined text-[18px]">add</span>
+          <span>Añadir</span>
+        </button>
+      </form>
+    </div>
+
+    <div class="flex-1 overflow-y-auto pr-1 py-1 space-y-2 min-h-[180px] max-h-[300px]" id="tasks-container"></div>
+
+    <div class="pt-4 border-t border-surface-container-highest/60 flex items-center justify-between text-xs text-secondary">
+      <span id="tasks-count-summary">3 tareas pendientes</span>
+      <button class="hover:text-error transition-colors px-2 py-1 rounded hover:bg-surface-container-high cursor-pointer" id="clear-completed-tasks-btn" type="button">Limpiar completadas</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: ESTADÍSTICAS E INSIGHTS -->
+<div aria-modal="true" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-on-surface/25 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300" id="insights-modal" role="dialog">
+  <div class="relative w-full max-w-2xl bg-white/95 backdrop-blur-2xl border border-white/80 rounded-2xl shadow-[0_24px_50px_rgba(44,40,40,0.18)] p-6 max-h-[90vh] flex flex-col transition-all duration-300 scale-95 overflow-hidden" id="insights-modal-card">
+    <div class="flex items-center justify-between pb-3 border-b border-surface-container-highest/60 flex-shrink-0">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-full bg-tertiary-fixed-dim/40 flex items-center justify-center text-tertiary font-bold text-base">
+          <span class="material-symbols-outlined text-[18px]">insights</span>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h3 class="font-headline-sm text-body-lg font-bold text-on-surface">Estadísticas &amp; Enfoque</h3>
+            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-secondary-container text-on-secondary-container border border-white/70">v8.0</span>
+          </div>
+          <p class="font-body-sm text-xs text-secondary">Métricas en tiempo real, desglose semanal y sincronización de hoy</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-primary-container text-white text-xs font-semibold hover:brightness-105 transition-all active:scale-95 shadow-md cursor-pointer" id="export-csv-btn" title="Descargar reporte en formato CSV" type="button">
+          <span class="material-symbols-outlined text-[16px]">download</span>
+          <span>Descargar Resumen</span>
+        </button>
+        <button aria-label="Cerrar modal de estadísticas" class="w-8 h-8 rounded-full flex items-center justify-center text-secondary hover:text-on-surface hover:bg-surface-container-high transition-colors cursor-pointer" id="close-insights-modal-btn" type="button">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="flex-1 overflow-y-auto pr-1 py-3 space-y-4">
+      <div class="grid grid-cols-3 gap-3">
+        <div class="p-3.5 rounded-xl bg-surface-container-low/90 border border-white/80 flex flex-col items-center text-center shadow-sm">
+          <span class="font-label-sm text-[11px] uppercase tracking-wider text-secondary">Minutos hoy</span>
+          <span class="font-headline-lg text-[28px] font-bold text-primary mt-1" id="stat-minutes-today">50</span>
+          <span class="font-label-sm text-[10px] text-tertiary mt-0.5">+25m sesión actual</span>
+        </div>
+        <div class="p-3.5 rounded-xl bg-surface-container-low/90 border border-white/80 flex flex-col items-center text-center shadow-sm">
+          <span class="font-label-sm text-[11px] uppercase tracking-wider text-secondary">Pomodoros</span>
+          <span class="font-headline-lg text-[28px] font-bold text-on-surface mt-1" id="stat-pomodoros-count">2</span>
+          <span class="font-label-sm text-[10px] text-secondary mt-0.5">Meta: 6 al día</span>
+        </div>
+        <div class="p-3.5 rounded-xl bg-surface-container-low/90 border border-white/80 flex flex-col items-center text-center shadow-sm">
+          <span class="font-label-sm text-[11px] uppercase tracking-wider text-secondary">Racha actual</span>
+          <span class="font-headline-lg text-[28px] font-bold text-tertiary mt-1" id="stat-streak-days">4</span>
+          <span class="font-label-sm text-[10px] text-secondary mt-0.5">Días consecutivos</span>
+        </div>
+      </div>
+
+      <div class="p-4 rounded-xl bg-surface-container-low/75 border border-white/80">
+        <div class="flex items-center justify-between mb-3">
+          <span class="font-headline-sm text-xs font-semibold text-on-surface">Actividad Semanal (Horas de enfoque)</span>
+          <span class="font-label-sm text-[11px] text-secondary">Total: 21.5 h</span>
+        </div>
+        <div class="flex items-end justify-between gap-2 h-24 pt-4 px-2" id="weekly-bars-container">
+          <div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end chart-day-col" data-day-idx="0">
+            <div class="w-full max-w-[22px] bg-secondary-container rounded-t-md transition-all hover:bg-primary-container bar-fill" style="height: 70%;" title="Lunes: 3.5h"></div>
+            <span class="font-label-sm text-[10px] text-secondary bar-label">L</span>
+          </div>
+          <div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end chart-day-col" data-day-idx="1">
+            <div class="w-full max-w-[22px] bg-secondary-container rounded-t-md transition-all hover:bg-primary-container bar-fill" style="height: 80%;" title="Martes: 4.0h"></div>
+            <span class="font-label-sm text-[10px] text-secondary bar-label">M</span>
+          </div>
+          <div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end chart-day-col" data-day-idx="2">
+            <div class="w-full max-w-[22px] bg-secondary-container rounded-t-md transition-all hover:bg-primary-container bar-fill" style="height: 50%;" title="Miércoles: 2.5h"></div>
+            <span class="font-label-sm text-[10px] text-secondary bar-label">X</span>
+          </div>
+          <div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end chart-day-col" data-day-idx="3">
+            <div class="w-full max-w-[22px] bg-secondary-container rounded-t-md transition-all hover:bg-primary-container bar-fill" style="height: 100%;" title="Jueves: 5.0h"></div>
+            <span class="font-label-sm text-[10px] text-secondary bar-label">J</span>
+          </div>
+          <div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end chart-day-col" data-day-idx="4">
+            <div class="w-full max-w-[22px] bg-secondary-container rounded-t-md transition-all hover:bg-primary-container bar-fill" style="height: 60%;" title="Viernes: 3.0h"></div>
+            <span class="font-label-sm text-[10px] text-secondary bar-label">V</span>
+          </div>
+          <div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end chart-day-col" data-day-idx="5">
+            <div class="w-full max-w-[22px] bg-secondary-container rounded-t-md transition-all hover:bg-primary-container bar-fill" style="height: 30%;" title="Sábado: 1.5h"></div>
+            <span class="font-label-sm text-[10px] text-secondary bar-label">S</span>
+          </div>
+          <div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end chart-day-col" data-day-idx="6">
+            <div class="w-full max-w-[22px] bg-secondary-container rounded-t-md transition-all hover:bg-primary-container bar-fill" style="height: 40%;" title="Domingo: 2.0h"></div>
+            <span class="font-label-sm text-[10px] text-secondary bar-label">D</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 rounded-xl bg-white/70 backdrop-blur-md border border-white/80 shadow-sm">
+        <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[18px] text-primary">calendar_month</span>
+            <span class="font-headline-sm text-xs font-bold text-on-surface uppercase tracking-wider">Desglose Semanal de Productividad</span>
+          </div>
+          <span class="font-label-sm text-[10px] text-secondary bg-surface-container-high px-2 py-0.5 rounded-full" id="calendar-sync-badge">Sincronizado con hoy</span>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead>
+              <tr class="text-secondary border-b border-surface-container-highest/60 font-label-sm uppercase tracking-wider text-[10px]">
+                <th class="py-2 px-2.5">Día</th>
+                <th class="py-2 px-2.5">Horas</th>
+                <th class="py-2 px-2.5">Objetivo / Asignatura</th>
+                <th class="py-2 px-2.5 text-right">Progreso</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-surface-container-highest/40 font-body-sm" id="weekly-breakdown-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-3 border-t border-surface-container-highest/60 flex items-center justify-between flex-shrink-0">
+      <span class="text-xs text-secondary font-body-sm flex items-center gap-1">
+        <span class="material-symbols-outlined text-[15px] text-tertiary">check_circle</span>
+        Datos sincronizados localmente
+      </span>
+      <button class="px-5 py-2 rounded-xl bg-surface-container-high text-on-surface font-headline-sm text-body-sm font-semibold hover:bg-white active:scale-95 transition-all shadow-sm cursor-pointer" id="close-insights-action-btn" type="button">Cerrar estadísticas</button>
+    </div>
+  </div>
+</div>
+
+<div aria-atomic="true" aria-live="assertive" class="fixed top-20 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-[420px] pointer-events-none transition-all duration-300 ease-out opacity-0 translate-y-[-16px] scale-95" id="alert-toast" role="alert">
+  <div class="pointer-events-auto bg-white/95 backdrop-blur-xl border border-white/80 rounded-2xl p-4 shadow-[0_20px_40px_-8px_rgba(68,51,46,0.18),0_4px_16px_rgba(68,51,46,0.06)] flex items-start gap-3.5 transition-all">
+    <div class="w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center bg-secondary-container text-primary" id="toast-icon-wrapper">
+      <span class="material-symbols-outlined text-[22px]" id="toast-icon">notifications_active</span>
+    </div>
+    <div class="flex-1 min-w-0 pt-0.5">
+      <div class="flex items-center justify-between gap-2">
+        <h2 class="font-headline-sm text-body-md font-semibold text-on-surface tracking-tight" id="toast-title">¡Tiempo cumplido!</h2>
+        <button aria-label="Cerrar notificación" class="w-7 h-7 -mr-1 rounded-full flex items-center justify-center text-secondary hover:text-on-surface hover:bg-surface-container-high transition-colors cursor-pointer" id="toast-close-btn" type="button">
+          <span class="material-symbols-outlined text-[18px]">close</span>
+        </button>
+      </div>
+      <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5" id="toast-message">Has completado el bloque con éxito.</p>
+      <div class="mt-3 flex items-center gap-2">
+        <button class="px-4 py-1.5 rounded-full bg-primary-container text-white font-headline-sm text-label-md hover:brightness-105 active:scale-95 transition-all shadow-[0_2px_8px_rgba(210,62,65,0.25)] flex items-center gap-1.5 cursor-pointer" id="toast-action-btn" type="button">
+          <span id="toast-action-label">Iniciar Descanso</span>
+          <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+        </button>
+        <button class="px-3 py-1.5 rounded-full text-secondary hover:text-on-surface hover:bg-surface-container text-label-md font-medium transition-colors cursor-pointer" id="toast-dismiss-btn" type="button">Descartar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const timerDisplay = document.getElementById('timer-display');
+    const timerSubtitle = document.getElementById('timer-subtitle');
+    const startBtn = document.getElementById('start-btn');
+    const resetBtn = document.getElementById('reset-btn');
+    const startBtnLabel = document.getElementById('start-btn-label');
+    const iconPlay = document.getElementById('start-icon-play');
+    const iconPause = document.getElementById('start-icon-pause');
+    const progressRing = document.getElementById('progress-ring');
+    const modeBtns = document.querySelectorAll('.mode-btn');
+    const sessionCycleLabel = document.getElementById('session-cycle-label');
+    const headerSessionTag = document.getElementById('header-session-tag');
+    const pipElements = [
+      document.getElementById('pip-1'),
+      document.getElementById('pip-2'),
+      document.getElementById('pip-3'),
+      document.getElementById('pip-4')
+    ];
+    const autoBreakBtn = document.getElementById('auto-break-btn');
+    const autoBreakText = document.getElementById('auto-break-text');
+    const soundToggleBtn = document.getElementById('sound-toggle-btn');
+    const soundToggleIcon = document.getElementById('sound-toggle-icon');
+    const chimeBtn = document.getElementById('chime-btn');
+    const chimeText = document.getElementById('chime-text');
+
+    const ambientToggleBtn = document.getElementById('ambient-toggle-btn');
+    const ambientBtnIcon = document.getElementById('ambient-btn-icon');
+    const ambientBtnLabel = document.getElementById('ambient-btn-label');
+    const footerAmbientIndicator = document.getElementById('footer-ambient-indicator');
+
+    const alertToast = document.getElementById('alert-toast');
+    const toastTitle = document.getElementById('toast-title');
+    const toastMessage = document.getElementById('toast-message');
+    const toastActionBtn = document.getElementById('toast-action-btn');
+    const toastActionLabel = document.getElementById('toast-action-label');
+    const toastCloseBtn = document.getElementById('toast-close-btn');
+    const toastDismissBtn = document.getElementById('toast-dismiss-btn');
+    const toastIconWrapper = document.getElementById('toast-icon-wrapper');
+    const toastIcon = document.getElementById('toast-icon');
+
+    const quoteText = document.getElementById('quote-text');
+    const quoteIcon = document.getElementById('quote-icon');
+    const quoteRefreshBtn = document.getElementById('quote-refresh-btn');
+
+    // Manejador de Temas Visuales
+    const themeBg = document.getElementById('theme-bg');
+    const themeSelectorBtn = document.getElementById('theme-selector-btn');
+    const themeDropdown = document.getElementById('theme-dropdown');
+    const themeBtnLabel = document.getElementById('theme-btn-label');
+
+    const themes = {
+      sala: { name: 'Sala', bg: "url('fondo_salon.png')" },
+      bosque: { name: 'Bosque', bg: "url('fondo_bosque.jpg')" },
+      ciudad: { name: 'Ciudad', bg: "url('fondo_ciudad.png')" },
+      otono: { name: 'Otoñal', bg: "url('fondo_otonal.png')" },
+      playa: { name: 'Playa', bg: "url('fondo_playa.png')" },
+      backroom: { name: 'Backroom', bg: "url('fondo_backrooms.jpg')" }
+    };
+
+    // Precargar imágenes mediante JavaScript al cargar el documento
+    Object.values(themes).forEach(item => {
+      const img = new Image();
+      const cleanUrl = item.bg.replace(/url\(['"]?([^'"]*)['"]?\)/, '$1');
+      img.src = cleanUrl;
+    });
+
+    if (themeSelectorBtn && themeDropdown) {
+      themeSelectorBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        themeDropdown.classList.toggle('hidden');
+      });
+
+      document.addEventListener('click', () => {
+        themeDropdown.classList.add('hidden');
+      });
+
+      document.querySelectorAll('.theme-opt-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const key = btn.dataset.theme;
+          if (themes[key]) {
+            themeBg.style.backgroundImage = themes[key].bg;
+            if (themeBtnLabel) themeBtnLabel.textContent = themes[key].name;
+            document.querySelectorAll('.theme-opt-btn .check-icon').forEach(icon => icon.classList.add('hidden'));
+            btn.querySelector('.check-icon').classList.remove('hidden');
+          }
+        });
+      });
+    }
+
+    const motivationalMessages = [
+      { icon: '✨', text: '¡Tú puedes con este ciclo!' },
+      { icon: '🎯', text: 'Mantén el enfoque, un paso más cerca de tus metas' },
+      { icon: '🌱', text: 'Respira hondo, cada minuto cuenta' },
+      { icon: '⚡', text: 'Calma y constancia: estás haciendo un gran trabajo' },
+      { icon: '🍅', text: 'Enfoque activo: cero distracciones' },
+      { icon: '🕊️', text: 'Progreso constante, mente despejada' },
+      { icon: '💡', text: 'La disciplina es el puente entre metas y logros' },
+      { icon: '☕', text: 'Disfruta del proceso de creación tranquila' }
+    ];
+
+    let currentQuoteIdx = 0;
+    function cycleMotivationalQuote() {
+      if (!quoteText || !quoteIcon) return;
+      currentQuoteIdx = (currentQuoteIdx + 1) % motivationalMessages.length;
+      quoteText.style.opacity = '0';
+      setTimeout(() => {
+        const item = motivationalMessages[currentQuoteIdx];
+        quoteIcon.textContent = item.icon;
+        quoteText.textContent = item.text;
+        quoteText.style.opacity = '1';
+      }, 150);
+    }
+
+    if (quoteRefreshBtn) {
+      quoteRefreshBtn.addEventListener('click', cycleMotivationalQuote);
+    }
+
+    setInterval(() => {
+      cycleMotivationalQuote();
+    }, 12000);
+
+    const CIRCUMFERENCE = 2 * Math.PI * 115;
+    progressRing.style.strokeDasharray = `${CIRCUMFERENCE} ${CIRCUMFERENCE}`;
+
+    const modeConfigs = {
+      pomodoro: {
+        totalSeconds: 1500,
+        subtitle: 'Bloque de concentración activo',
+        activeBtnBg: 'bg-[#ee5253]',
+        activeShadow: 'shadow-[0_4px_14px_rgba(238,82,83,0.35)]',
+        ringColor: 'text-[#ee5253]',
+        headerTitle: 'Sesión de Enfoque'
+      },
+      shortBreak: {
+        totalSeconds: 300,
+        subtitle: 'Pausa breve para estirar y respirar',
+        activeBtnBg: 'bg-tertiary-container',
+        activeShadow: 'shadow-[0_4px_14px_rgba(59,129,100,0.3)]',
+        ringColor: 'text-tertiary-container',
+        headerTitle: 'Pausa Breve'
+      },
+      longBreak: {
+        totalSeconds: 900,
+        subtitle: 'Descanso prolongado para recargar energía',
+        activeBtnBg: 'bg-tertiary',
+        activeShadow: 'shadow-[0_4px_14px_rgba(30,104,76,0.3)]',
+        ringColor: 'text-tertiary',
+        headerTitle: 'Descanso Largo'
+      }
+    };
+
+    let currentMode = 'pomodoro';
+    let currentTotalSeconds = modeConfigs[currentMode].totalSeconds;
+    let remainingSeconds = currentTotalSeconds;
+    let isRunning = false;
+    let timerInterval = null;
+    let currentCycle = 1;
+    const totalCycles = 4;
+    let soundEnabled = true;
+    let autoBreakEnabled = false;
+    let toastTimeout = null;
+    let nextSuggestedMode = null;
+
+    let statsState = {
+      pomodoros: 2,
+      minutesToday: 50,
+      streak: 4
+    };
+
+    const weeklyData = [
+      { dia: 'Lunes', horas: 3.5, pomodoros: 7, objetivo: 'Escribir informe y análisis cuantitativo', fecha: '2025-05-12', progreso: 70 },
+      { dia: 'Martes', horas: 4.0, pomodoros: 8, objetivo: 'Diseño UI y Prototipado interactivo', fecha: '2025-05-13', progreso: 80 },
+      { dia: 'Miércoles', horas: 2.5, pomodoros: 5, objetivo: 'Investigación de usuarios y entrevistas', fecha: '2025-05-14', progreso: 50 },
+      { dia: 'Jueves', horas: 5.0, pomodoros: 10, objetivo: 'Desarrollo Frontend y testing', fecha: '2025-05-15', progreso: 100 },
+      { dia: 'Viernes', horas: 3.0, pomodoros: 6, objetivo: 'Escribir informe semanal y revisión de notas', fecha: '2025-05-16', progreso: 60 },
+      { dia: 'Sábado', horas: 1.5, pomodoros: 3, objetivo: 'Lectura y organización personal', fecha: '2025-05-17', progreso: 30 },
+      { dia: 'Domingo', horas: 2.0, pomodoros: 4, objetivo: 'Planificación de semana y repaso', fecha: '2025-05-18', progreso: 40 }
+    ];
+
+    function getTodayWeekIndex() {
+      const dayIndex = new Date().getDay();
+      const daysMap = [6, 0, 1, 2, 3, 4, 5];
+      return daysMap[dayIndex];
+    }
+
+    function renderWeeklyBreakdownTable() {
+      const tbody = document.getElementById('weekly-breakdown-tbody');
+      if (!tbody) return;
+
+      const todayIdx = getTodayWeekIndex();
+
+      tbody.innerHTML = weeklyData.map((item, idx) => {
+        const isToday = idx === todayIdx;
+        const rowClass = isToday 
+          ? 'bg-rose-500/10 hover:bg-rose-500/15 border-l-4 border-l-rose-500 transition-colors shadow-sm'
+          : 'hover:bg-white/60 transition-colors';
+        const dayTextClass = isToday ? 'font-bold text-primary flex items-center gap-1.5' : 'font-semibold text-on-surface flex items-center gap-1.5';
+        const pipClass = isToday ? 'w-2 h-2 rounded-full bg-[#ee5253] animate-pulse' : 'w-2 h-2 rounded-full bg-secondary-container';
+        const todayBadge = isToday ? '<span class="inline-flex items-center ml-1 px-1.5 py-0.5 rounded-md text-[10px] font-bold bg-rose-500/15 text-rose-600 border border-rose-200">«Hoy»</span>' : '';
+        const progressBarColor = isToday ? 'bg-[#ee5253]' : (item.progreso === 100 ? 'bg-[#10b981]' : (idx >= 5 ? 'bg-secondary/60' : 'bg-primary/80'));
+
+        return `
+          <tr class="${rowClass}">
+            <td class="py-2.5 px-2.5 ${dayTextClass}">
+              <span class="${pipClass}"></span>
+              <span>${item.dia}</span>
+              ${todayBadge}
+            </td>
+            <td class="py-2.5 px-2.5 font-label-sm ${isToday ? 'text-primary font-bold' : 'text-primary font-bold'}">
+              ${item.horas.toFixed(1)}h <span class="text-secondary text-[10px] font-normal">(${item.pomodoros} 🍅)</span>
+            </td>
+            <td class="py-2.5 px-2.5 ${isToday ? 'text-on-surface font-medium' : 'text-on-surface-variant'} max-w-[190px] truncate" title="${item.objetivo}">${item.objetivo}</td>
+            <td class="py-2.5 px-2.5 text-right">
+              <div class="inline-flex items-center gap-1.5 w-24">
+                <div class="w-full bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+                  <div class="${progressBarColor} h-1.5 rounded-full" style="width: ${item.progreso}%;"></div>
+                </div>
+                <span class="text-[10px] font-label-sm ${isToday ? 'text-primary font-bold' : 'text-secondary'}">${item.progreso}%</span>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      const barCols = document.querySelectorAll('#weekly-bars-container .chart-day-col');
+      barCols.forEach(col => {
+        const colIdx = parseInt(col.dataset.dayIdx, 10);
+        const fill = col.querySelector('.bar-fill');
+        const label = col.querySelector('.bar-label');
+        if (colIdx === todayIdx) {
+          fill.className = 'w-full max-w-[22px] bg-primary rounded-t-md shadow-sm transition-all bar-fill';
+          label.className = 'font-label-sm text-[10px] font-bold text-primary bar-label';
+        } else {
+          fill.className = 'w-full max-w-[22px] bg-secondary-container rounded-t-md transition-all hover:bg-primary-container bar-fill';
+          label.className = 'font-label-sm text-[10px] text-secondary bar-label';
+        }
+      });
+    }
+
+    let audioCtx = null;
+    function getAudioContext() {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) {
+          audioCtx = new AudioContextClass();
+        }
+      }
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    function playChime() {
+      if (!soundEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        if (!ctx) return;
+
+        const chimes = [
+          { freq: 528, delay: 0.00, gain: 0.22, duration: 1.8 },
+          { freq: 660, delay: 0.14, gain: 0.18, duration: 1.9 },
+          { freq: 880, delay: 0.28, gain: 0.16, duration: 2.1 },
+          { freq: 1056, delay: 0.42, gain: 0.12, duration: 2.3 }
+        ];
+
+        const masterGain = ctx.createGain();
+        masterGain.gain.setValueAtTime(1, ctx.currentTime);
+        masterGain.connect(ctx.destination);
+
+        chimes.forEach(chime => {
+          const osc = ctx.createOscillator();
+          const gainNode = ctx.createGain();
+
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(chime.freq, ctx.currentTime + chime.delay);
+
+          const startTime = ctx.currentTime + chime.delay;
+          gainNode.gain.setValueAtTime(0.0001, startTime);
+          gainNode.gain.linearRampToValueAtTime(chime.gain, startTime + 0.035);
+          gainNode.gain.exponentialRampToValueAtTime(0.0001, startTime + chime.duration);
+
+          osc.connect(gainNode);
+          gainNode.connect(masterGain);
+
+          osc.start(startTime);
+          osc.stop(startTime + chime.duration + 0.1);
+        });
+      } catch (err) {
+        console.warn('Web Audio error:', err);
+      }
+    }
+
+    let ambientNode = null;
+    let ambientGain = null;
+    let isAmbientPlaying = false;
+
+    function toggleAmbientSound() {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+
+      if (isAmbientPlaying) {
+        if (ambientGain) {
+          ambientGain.gain.linearRampToValueAtTime(0.0001, ctx.currentTime + 0.5);
+          setTimeout(() => {
+            if (ambientNode) {
+              ambientNode.disconnect();
+              ambientNode = null;
+            }
+          }, 550);
+        }
+        isAmbientPlaying = false;
+        ambientBtnLabel.textContent = 'Lluvia: Apagada';
+        ambientBtnIcon.textContent = 'water_drop';
+        ambientToggleBtn.classList.remove('bg-tertiary/10', 'text-tertiary', 'border-tertiary/30');
+        if (footerAmbientIndicator) {
+          footerAmbientIndicator.textContent = 'Audio ambiental · En pausa';
+        }
+      } else {
+        const bufferSize = 2 * ctx.sampleRate;
+        const noiseBuffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+        const output = noiseBuffer.getChannelData(0);
+        let b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0;
+        for (let i = 0; i < bufferSize; i++) {
+          const white = Math.random() * 2 - 1;
+          b0 = 0.99886 * b0 + white * 0.0555179;
+          b1 = 0.99332 * b1 + white * 0.0750759;
+          b2 = 0.96900 * b2 + white * 0.1538520;
+          b3 = 0.86650 * b3 + white * 0.3104856;
+          b4 = 0.55000 * b4 + white * 0.5329522;
+          b5 = -0.7616 * b5 - white * 0.0168980;
+          output[i] = (b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362) * 0.04;
+          b6 = white * 0.115926;
+        }
+
+        const whiteNoiseSource = ctx.createBufferSource();
+        whiteNoiseSource.buffer = noiseBuffer;
+        whiteNoiseSource.loop = true;
+
+        const filter = ctx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(680, ctx.currentTime);
+
+        ambientGain = ctx.createGain();
+        ambientGain.gain.setValueAtTime(0.0001, ctx.currentTime);
+        ambientGain.gain.linearRampToValueAtTime(0.18, ctx.currentTime + 0.8);
+
+        whiteNoiseSource.connect(filter);
+        filter.connect(ambientGain);
+        ambientGain.connect(ctx.destination);
+
+        whiteNoiseSource.start();
+        ambientNode = whiteNoiseSource;
+        isAmbientPlaying = true;
+
+        ambientBtnLabel.textContent = 'Lluvia: Encendida';
+        ambientBtnIcon.textContent = 'shower';
+        ambientToggleBtn.classList.add('bg-tertiary/10', 'text-tertiary', 'border-tertiary/30');
+        if (footerAmbientIndicator) {
+          footerAmbientIndicator.textContent = 'Audio ambiental · Activo (Lluvia suave)';
+        }
+      }
+    }
+
+    if (ambientToggleBtn) {
+      ambientToggleBtn.addEventListener('click', toggleAmbientSound);
+    }
+
+    function updateDisplay(seconds) {
+      const mins = Math.floor(seconds / 60);
+      const secs = seconds % 60;
+      const formatted = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+      timerDisplay.textContent = formatted;
+      document.title = `${formatted} · Soft Tomato`;
+
+      const fractionRemaining = seconds / currentTotalSeconds;
+      const offset = CIRCUMFERENCE - fractionRemaining * CIRCUMFERENCE;
+      progressRing.style.strokeDashoffset = offset;
+    }
+
+    function updatePipsUI() {
+      pipElements.forEach((pip, index) => {
+        if (!pip) return;
+        if (index < currentCycle - 1) {
+          pip.className = 'w-2.5 h-2.5 rounded-full bg-[#ee5253] transition-all duration-300';
+        } else if (index === currentCycle - 1) {
+          pip.className = 'w-2.5 h-2.5 rounded-full bg-[#ee5253] shadow-[0_0_0_3px_#ffdad7] transition-all duration-300';
+        } else {
+          pip.className = 'w-2.5 h-2.5 rounded-full bg-surface-container-highest transition-all duration-300';
+        }
+      });
+      if (sessionCycleLabel) {
+        sessionCycleLabel.textContent = `${modeConfigs[currentMode].headerTitle} • Ciclo ${currentCycle} de ${totalCycles}`;
+      }
+      if (headerSessionTag) {
+        headerSessionTag.textContent = `Sesión de Enfoque #${currentCycle}`;
+      }
+    }
+
+    function setRunningState(running) {
+      isRunning = running;
+      if (isRunning) {
+        startBtnLabel.textContent = 'Pausar';
+        iconPlay.classList.add('hidden');
+        iconPause.classList.remove('hidden');
+        startBtn.classList.remove('bg-primary-container');
+        startBtn.classList.add('bg-tertiary-container');
+      } else {
+        startBtnLabel.textContent = 'Iniciar';
+        iconPlay.classList.remove('hidden');
+        iconPause.classList.add('hidden');
+        startBtn.classList.remove('bg-tertiary-container');
+        startBtn.classList.add('bg-primary-container');
+      }
+    }
+
+    function showNotificationAlert(title, message, nextMode, actionLabel) {
+      if (!alertToast) return;
+      if (toastTimeout) clearTimeout(toastTimeout);
+
+      nextSuggestedMode = nextMode;
+      toastTitle.textContent = title;
+      toastMessage.textContent = message;
+      toastActionLabel.textContent = actionLabel;
+
+      if (nextMode === 'pomodoro') {
+        toastIconWrapper.className = 'w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center bg-secondary-container text-primary';
+        toastIcon.textContent = 'local_florist';
+      } else {
+        toastIconWrapper.className = 'w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center bg-tertiary-container/20 text-tertiary';
+        toastIcon.textContent = 'wb_sunny';
+      }
+
+      alertToast.classList.remove('opacity-0', 'translate-y-[-16px]', 'scale-95', 'pointer-events-none');
+      alertToast.classList.add('opacity-100', 'translate-y-0', 'scale-100');
+
+      toastTimeout = setTimeout(() => {
+        hideNotificationAlert();
+      }, 9000);
+    }
+
+    function hideNotificationAlert() {
+      if (!alertToast) return;
+      alertToast.classList.remove('opacity-100', 'translate-y-0', 'scale-100');
+      alertToast.classList.add('opacity-0', 'translate-y-[-16px]', 'scale-95', 'pointer-events-none');
+      if (toastTimeout) clearTimeout(toastTimeout);
+    }
+
+    function confirmIfActiveAction(callback) {
+      if (isRunning) {
+        const sure = confirm('¿Estás seguro de que deseas realizar esta acción? Se cancelará el temporizador en curso actual.');
+        if (sure) {
+          callback();
+        }
+      } else {
+        callback();
+      }
+    }
+
+    function startTimer() {
+      getAudioContext();
+      if (isRunning) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+        setRunningState(false);
+      } else {
+        setRunningState(true);
+        hideNotificationAlert();
+        timerInterval = setInterval(() => {
+          if (remainingSeconds > 0) {
+            remainingSeconds--;
+            updateDisplay(remainingSeconds);
+            if (remainingSeconds === 0) {
+              clearInterval(timerInterval);
+              timerInterval = null;
+              setRunningState(false);
+              handleSessionComplete();
+            }
+          }
+        }, 1000);
+      }
+    }
+
+    function resetTimer() {
+      confirmIfActiveAction(() => {
+        if (timerInterval) {
+          clearInterval(timerInterval);
+          timerInterval = null;
+        }
+        setRunningState(false);
+        remainingSeconds = currentTotalSeconds;
+        updateDisplay(remainingSeconds);
+        timerSubtitle.textContent = modeConfigs[currentMode].subtitle;
+        hideNotificationAlert();
+      });
+    }
+
+    function handleSessionComplete() {
+      playChime();
+
+      if (currentMode === 'pomodoro') {
+        statsState.pomodoros++;
+        statsState.minutesToday += 25;
+        updateInsightsUI();
+
+        if (currentCycle < totalCycles) {
+          currentCycle++;
+          updatePipsUI();
+          cycleMotivationalQuote();
+          timerSubtitle.textContent = '¡Excelente trabajo! Tómate un respiro breve.';
+          showNotificationAlert(
+            '¡Sesión de Enfoque completada!',
+            '¡Excelente trabajo! Descansa 5 minutos para recargar energía.',
+            'shortBreak',
+            'Iniciar Pausa Breve'
+          );
+
+          if (autoBreakEnabled) {
+            setTimeout(() => {
+              setTabMode('shortBreak', true);
+              startTimer();
+            }, 1200);
+          }
+        } else {
+          pipElements.forEach(pip => {
+            if (pip) pip.className = 'w-2.5 h-2.5 rounded-full bg-[#ee5253] transition-all duration-300';
+          });
+          timerSubtitle.textContent = '¡Ciclo 4 completado! Hora de un descanso largo.';
+          showNotificationAlert(
+            '¡4 Ciclos completados!',
+            'Has completado la ronda completa. Mereces un descanso prolongado de 15 minutos.',
+            'longBreak',
+            'Iniciar Descanso Largo'
+          );
+
+          currentCycle = 1;
+          if (autoBreakEnabled) {
+            setTimeout(() => {
+              setTabMode('longBreak', true);
+              startTimer();
+            }, 1400);
+          }
+        }
+      } else {
+        timerSubtitle.textContent = '¡Descanso terminado! Listo para enfocarte.';
+        showNotificationAlert(
+          '¡Tiempo cumplido!',
+          'El descanso ha concluido. ¿Listo para sumergirte en el siguiente ciclo?',
+          'pomodoro',
+          'Volver al Enfoque'
+        );
+
+        if (autoBreakEnabled) {
+          setTimeout(() => {
+            setTabMode('pomodoro', true);
+            startTimer();
+          }, 1200);
+        }
+      }
+    }
+
+    function setTabMode(mode, forceBypassConfirm = false) {
+      if (!modeConfigs[mode]) return;
+      
+      const executeSwitch = () => {
+        if (timerInterval) {
+          clearInterval(timerInterval);
+          timerInterval = null;
+        }
+        setRunningState(false);
+        currentMode = mode;
+        currentTotalSeconds = modeConfigs[mode].totalSeconds;
+        remainingSeconds = currentTotalSeconds;
+
+        modeBtns.forEach(btn => {
+          const isCurrent = btn.dataset.mode === mode;
+          btn.className = 'mode-btn flex-1 py-2 px-3 rounded-full font-headline-sm text-body-sm transition-all duration-200 cursor-pointer ';
+          if (isCurrent) {
+            btn.className += `${modeConfigs[mode].activeBtnBg} text-white font-semibold ${modeConfigs[mode].activeShadow}`;
+          } else {
+            btn.className += 'bg-transparent text-secondary hover:text-on-surface hover:bg-white/60';
+          }
+        });
+
+        progressRing.classList.remove('text-primary-container', 'text-tertiary-container', 'text-tertiary', 'text-[#ee5253]');
+        progressRing.classList.add(modeConfigs[mode].ringColor);
+
+        updatePipsUI();
+        updateDisplay(remainingSeconds);
+        timerSubtitle.textContent = modeConfigs[currentMode].subtitle;
+        hideNotificationAlert();
+      };
+
+      if (forceBypassConfirm) {
+        executeSwitch();
+      } else {
+        confirmIfActiveAction(executeSwitch);
+      }
+    }
+
+    startBtn.addEventListener('click', startTimer);
+    resetBtn.addEventListener('click', resetTimer);
+
+    modeBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        setTabMode(btn.dataset.mode);
+      });
+    });
+
+    if (autoBreakBtn) {
+      autoBreakBtn.addEventListener('click', () => {
+        autoBreakEnabled = !autoBreakEnabled;
+        autoBreakText.textContent = `Descanso Auto: ${autoBreakEnabled ? 'Encendido' : 'Apagado'}`;
+        autoBreakBtn.classList.toggle('text-primary', autoBreakEnabled);
+      });
+    }
+
+    function updateSoundUI() {
+      if (soundToggleIcon) {
+        soundToggleIcon.textContent = soundEnabled ? 'volume_up' : 'volume_off';
+      }
+      if (chimeBtn) {
+        chimeBtn.classList.toggle('text-primary', soundEnabled);
+      }
+      if (chimeText) {
+        chimeText.textContent = soundEnabled ? 'Campana Suave' : 'Campana: Silenciada';
+      }
+    }
+
+    if (soundToggleBtn) {
+      soundToggleBtn.addEventListener('click', () => {
+        soundEnabled = !soundEnabled;
+        updateSoundUI();
+        if (soundEnabled) playChime();
+      });
+    }
+
+    if (chimeBtn) {
+      chimeBtn.addEventListener('click', () => {
+        getAudioContext();
+        if (!soundEnabled) {
+          soundEnabled = true;
+          updateSoundUI();
+        }
+        playChime();
+      });
+    }
+
+    if (toastActionBtn) {
+      toastActionBtn.addEventListener('click', () => {
+        hideNotificationAlert();
+        if (nextSuggestedMode) {
+          setTabMode(nextSuggestedMode, true);
+          startTimer();
+        }
+      });
+    }
+
+    if (toastCloseBtn) toastCloseBtn.addEventListener('click', hideNotificationAlert);
+    if (toastDismissBtn) toastDismissBtn.addEventListener('click', hideNotificationAlert);
+
+    const tasksModal = document.getElementById('tasks-modal');
+    const tasksModalCard = document.getElementById('tasks-modal-card');
+    const openTasksCardBtn = document.getElementById('open-tasks-card-btn');
+    const closeTasksModalBtn = document.getElementById('close-tasks-modal-btn');
+    const navTasksBtn = document.getElementById('nav-tasks-btn');
+    const mobileTasksToggleBtn = document.getElementById('mobile-tasks-toggle-btn');
+    const newTaskForm = document.getElementById('new-task-form');
+    const taskInputText = document.getElementById('task-input-text');
+    const tasksContainer = document.getElementById('tasks-container');
+    const tasksCountSummary = document.getElementById('tasks-count-summary');
+    const clearCompletedTasksBtn = document.getElementById('clear-completed-tasks-btn');
+    const activeTaskTitle = document.getElementById('active-task-title');
+    const activeTaskBadge = document.getElementById('active-task-badge');
+
+    let tasksList = [
+      { id: '1', title: 'Escribir informe semanal y revisión de notas', completed: false, active: true },
+      { id: '2', title: 'Revisar pull requests pendientes en GitHub', completed: false, active: false },
+      { id: '3', title: 'Planificar entregables para la semana siguiente', completed: true, active: false }
+    ];
+
+    function renderTasks() {
+      tasksContainer.innerHTML = '';
+      const pendingCount = tasksList.filter(t => !t.completed).length;
+      tasksCountSummary.textContent = `${pendingCount} tarea${pendingCount === 1 ? '' : 's'} pendiente${pendingCount === 1 ? '' : 's'}`;
+
+      const activeTask = tasksList.find(t => t.active) || tasksList.find(t => !t.completed);
+      if (activeTask) {
+        activeTaskTitle.textContent = activeTask.title;
+        activeTaskBadge.textContent = activeTask.completed ? 'Completada' : 'En progreso';
+        activeTaskBadge.className = activeTask.completed
+          ? 'inline-flex items-center px-1.5 py-0.2 rounded-full text-[10px] font-semibold bg-surface-container-highest text-secondary'
+          : 'inline-flex items-center px-1.5 py-0.2 rounded-full text-[10px] font-semibold bg-tertiary-fixed-dim/40 text-tertiary';
+      } else {
+        activeTaskTitle.textContent = 'Ninguna tarea activa seleccionada';
+        activeTaskBadge.textContent = 'Libre';
+        activeTaskBadge.className = 'inline-flex items-center px-1.5 py-0.2 rounded-full text-[10px] font-semibold bg-surface-container text-secondary';
+      }
+
+      tasksList.forEach(task => {
+        const item = document.createElement('div');
+        item.className = `flex items-center justify-between p-3 rounded-xl border transition-all duration-200 ${
+          task.active ? 'bg-secondary-container/30 border-primary/30 shadow-sm' : 'bg-surface-container-low/70 hover:bg-white border-white/60'
+        }`;
+
+        item.innerHTML = `
+          <div class="flex items-center gap-3 min-w-0 flex-1 cursor-pointer select-task-trigger">
+            <button type="button" class="w-5 h-5 rounded-md border flex items-center justify-center transition-all cursor-pointer ${
+              task.completed ? 'bg-tertiary border-tertiary text-white' : 'border-outline-variant bg-white hover:border-primary'
+            } toggle-checkbox-btn">
+              ${task.completed ? '<span class="material-symbols-outlined text-[14px]">check</span>' : ''}
+            </button>
+            <span class="font-body-sm text-body-sm truncate ${task.completed ? 'line-through text-secondary opacity-60' : 'text-on-surface font-medium'}">${task.title}</span>
+          </div>
+          <div class="flex items-center gap-1.5 ml-2">
+            ${task.active ? `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#ee5253] text-white">Activa</span>` : `<button type="button" class="text-xs text-secondary hover:text-primary px-2 py-1 rounded hover:bg-white/80 transition-colors make-active-btn cursor-pointer" title="Hacer activa">Elegir</button>`}
+            <button type="button" class="w-7 h-7 rounded-full flex items-center justify-center text-secondary hover:text-error hover:bg-white/80 transition-colors delete-task-btn cursor-pointer" title="Eliminar tarea">
+              <span class="material-symbols-outlined text-[16px]">delete</span>
+            </button>
+          </div>
+        `;
+
+        item.querySelector('.toggle-checkbox-btn').addEventListener('click', (e) => {
+          e.stopPropagation();
+          task.completed = !task.completed;
+          renderTasks();
+        });
+
+        item.querySelector('.select-task-trigger').addEventListener('click', () => {
+          tasksList.forEach(t => t.active = false);
+          task.active = true;
+          renderTasks();
+        });
+
+        const makeActiveBtn = item.querySelector('.make-active-btn');
+        if (makeActiveBtn) {
+          makeActiveBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            tasksList.forEach(t => t.active = false);
+            task.active = true;
+            renderTasks();
+          });
+        }
+
+        item.querySelector('.delete-task-btn').addEventListener('click', (e) => {
+          e.stopPropagation();
+          tasksList = tasksList.filter(t => t.id !== task.id);
+          renderTasks();
+        });
+
+        tasksContainer.appendChild(item);
+      });
+    }
+
+    function openTasksModal() {
+      tasksModal.classList.remove('opacity-0', 'pointer-events-none');
+      tasksModalCard.classList.remove('scale-95');
+      tasksModalCard.classList.add('scale-100');
+      setTimeout(() => taskInputText.focus(), 100);
+    }
+
+    function closeTasksModal() {
+      tasksModal.classList.add('opacity-0', 'pointer-events-none');
+      tasksModalCard.classList.remove('scale-100');
+      tasksModalCard.classList.add('scale-95');
+    }
+
+    if (openTasksCardBtn) openTasksCardBtn.addEventListener('click', openTasksModal);
+    if (navTasksBtn) navTasksBtn.addEventListener('click', openTasksModal);
+    if (mobileTasksToggleBtn) mobileTasksToggleBtn.addEventListener('click', openTasksModal);
+    if (closeTasksModalBtn) closeTasksModalBtn.addEventListener('click', closeTasksModal);
+
+    tasksModal.addEventListener('click', (e) => {
+      if (e.target === tasksModal) closeTasksModal();
+    });
+
+    if (newTaskForm) {
+      newTaskForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const text = taskInputText.value.trim();
+        if (!text) return;
+        tasksList.unshift({ id: Date.now().toString(), title: text, completed: false, active: tasksList.length === 0 });
+        taskInputText.value = '';
+        renderTasks();
+      });
+    }
+
+    if (clearCompletedTasksBtn) {
+      clearCompletedTasksBtn.addEventListener('click', () => {
+        tasksList = tasksList.filter(t => !t.completed);
+        renderTasks();
+      });
+    }
+
+    renderTasks();
+
+    const insightsModal = document.getElementById('insights-modal');
+    const insightsModalCard = document.getElementById('insights-modal-card');
+    const navInsightsBtn = document.getElementById('nav-insights-btn');
+    const mobileInsightsToggleBtn = document.getElementById('mobile-insights-toggle-btn');
+    const closeInsightsModalBtn = document.getElementById('close-insights-modal-btn');
+    const closeInsightsActionBtn = document.getElementById('close-insights-action-btn');
+    const statMinutesToday = document.getElementById('stat-minutes-today');
+    const statPomodorosCount = document.getElementById('stat-pomodoros-count');
+    const statStreakDays = document.getElementById('stat-streak-days');
+    const exportCsvBtn = document.getElementById('export-csv-btn');
+
+    function updateInsightsUI() {
+      if (statMinutesToday) statMinutesToday.textContent = statsState.minutesToday;
+      if (statPomodorosCount) statPomodorosCount.textContent = statsState.pomodoros;
+      if (statStreakDays) statStreakDays.textContent = statsState.streak;
+      renderWeeklyBreakdownTable();
+    }
+
+    function openInsightsModal() {
+      updateInsightsUI();
+      insightsModal.classList.remove('opacity-0', 'pointer-events-none');
+      insightsModalCard.classList.remove('scale-95');
+      insightsModalCard.classList.add('scale-100');
+    }
+
+    function closeInsightsModal() {
+      insightsModal.classList.add('opacity-0', 'pointer-events-none');
+      insightsModalCard.classList.remove('scale-100');
+      insightsModalCard.classList.add('scale-95');
+    }
+
+    function exportWeeklySummaryCSV() {
+      const headers = ['Día', 'Horas', 'Pomodoros', 'Objetivo/Asignatura', 'Fecha'];
+      const csvRows = [headers.join(',')];
+
+      weeklyData.forEach(row => {
+        const escapedGoal = `"${row.objetivo.replace(/"/g, '""')}"`;
+        csvRows.push([row.dia, row.horas, row.pomodoros, escapedGoal, row.fecha].join(','));
+      });
+
+      const csvString = '\uFEFF' + csvRows.join('\r\n');
+      const blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const downloadLink = document.createElement('a');
+      downloadLink.href = url;
+      downloadLink.setAttribute('download', 'soft-tomato-resumen-semanal.csv');
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+      URL.revokeObjectURL(url);
+    }
+
+    if (exportCsvBtn) exportCsvBtn.addEventListener('click', exportWeeklySummaryCSV);
+
+    if (navInsightsBtn) navInsightsBtn.addEventListener('click', openInsightsModal);
+    if (mobileInsightsToggleBtn) mobileInsightsToggleBtn.addEventListener('click', openInsightsModal);
+    if (closeInsightsModalBtn) closeInsightsModalBtn.addEventListener('click', closeInsightsModal);
+    if (closeInsightsActionBtn) closeInsightsActionBtn.addEventListener('click', closeInsightsModal);
+
+    insightsModal.addEventListener('click', (e) => {
+      if (e.target === insightsModal) closeInsightsModal();
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) {
+        if (e.code === 'Escape') {
+          closeTasksModal();
+          closeInsightsModal();
+        }
+        return;
+      }
+
+      if (e.code === 'Space') {
+        e.preventDefault();
+        startTimer();
+      } else if (e.code === 'Escape') {
+        e.preventDefault();
+        closeTasksModal();
+        closeInsightsModal();
+        resetTimer();
+      } else if (e.altKey && (e.key === 's' || e.key === 'S')) {
+        e.preventDefault();
+        skipToNextSession();
+      }
+    });
+
+    renderWeeklyBreakdownTable();
+    updatePipsUI();
+    updateDisplay(remainingSeconds);
+
+    function skipToNextSession() {
+      if (currentMode === 'pomodoro') {
+        setTabMode('shortBreak', true);
+      } else {
+        setTabMode('pomodoro', true);
+      }
+    }
+  })();
+</script>
+
+<footer class="w-full bg-white/70 backdrop-blur-md border-t border-white/60 py-space-md shadow-[0_-4px_20px_rgba(68,51,46,0.03)]">
+  <div class="max-w-7xl mx-auto px-gutter-mobile md:px-gutter flex flex-col sm:flex-row items-center justify-between gap-space-xs text-on-surface-variant">
+    <div class="flex items-center gap-space-sm font-label-sm text-label-sm tracking-wider uppercase">
+      <span class="flex items-center gap-1"><kbd class="px-1.5 py-0.5 rounded bg-white/80 border border-white/60 text-on-surface font-label-sm text-label-sm font-bold shadow-sm">Space</kbd> Iniciar / Pausar</span>
+      <span class="text-outline-variant">·</span>
+      <span class="flex items-center gap-1"><kbd class="px-1.5 py-0.5 rounded bg-white/80 border border-white/60 text-on-surface font-label-sm text-label-sm font-bold shadow-sm">Esc</kbd> Reiniciar</span>
+      <span class="text-outline-variant">·</span>
+      <span class="flex items-center gap-1"><kbd class="px-1.5 py-0.5 rounded bg-white/80 border border-white/60 text-on-surface font-label-sm text-label-sm font-bold shadow-sm">Alt + S</kbd> Saltar</span>
+    </div>
+    <div class="flex items-center gap-space-xs font-body-sm text-body-sm">
+      <span class="w-2 h-2 rounded-full bg-tertiary-container inline-block animate-pulse"></span>
+      <span id="footer-ambient-indicator">Audio ambiental · Listo</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
