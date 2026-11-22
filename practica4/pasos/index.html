@@ -1,0 +1,1677 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Proceso de diseño y desarrollo de Descubre Rodanillo, una guía turística de Rodanillo, León.">
+<title>Proceso de desarrollo | Descubre Rodanillo</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #f5f4ee;
+  --surface: #fffefa;
+  --surface2: #eeeee5;
+  --text: #202a22;
+  --muted: #707a71;
+  --green: #20543b;
+  --accent: #397653;
+  --line: #dfe3d9;
+  --hero: #e8eee4;
+  --shadow: 0 15px 45px rgba(34,55,38,.07);
+}
+
+[data-theme="dark"] {
+  --bg: #111813;
+  --surface: #1a241d;
+  --surface2: #222e25;
+  --text: #edf1e9;
+  --muted: #b1beb2;
+  --green: #a9d4ae;
+  --accent: #b8e2bc;
+  --line: #344338;
+  --hero: #19271e;
+  --shadow: 0 15px 45px rgba(0,0,0,.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 95px;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "DM Sans", sans-serif;
+  line-height: 1.7;
+  transition: background .25s, color .25s;
+}
+
+a { color: inherit; }
+
+button { font: inherit; }
+
+.wrap {
+  width: min(1080px, calc(100% - 44px));
+  margin: auto;
+}
+
+.serif {
+  font-family: "Playfair Display", Georgia, serif;
+}
+
+/* NAVEGACIÓN */
+
+header {
+  height: 72px;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+}
+
+.head {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.logo {
+  width: 39px;
+  height: 39px;
+  display: grid;
+  place-items: center;
+  background: var(--green);
+  color: var(--bg);
+  border-radius: 13px;
+  font-family: Georgia, serif;
+  font-size: 23px;
+}
+
+.brand small {
+  display: block;
+  font-size: 10px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-weight: 600;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+nav a:hover { color: var(--accent); }
+
+.actions {
+  display: flex;
+  gap: 9px;
+}
+
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.menu-btn { display: none; }
+
+/* PORTADA */
+
+.hero {
+  background:
+    radial-gradient(ellipse at 85% 15%, rgba(125,165,120,.23), transparent 38%),
+    linear-gradient(125deg, var(--hero), var(--bg));
+  padding: 88px 0 70px;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero::after {
+  content: "R";
+  position: absolute;
+  right: -20px;
+  bottom: -180px;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 540px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--green);
+  opacity: .035;
+  pointer-events: none;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 55px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 25px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.hero h1 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(48px, 6.5vw, 78px);
+  letter-spacing: -.045em;
+  line-height: 1.06;
+  margin: 22px 0;
+  font-weight: 700;
+}
+
+.hero h1 span { color: var(--accent); }
+
+.hero-description {
+  color: var(--muted);
+  max-width: 570px;
+  font-size: 16px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 11px;
+  flex-wrap: wrap;
+  margin-top: 29px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 19px;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform .2s, background .2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: var(--green);
+  color: var(--bg);
+  border-color: var(--green);
+}
+
+.hero-visual {
+  position: relative;
+  padding: 16px;
+}
+
+.visual-main {
+  min-height: 320px;
+  border-radius: 25px;
+  background: var(--green);
+  padding: 27px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+  transform: rotate(2deg);
+}
+
+.visual-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  opacity: .8;
+}
+
+.visual-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 43px;
+  line-height: 1.1;
+}
+
+.visual-bottom {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  border-top: 1px solid #ffffff55;
+  padding-top: 16px;
+}
+
+.floating-note {
+  position: absolute;
+  bottom: -12px;
+  left: -10px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  padding: 16px 19px;
+  box-shadow: var(--shadow);
+  font-size: 12px;
+  max-width: 220px;
+}
+
+.floating-note strong {
+  display: block;
+  color: var(--accent);
+  margin-bottom: 3px;
+}
+
+/* ESTADÍSTICAS */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 42px;
+  position: relative;
+  z-index: 2;
+}
+
+.stat {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 17px;
+  padding: 19px 22px;
+}
+
+.stat strong {
+  display: block;
+  font-family: "Playfair Display", Georgia, serif;
+  color: var(--accent);
+  font-size: 29px;
+}
+
+.stat span {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* INTRODUCCIÓN */
+
+.section-intro {
+  padding: 62px 0 25px;
+}
+
+.section-intro h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 36px;
+  margin: 10px 0;
+}
+
+.section-intro p {
+  color: var(--muted);
+  max-width: 720px;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* FASES */
+
+.phases {
+  padding-bottom: 50px;
+}
+
+.group-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 36px 0 21px;
+}
+
+.group-title h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 27px;
+  margin: 0;
+}
+
+.group-title .line {
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.group-label {
+  color: var(--accent);
+  background: var(--surface2);
+  padding: 7px 12px;
+  border-radius: 99px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.phase {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  gap: 15px;
+  margin-bottom: 19px;
+  scroll-margin-top: 90px;
+}
+
+.phase-number {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: var(--surface2);
+  color: var(--accent);
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  position: sticky;
+  top: 91px;
+}
+
+.phase-card {
+  min-width: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 21px;
+  padding: 26px;
+  box-shadow: var(--shadow);
+}
+
+.phase-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 12px;
+}
+
+.phase-header h3 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 26px;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.phase-tag {
+  flex-shrink: 0;
+  background: var(--surface2);
+  color: var(--accent);
+  border-radius: 99px;
+  padding: 6px 11px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.phase-description {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  max-width: 820px;
+}
+
+/* CAPTURAS */
+
+.capture-heading {
+  font-size: 12px;
+  font-weight: 700;
+  margin: 23px 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.capture-heading::before {
+  content: "";
+  width: 19px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.captures {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.capture {
+  margin: 0;
+  min-width: 0;
+}
+
+.capture-frame {
+  width: 100%;
+  height: clamp(300px, 43vw, 530px);
+  background: var(--surface2);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.capture-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 5px;
+  display: block;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity .18s ease;
+}
+
+.capture-frame.loaded img { opacity: 1; }
+
+.capture-placeholder {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 25px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.capture-placeholder strong {
+  display: block;
+  color: var(--accent);
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.capture-frame.loaded .capture-placeholder { display: none; }
+
+.capture figcaption {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 9px;
+}
+
+/* PROMPTS */
+
+.prompt {
+  margin-top: 20px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.prompt summary {
+  padding: 14px 17px;
+  background: var(--surface2);
+  cursor: pointer;
+  list-style: none;
+  font-weight: 700;
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.prompt summary::-webkit-details-marker { display: none; }
+
+.prompt summary::after {
+  content: "+";
+  color: var(--accent);
+  font-size: 20px;
+}
+
+.prompt[open] summary::after { content: "−"; }
+
+.prompt pre {
+  margin: 0;
+  padding: 19px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font: 12px/1.8 "DM Sans", sans-serif;
+  color: var(--muted);
+  background: var(--surface);
+  max-height: 560px;
+  overflow-y: auto;
+}
+
+.prompt-actions {
+  padding: 0 17px 16px;
+  background: var(--surface);
+}
+
+.copy-btn {
+  border: 1px solid var(--line);
+  background: var(--surface2);
+  color: var(--text);
+  padding: 8px 13px;
+  border-radius: 99px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* RESULTADO */
+
+.result {
+  margin: 38px 0 55px;
+  background: var(--green);
+  color: white;
+  border-radius: 25px;
+  overflow: hidden;
+  position: relative;
+}
+
+.result-content {
+  padding: 39px;
+  position: relative;
+  z-index: 1;
+}
+
+.result-kicker {
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  font-size: 10px;
+  font-weight: 700;
+  opacity: .8;
+}
+
+.result h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(32px, 4vw, 47px);
+  margin: 9px 0 12px;
+  line-height: 1.15;
+}
+
+.result p {
+  color: #e1ece1;
+  font-size: 14px;
+  max-width: 650px;
+  margin: 0;
+}
+
+.result-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.result-actions .btn {
+  background: white;
+  color: #20543b;
+  border-color: white;
+}
+
+.result-actions .btn-outline {
+  background: transparent;
+  color: white;
+  border-color: #ffffff80;
+}
+
+.result-details {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid #ffffff40;
+  margin-top: 31px;
+  padding-top: 22px;
+  gap: 20px;
+}
+
+.result-details div {
+  font-size: 12px;
+  color: #e1ece1;
+}
+
+.result-details strong {
+  display: block;
+  color: white;
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+
+.result-note {
+  margin-top: 20px !important;
+  font-size: 11px !important;
+  opacity: .8;
+}
+
+/* PIE */
+
+footer {
+  border-top: 1px solid var(--line);
+  padding: 25px 0 35px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 760px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 20px; }
+  .hero { padding: 60px 0 45px; }
+  .hero-visual { max-width: 470px; width: 100%; margin: auto; }
+  .visual-main { min-height: 245px; }
+  .visual-title { font-size: 36px; }
+  .hero h1 { font-size: clamp(46px, 9vw, 65px); }
+  nav {
+    display: none;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+    padding: 19px 25px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 17px;
+  }
+  nav.open { display: flex; }
+  .menu-btn { display: block; }
+  .phase { grid-template-columns: 38px minmax(0,1fr); gap: 9px; }
+  .phase-number { width: 34px; height: 34px; border-radius: 11px; font-size: 12px; }
+  .phase-card { padding: 19px; }
+  .phase-header { display: block; }
+  .phase-tag { display: inline-block; margin-top: 10px; }
+  .capture-frame { height: clamp(280px, 56vw, 440px); }
+}
+
+@media(max-width: 520px) {
+  .wrap { width: calc(100% - 28px); }
+  .hero { padding-top: 43px; }
+  .hero-description { font-size: 14px; }
+  .hero-visual { padding: 10px; }
+  .visual-main { min-height: 225px; padding: 20px; }
+  .visual-title { font-size: 32px; }
+  .floating-note { left: -3px; bottom: -20px; }
+  .stats { gap: 8px; margin-top: 33px; }
+  .stat { padding: 13px 10px; border-radius: 13px; }
+  .stat strong { font-size: 23px; }
+  .stat span { font-size: 10px; }
+  .section-intro { padding-top: 43px; }
+  .section-intro h2 { font-size: 29px; }
+  .group-title h2 { font-size: 22px; }
+  .group-title { gap: 8px; }
+  .group-label { font-size: 9px; padding: 6px 9px; }
+  .phase { grid-template-columns: 29px minmax(0,1fr); gap: 7px; }
+  .phase-number { width: 28px; height: 28px; font-size: 10px; border-radius: 9px; }
+  .phase-card { padding: 15px; border-radius: 16px; }
+  .phase-header h3 { font-size: 22px; }
+  .phase-description { font-size: 13px; }
+  .capture-frame { height: clamp(230px, 67vw, 360px); }
+  .result-content { padding: 25px 20px; }
+  .result-details { grid-template-columns: 1fr; gap: 13px; }
+  .footer-inner { flex-direction: column; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap head">
+    <a href="#inicio" class="brand">
+      <span class="logo">R</span>
+      <span>
+        Descubre Rodanillo
+        <small>Proceso de desarrollo</small>
+      </span>
+    </a>
+
+    <nav id="nav">
+      <a href="#inicio">Inicio</a>
+      <a href="#fases">Paso a paso</a>
+      <a href="#stitch">Stitch AI</a>
+      <a href="#chatgpt">ChatGPT</a>
+      <a href="#resultado">Resultado</a>
+    </nav>
+
+    <div class="actions">
+      <button class="icon-btn menu-btn" id="menu" aria-label="Abrir menú">☰</button>
+      <button class="icon-btn" id="theme" aria-label="Cambiar tema">☾</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="wrap">
+
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">Desarrollo de Interfaces · 2.º DAM</div>
+
+        <h1 class="serif">
+          De una idea a una guía para <span>descubrir Rodanillo.</span>
+        </h1>
+
+        <p class="hero-description">
+          Este es el recorrido que he seguido para diseñar y desarrollar
+          una aplicación web turística sobre Rodanillo, en León.
+          Desde los primeros diseños en Stitch AI hasta la implementación,
+          las pruebas y las mejoras finales.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#fases" class="btn btn-primary">Ver el proceso ↓</a>
+          <a href="#resultado" class="btn">Consultar resultado</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="visual-main">
+          <div class="visual-top">
+            <span>Guía turística digital</span>
+            <span>León · El Bierzo</span>
+          </div>
+
+          <div class="visual-title">
+            Descubre<br>Rodanillo.
+          </div>
+
+          <div class="visual-bottom">
+            <span>Diseño · Desarrollo · Revisión</span>
+            <span>2026</span>
+          </div>
+        </div>
+
+        <div class="floating-note">
+          <strong>Un proyecto por fases</strong>
+          Desde la primera idea hasta la versión final de la aplicación.
+        </div>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <strong>16</strong>
+        <span>Fases documentadas</span>
+      </div>
+      <div class="stat">
+        <strong>2</strong>
+        <span>Herramientas principales de IA</span>
+      </div>
+      <div class="stat">
+        <strong>28</strong>
+        <span>Capturas del proceso</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<main class="wrap" id="fases">
+
+  <section class="section-intro">
+    <div class="eyebrow">El proceso completo</div>
+    <h2>Así he desarrollado el proyecto</h2>
+    <p>
+      He dividido el trabajo en diferentes fases para mostrar cómo ha
+      evolucionado la aplicación. Primero trabajé en el diseño de las
+      pantallas con Stitch AI y, posteriormente, utilicé ChatGPT para
+      implementar la web, revisar su funcionamiento y realizar los
+      últimos ajustes.
+    </p>
+  </section>
+
+  <section class="phases" id="stitch">
+    <div class="group-title">
+      <span class="group-label">01 — 13</span>
+      <h2>Diseño con Stitch AI</h2>
+      <span class="line"></span>
+    </div>
+
+    <div id="stitch-phases"></div>
+
+    <div class="group-title" id="chatgpt">
+      <span class="group-label">14 — 16</span>
+      <h2>Implementación con ChatGPT</h2>
+      <span class="line"></span>
+    </div>
+
+    <div id="chatgpt-phases"></div>
+  </section>
+
+  <section class="result" id="resultado">
+    <div class="result-content">
+      <div class="result-kicker">Proyecto terminado</div>
+      <h2>Descubre Rodanillo</h2>
+      <p>
+        El resultado de todo este proceso es una guía turística digital
+        dedicada a Rodanillo y su entorno. Una aplicación con diferentes
+        secciones para descubrir su patrimonio, gastronomía, naturaleza,
+        rutas, historia y lugares de interés.
+      </p>
+
+      <div class="result-actions">
+        <a class="btn" id="app-link" href="#" target="_blank" rel="noopener" aria-disabled="true">
+          Ver aplicación web ↗
+        </a>
+        <a class="btn btn-outline" id="github-link" href="#" target="_blank" rel="noopener" aria-disabled="true">
+          Repositorio de GitHub ↗
+        </a>
+        <a class="btn btn-outline" href="#inicio">
+          Volver al principio ↑
+        </a>
+      </div>
+
+      <div class="result-details">
+        <div>
+          <strong>Autor</strong>
+          Aitor Zancada Aparicio
+        </div>
+        <div>
+          <strong>Estudios</strong>
+          2.º Desarrollo de Aplicaciones Multiplataforma
+        </div>
+        <div>
+          <strong>Asignatura</strong>
+          Desarrollo de Interfaces
+        </div>
+      </div>
+
+      <p class="result-note">
+        Los enlaces de la aplicación y del repositorio se activarán
+        cuando se publique el proyecto.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>Descubre Rodanillo · Proceso de desarrollo</span>
+    <span>Proyecto académico · Desarrollo de Interfaces · 2.º DAM</span>
+  </div>
+</footer>
+
+<script>
+
+/* =====================================================
+   CONFIGURACIÓN DE ENLACES
+   Añade aquí las direcciones cuando publiques el proyecto.
+===================================================== */
+
+const APP_URL = "";
+const GITHUB_URL = "";
+
+
+/* =====================================================
+   FASES DEL PROYECTO
+===================================================== */
+
+const phases = [
+
+/* STITCH AI — FASES 1 A 13 */
+
+{
+tool:"Stitch AI",
+number:1,
+title:"Estructura base y pantalla principal",
+description:"El primer paso fue crear la estructura de la aplicación y diseñar la pantalla principal. Definí las secciones iniciales, la navegación y una primera identidad visual basada en Material Design 3.",
+images:[
+["01-estructura-base.png","Primer diseño de la estructura y pantalla principal"]
+],
+prompt:`Crea la pantalla de inicio de una aplicación web guía turística sobre Rodanillo (León, El Bierzo) siguiendo estrictamente las guías de diseño de Material Design 3.
+
+Usa una paleta de colores cálida y natural inspirada en la naturaleza de León: verde bosque profundo como color primario, tonos terracota suaves como secundario y fondos en blanco cálido (nada de colores planos aburridos).
+
+Estructura la interfaz de forma totalmente responsive:
+- En escritorio y tablet, usa un Navigation Rail lateral izquierdo.
+- En móvil, transfórmalo en una Navigation Bar inferior.
+- Incluye 4 secciones principales en el menú: "Inicio", "Qué ver", "Gastronomía" y "Rutas y Deporte".
+- En la barra superior (Top App Bar), pon el título "Descubre Rodanillo" a la izquierda y un botón de icono (sol/luna) a la derecha para alternar entre modo claro y oscuro.
+
+En el contenido principal de esta pantalla de inicio:
+1. Una tarjeta hero grande con esquinas muy redondeadas (28px), imagen de paisaje rural leonés, título "Rodanillo: El pueblo de los carros" y un subtítulo breve sobre su historia en El Bierzo.
+2. Una cuadrícula responsive (grid de 3 columnas en PC, 1 en móvil) con tarjetas de acceso rápido (Elevated Cards) que resuman las secciones: Patrimonio, Dónde comer y Naturaleza.`
+},
+
+{
+tool:"Stitch AI",
+number:2,
+title:"Pantalla de Qué ver",
+description:"Una vez creada la pantalla principal, continué con la sección Qué ver. Incorporé filtros por categorías y tarjetas para mostrar los lugares de interés de Rodanillo y sus alrededores.",
+images:[
+["02-pantalla-que-ver.png","Primera propuesta de la sección Qué ver"]
+],
+prompt:`Manteniendo exactamente el mismo diseño Material Design 3, paleta de colores y navegación responsive de la app anterior, diseña ahora la pantalla de la sección "Qué ver" en Rodanillo y alrededores.
+
+Incluye en la parte superior una fila de Filter Chips interactivos de Material 3 ("Todos", "Monumentos", "Tradición", "Alrededores").
+
+Debajo, organiza una cuadrícula responsive de tarjetas (Filled Cards con bordes redondeados de 16px). Cada tarjeta debe tener imagen superior, título, una etiqueta (Badge) con la categoría, una breve descripción de 2 líneas y un botón de texto "Ver detalles":
+1. Iglesia de San Benito (Categoría: Monumentos) - Templo parroquial en el corazón del pueblo.
+2. Antigua Tradición Carreteros (Categoría: Tradición) - Historia de los talleres de carros tradicionales que dieron fama a Rodanillo.
+3. Alcornocal de Cobrana (Categoría: Alrededores) - Bosque mediterráneo septentrional a pocos minutos a pie.
+4. Museo Alto Bierzo (Categoría: Alrededores) - Cultura e historia de la comarca en la cercana Bembibre.`
+},
+
+{
+tool:"Stitch AI",
+number:3,
+title:"Gastronomía y Rutas y Deporte",
+description:"En esta fase diseñé dos secciones nuevas: Gastronomía, centrada en los productos tradicionales del Bierzo, y Rutas y Deporte, con propuestas de actividades al aire libre.",
+images:[
+["03-gastronomia.png","Diseño de la sección Gastronomía"],
+["04-rutas-deporte.png","Diseño de la sección Rutas y Deporte"]
+],
+prompt:`Siguiendo el mismo sistema de diseño Material Design 3 y navegación responsive, genera las vistas para las secciones "Gastronomía" y "Rutas y Deporte":
+
+Para "Gastronomía":
+- Usa tarjetas horizontales (Outlined Cards) con imagen cuadrada a la izquierda y texto a la derecha.
+- Muestra platos y lugares típicos de la zona de El Bierzo y Bembibre: "Botillo del Bierzo", "Empanada berciana", "Pimientos asados del Bierzo" y "Mesones tradicionales de la zona". Añade iconos de valoración y etiquetas con el tipo de cocina.
+
+Para "Rutas y Deporte":
+- Diseña tarjetas de rutas de senderismo y BTT por Rodanillo (ej. "Ruta de los Carreteros", "Senda hacia Labaniego y Arlanza", "Ruta BTT por El Bierzo").
+- Cada tarjeta debe incluir iconos de Material Symbols indicando distancia (km), dificultad (Fácil/Media) y tiempo estimado, además de un botón primario (Filled Button) que diga "Iniciar ruta".`
+},
+
+{
+tool:"Stitch AI",
+number:4,
+title:"Detalles, modo oscuro y responsive",
+description:"Después trabajé en las variaciones de la aplicación. Preparé una primera versión en modo oscuro y una pantalla de detalle para consultar la información de un lugar. También tuve en cuenta la adaptación de las pantallas a distintos tamaños.",
+images:[
+["05-detalle-lugar.png","Primera propuesta de pantalla de detalle"],
+["06-modo-oscuro-inicial.png","Primera versión del modo oscuro"],
+["07-adaptacion-responsive.png","Adaptación de las pantallas"]
+],
+prompt:`Crea dos variaciones clave manteniendo el diseño Material Design 3:
+
+1. Versión en Modo Oscuro de la pantalla de Inicio:
+Aplica las reglas oficiales de Dark Theme de Material 3. No uses negro puro (#000000). Usa un gris carbón profundo con ligero tinte verdoso (#111411) para el fondo, tonos gris elevación (#1D211D) para las tarjetas, verde salvia claro (#A5D6A7) como color primario y texto en blanco roto (#E1E3DF) para garantizar un contraste legible.
+
+2. Vista de detalle de una tarjeta (simulando la transición al pulsar en "Iglesia de San Benito"):
+Muestra una pantalla de detalle limpia con botón de retroceso arriba a la izquierda, imagen panorámica superior, título grande, ubicación en mapa estilizado, horarios de visita y un botón flotante (FAB) en la esquina inferior derecha con icono de "Cómo llegar".`
+},
+
+{
+tool:"Stitch AI",
+number:5,
+title:"Renovar la identidad visual",
+description:"Tras las primeras pantallas, decidí dar una identidad visual más definida a toda la aplicación. Quería que transmitiera los paisajes, la naturaleza y el carácter tradicional de El Bierzo.",
+images:[
+["08-identidad-visual.png","Nueva propuesta de identidad visual"]
+],
+prompt:`Quiero mejorar la identidad visual de mi aplicación turística sobre Rodanillo. Me gusta la combinación de colores naturales que ya tiene, pero quiero darle un aspecto más profesional, moderno y con personalidad propia.
+
+Quiero que la identidad visual esté inspirada en los paisajes de El Bierzo: bosques, montañas, pueblos tradicionales, piedra, madera y naturaleza.
+
+Vamos a utilizar esta paleta:
+- Verde bosque oscuro como color principal.
+- Verde salvia para elementos secundarios.
+- Beige y blanco cálido para los fondos.
+- Terracota para pequeños detalles y elementos destacados.
+- Gris oscuro para los textos.
+
+Quiero una tipografía elegante y moderna para los títulos, combinada con otra muy legible para los textos normales.
+
+Los botones, tarjetas, etiquetas, campos de búsqueda e iconos deben tener un estilo coherente entre todas las pantallas.
+
+Me gustan las tarjetas con esquinas redondeadas, las fotografías grandes, las sombras muy suaves y los pequeños detalles visuales que aporten calidad.
+
+Quiero que el resultado parezca una guía turística real y no una plantilla genérica. Mantén una estética limpia, elegante y natural, sin abusar de los colores ni de los efectos.
+
+Prepara esta identidad visual como referencia para el resto de pantallas de la aplicación. No cambies todavía el contenido de las demás pantallas.`
+},
+
+{
+tool:"Stitch AI",
+number:6,
+title:"Renovar la pantalla de inicio",
+description:"Con la nueva identidad visual definida, rediseñé la portada para hacerla más atractiva y convertirla en una verdadera página principal de la guía turística.",
+images:[
+["09-nueva-pantalla-inicio.png","Nueva propuesta de la pantalla de inicio"]
+],
+prompt:`Ahora quiero rediseñar la pantalla de inicio de mi aplicación siguiendo la nueva identidad visual que hemos definido.
+
+Quiero que sea una portada bastante más atractiva y visual. Tiene que transmitir ganas de conocer Rodanillo.
+
+En la parte superior quiero una barra de navegación limpia con el nombre o logotipo de Rodanillo, los enlaces a las distintas secciones y un botón para cambiar entre modo claro y oscuro.
+
+La parte principal debe tener una fotografía panorámica grande y de buena calidad de un paisaje rural de El Bierzo. Sobre ella quiero colocar un título destacado: "Descubre Rodanillo", un pequeño texto de presentación y un botón para comenzar a explorar.
+
+Debajo quiero incluir una sección llamada "Descubre nuestro pueblo", con tarjetas visuales para acceder a Qué ver, Gastronomía, Rutas y naturaleza y Vida en Rodanillo.
+
+También quiero una sección de lugares destacados, con fotografías grandes y pequeñas descripciones.
+
+Añade una sección de datos interesantes sobre Rodanillo y su entorno, con elementos visuales atractivos, y una zona final con un mapa o una vista de su ubicación.
+
+Quiero que la página tenga bastante personalidad, que no parezca una simple cuadrícula de tarjetas.
+
+Es importante que el diseño sea completamente responsive:
+
+● En ordenador, quiero aprovechar el espacio con una composición amplia y equilibrada.
+● En tablet, quiero adaptar las columnas y los tamaños.
+● En móvil, quiero una navegación compacta, tarjetas en una sola columna cuando sea necesario, textos bien proporcionados y botones fáciles de pulsar.
+
+No reduzcas simplemente la versión de ordenador para meterla en un móvil. Quiero que la composición se adapte de verdad a cada tamaño.
+
+Mantén la paleta de colores, tipografías y componentes que hemos definido anteriormente.`
+},
+
+{
+tool:"Stitch AI",
+number:7,
+title:"Renovar la pantalla Qué ver",
+description:"Continué mejorando la sección Qué ver. Añadí un buscador, filtros por categorías y una presentación más visual de los lugares, manteniendo la identidad del proyecto.",
+images:[
+["10-renovacion-que-ver.png","Nueva versión de la sección Qué ver"]
+],
+prompt:`Ahora quiero mejorar la sección "Qué ver" de mi aplicación turística de Rodanillo.
+
+Quiero que sea una página donde los visitantes puedan descubrir lugares interesantes del pueblo y de sus alrededores.
+
+En la parte superior quiero un título atractivo, una pequeña introducción y un buscador para encontrar lugares.
+
+Debajo añade filtros interactivos por categorías:
+
+● Todos.
+● Patrimonio.
+● Naturaleza.
+● Tradiciones.
+● Alrededores.
+
+Quiero mostrar los lugares mediante tarjetas con fotografías grandes, nombre, categoría, descripción breve y un botón para ver más información.
+
+Quiero que haya una buena variedad visual y que las tarjetas no parezcan todas exactamente iguales.
+
+Al pulsar en una tarjeta se debe poder acceder a una pantalla de detalle con una fotografía panorámica, descripción más completa, ubicación, información práctica y un botón para consultar cómo llegar.
+
+También quiero añadir una pequeña sección de recomendaciones, por ejemplo "Imprescindibles de la zona".
+
+Es importante que la información sea real. No inventes monumentos, horarios, distancias ni datos históricos de Rodanillo. Si algún dato no está confirmado, deja un contenido provisional claramente identificable para completarlo después.
+
+Adapta todo el diseño a ordenador, tablet y móvil. En móvil quiero filtros que puedan desplazarse horizontalmente y tarjetas que ocupen correctamente el ancho de la pantalla.
+
+Mantén exactamente la misma identidad visual que el resto de la aplicación.`
+},
+
+{
+tool:"Stitch AI",
+number:8,
+title:"Renovar la pantalla Gastronomía",
+description:"En esta fase me centré en la gastronomía del Bierzo, dando más protagonismo a las fotografías de los platos y organizando mejor la información y los establecimientos.",
+images:[
+["11-renovacion-gastronomia.png","Nueva versión de la sección Gastronomía"]
+],
+prompt:`Quiero mejorar la sección de Gastronomía de mi guía turística de Rodanillo.
+
+Quiero que sea una página muy visual que permita conocer los platos y productos típicos de El Bierzo.
+
+En la parte superior quiero un título como "Sabores del Bierzo" y una introducción breve que transmita la importancia de la gastronomía tradicional de la zona.
+
+Quiero destacar especialmente:
+
+● Botillo del Bierzo.
+● Empanada berciana.
+● Pimientos asados del Bierzo.
+● Productos tradicionales de la comarca.
+
+Utiliza fotografías de comida de buena calidad y tarjetas con una composición elegante.
+
+Cada plato debe tener su nombre, una descripción, una categoría y un botón para conocer más. Al abrir un plato quiero que aparezca una ficha con información más completa y una fotografía destacada.
+
+Añade también un apartado llamado "Dónde disfrutarlo", con tarjetas para establecimientos y restaurantes de Rodanillo y localidades cercanas.
+
+Me gustaría incorporar filtros por tipo de comida y una sección de recomendaciones.
+
+No inventes restaurantes, direcciones, valoraciones ni horarios. Si todavía no tenemos datos confirmados de algún establecimiento, utiliza ejemplos provisionales claramente identificados.
+
+En móvil quiero que las fotografías y los textos se adapten correctamente, evitando tarjetas demasiado estrechas.
+
+Mantén los colores, tipografías y componentes del resto de la aplicación. Quiero una página atractiva, con protagonismo de las fotografías.`
+},
+
+{
+tool:"Stitch AI",
+number:9,
+title:"Renovar Rutas y Naturaleza",
+description:"Rediseñé la sección de rutas para transmitir aventura y contacto con el entorno natural. Incorporé información sobre actividades, características de los recorridos y recomendaciones.",
+images:[
+["12-renovacion-rutas.png","Nueva versión de Rutas y Naturaleza"]
+],
+prompt:`Ahora quiero rediseñar la sección de Rutas y Naturaleza.
+
+Quiero que esta parte de la aplicación transmita aventura, tranquilidad y contacto con la naturaleza.
+
+En la parte superior quiero un título atractivo, una pequeña introducción y una fotografía panorámica de los paisajes de El Bierzo.
+
+Después quiero mostrar diferentes propuestas de actividades:
+
+● Senderismo.
+● Rutas en bicicleta.
+● Paseos por la naturaleza.
+● Actividades al aire libre.
+
+Cada ruta debe tener una tarjeta con una fotografía, nombre, descripción, distancia, dificultad y tiempo estimado, siempre que esos datos estén disponibles y comprobados.
+
+Quiero añadir filtros para elegir entre rutas fáciles, medias, senderismo y bicicleta.
+
+Al pulsar en una ruta se debe abrir una pantalla de detalle con su descripción, mapa del recorrido, características y recomendaciones.
+
+Añade un botón destacado que diga "Ver recorrido".
+
+Me gustaría incorporar también un pequeño apartado con consejos para disfrutar de las rutas de forma responsable y respetar el entorno natural.
+
+No inventes recorridos reales, distancias, tiempos ni dificultades. Cuando no tengamos información verificada, utiliza datos provisionales claramente identificados.
+
+La página debe ser totalmente responsive. En móvil quiero tarjetas fáciles de consultar, información bien organizada y botones grandes.
+
+Mantén la misma identidad visual del resto de la aplicación.`
+},
+
+{
+tool:"Stitch AI",
+number:10,
+title:"Nueva sección Vida en Rodanillo",
+description:"Decidí ampliar la aplicación con una sección dedicada a la vida del pueblo, sus tradiciones, su historia y sus curiosidades. Quería que tuviera un estilo diferente, parecido al de una revista digital.",
+images:[
+["13-vida-rodanillo.png","Diseño de la nueva sección Vida en Rodanillo"]
+],
+prompt:`Quiero añadir una nueva sección a mi aplicación turística llamada "Vida en Rodanillo".
+
+Me gustaría que esta sección fuera diferente a las demás y mostrara el lado más humano y tradicional del pueblo.
+
+Quiero incluir varios apartados:
+
+● Historia y origen del pueblo.
+● Tradiciones y costumbres.
+● Fiestas y celebraciones.
+● Fotografías antiguas y actuales.
+● Curiosidades sobre Rodanillo.
+
+Quiero que tenga un diseño parecido a una revista digital, con fotografías grandes, bloques de texto, pequeñas líneas temporales y elementos visuales que hagan entretenida la lectura.
+
+Me gustaría añadir una galería de fotografías con posibilidad de ampliar las imágenes y navegar entre ellas.
+
+También quiero una pequeña sección llamada "¿Sabías que...?" con curiosidades del pueblo.
+
+No inventes acontecimientos históricos, fechas ni tradiciones. Deja marcados como pendientes los datos que necesiten confirmación.
+
+La página debe mantener la identidad visual del proyecto y adaptarse perfectamente a ordenador, tablet y móvil.`
+},
+
+{
+tool:"Stitch AI",
+number:11,
+title:"Nueva sección Explora el mapa",
+description:"Añadí una sección de mapa interactivo para que los visitantes pudieran localizar Rodanillo y consultar visualmente los diferentes puntos de interés del pueblo y sus alrededores.",
+images:[
+["14-mapa-interactivo.png","Diseño de la sección Explora el mapa"]
+],
+prompt:`Quiero crear una sección nueva llamada "Explora el mapa".
+
+La idea es que los visitantes puedan localizar visualmente Rodanillo y los lugares de interés de sus alrededores.
+
+Quiero una interfaz con un mapa como elemento principal y varios marcadores para identificar los puntos de interés.
+
+Añade un sistema de filtros para mostrar u ocultar:
+
+● Lugares turísticos.
+● Naturaleza.
+● Gastronomía.
+● Servicios y establecimientos.
+● Localidades cercanas.
+
+Al pulsar sobre un marcador quiero que aparezca una pequeña tarjeta con el nombre del lugar, una fotografía, una descripción breve y un botón para consultar sus detalles.
+
+Quiero que el mapa ocupe bastante espacio y que tenga una apariencia moderna.
+
+En ordenador puede aparecer una columna lateral con los resultados y el mapa a su derecha. En móvil quiero que el mapa ocupe la mayor parte de la pantalla y que los resultados se puedan consultar mediante tarjetas inferiores.
+
+Incluye un botón para volver a centrar el mapa en Rodanillo.
+
+Utiliza ubicaciones reales y no inventes coordenadas ni puntos de interés. Los elementos que todavía no estén verificados deben quedar identificados como provisionales.
+
+Mantén los colores y el estilo visual de toda la aplicación.`
+},
+
+{
+tool:"Stitch AI",
+number:12,
+title:"Pantallas de detalle y navegación",
+description:"Una vez diseñadas las diferentes secciones, trabajé en las fichas de detalle para que los lugares, platos y rutas tuvieran una presentación uniforme. También mejoré la navegación entre las pantallas.",
+images:[
+["15-fichas-detalle.png","Diseño de las fichas de detalle"],
+["16-navegacion-detalles.png","Propuesta de navegación entre las fichas"]
+],
+prompt:`Quiero mejorar las pantallas de detalle de mi aplicación turística.
+
+Cuando un usuario pulse sobre un lugar, plato o ruta, quiero que se abra una pantalla específica con toda su información.
+
+Quiero que todas las pantallas de detalle sigan una estructura coherente:
+
+● Botón para volver a la sección anterior.
+● Fotografía panorámica de buena calidad.
+● Nombre del elemento y categoría.
+● Descripción más completa.
+● Información práctica.
+● Ubicación en mapa cuando corresponda.
+● Botón para guardar en favoritos.
+● Apartado de recomendaciones relacionadas.
+
+En los lugares turísticos quiero mostrar información sobre su historia y cómo llegar.
+
+En los platos quiero mostrar sus ingredientes o características tradicionales.
+
+En las rutas quiero mostrar distancia, dificultad, duración y recorrido cuando esos datos estén confirmados.
+
+Quiero que las transiciones entre las tarjetas y las pantallas de detalle sean suaves y naturales.
+
+En móvil, la información debe organizarse verticalmente y las imágenes deben ocupar correctamente el ancho disponible.
+
+Mantén la identidad visual de toda la aplicación. No quiero que cada pantalla de detalle tenga un diseño diferente.`
+},
+
+{
+tool:"Stitch AI",
+number:13,
+title:"Modo claro y modo oscuro en toda la aplicación",
+description:"La última fase de diseño consistió en extender el modo oscuro a todas las secciones. Quería que ambos temas conservaran exactamente la misma distribución y funcionalidades, cambiando únicamente los colores.",
+images:[
+["17-modo-claro-oscuro-global.png","Aplicación con los dos modos de visualización"]
+],
+prompt:`Ahora quiero implementar el modo oscuro en toda mi aplicación turística de Rodanillo.
+
+Es muy importante que el modo oscuro no se limite a la pantalla de inicio. Quiero que TODAS las secciones tengan su correspondiente versión oscura: Inicio, Qué ver, Gastronomía, Rutas y naturaleza, Vida en Rodanillo, Explorar mapa y todas las pantallas de detalle.
+
+Quiero mantener exactamente la misma estructura, distribución, fotografías, textos, tarjetas, botones y funcionalidades que en el modo claro. Lo único que debe cambiar es la apariencia visual.
+
+Para el modo oscuro utiliza:
+
+● Fondo general de color carbón con un ligero tono verdoso (#111411).
+● Tarjetas y superficies en tonos oscuros ligeramente diferenciados (#1D211D).
+● Verde salvia claro (#A5D6A7) como color principal para botones y elementos destacados.
+● Texto principal en blanco cálido (#E1E3DF).
+● Detalles secundarios en tonos terracota suaves.
+
+No utilices negro puro como fondo.
+
+Quiero que todos los elementos mantengan suficiente contraste y sean fáciles de leer. Presta especial atención a las fotografías, los campos de búsqueda, las etiquetas, los filtros, los iconos y los mapas.
+
+La barra de navegación también debe cambiar de apariencia al activar el modo oscuro.
+
+El botón de sol y luna debe estar disponible en todas las páginas y permitir cambiar entre los dos temas.
+
+Quiero que la transición entre modo claro y oscuro sea suave y agradable, sin saltos bruscos.
+
+Es importante que ambos modos tengan exactamente las mismas funcionalidades y que la versión móvil también se adapte correctamente.
+
+No crees una aplicación diferente ni elimines ninguna de las pantallas existentes. Quiero que sea la misma aplicación con dos temas visuales.`
+},
+
+/* CHATGPT — FASES 14 A 16 */
+
+{
+tool:"ChatGPT",
+number:14,
+title:"Implementación y mejora de la aplicación",
+description:"Con los diseños de Stitch terminados, pasé a la implementación de la aplicación web. Trabajé sobre las páginas existentes para conectarlas, mejorar su aspecto, utilizar imágenes locales y hacer que todas las funcionalidades fueran reales.",
+images:[
+["18-implementacion-estructura.png","Implementación de las diferentes páginas"],
+["19-implementacion-paginas.png","Implementación de las diferentes páginas"],
+["20-implementacion-imagenes.png","Implementación de las diferentes páginas"],
+["21-implementacion-responsive.png","Implementación de las diferentes páginas"]
+],
+prompt:`Quiero pasar de los diseños que he creado para mi aplicación turística de Rodanillo a una aplicación web real y completamente funcional.
+
+Ya tengo diseñadas las diferentes páginas y quiero aprovechar ese trabajo, manteniendo la identidad visual, los colores, las fotografías y la estructura general de cada sección, pero mejorando los aspectos que sean necesarios.
+
+Quiero realizar las siguientes mejoras:
+
+1. Navegación entre páginas: todas las secciones deben estar conectadas entre sí. Quiero poder navegar desde Inicio a Qué ver, Gastronomía, Rutas y naturaleza, Vida en Rodanillo y Explorar mapa, y volver a cualquier sección fácilmente.
+
+2. Botones funcionales: quiero que todos los botones tengan una utilidad real. Los botones de navegación deben abrir sus páginas correspondientes, los de detalles deben mostrar la información completa, los favoritos deben permitir guardar y quitar elementos, los filtros deben funcionar y los botones de volver deben llevar a la página anterior cuando corresponda.
+
+3. Imágenes locales: quiero utilizar imágenes almacenadas dentro del propio proyecto, en una carpeta organizada. Cada imagen debe tener un nombre claro y descriptivo para poder sustituirla fácilmente por fotografías propias de Rodanillo. No quiero depender de imágenes externas que puedan dejar de funcionar.
+
+4. Mejora de las portadas: quiero dar más protagonismo a las fotografías principales de cada sección. Me gustaría utilizar imágenes panorámicas grandes que ocupen todo el ancho disponible, con el título de la sección destacado sobre la fotografía y textos bien colocados para conseguir un aspecto más profesional.
+
+5. Mejora de los textos: quiero revisar los tamaños, las tipografías, los colores, los márgenes y los espacios entre elementos para que todo se lea correctamente. Los títulos deben destacar, las descripciones deben ser cómodas de leer y los textos no deben quedar cortados.
+
+6. Diseño responsive: todas las páginas deben adaptarse correctamente a ordenador, tablet y móvil. Quiero que las versiones móviles estén bien diseñadas, con navegación cómoda, imágenes proporcionadas, tarjetas adaptadas y botones fáciles de pulsar.
+
+7. Modo claro y oscuro: el cambio de tema debe funcionar en todas las páginas y mantener la preferencia del usuario al navegar entre secciones.
+
+8. Mejoras adicionales: quiero incorporar pequeños detalles que mejoren la experiencia, como transiciones suaves, efectos al pasar por las tarjetas, mensajes de confirmación, estados activos en la navegación y una organización más intuitiva de los contenidos.
+
+Es muy importante que no se eliminen páginas ni funcionalidades que ya estén diseñadas. Quiero mejorar el proyecto existente, mantener una estética coherente y conseguir que todas las partes de la aplicación funcionen correctamente.
+
+El resultado debe ser una guía turística moderna, atractiva y fácil de utilizar, que parezca una aplicación real dedicada a descubrir Rodanillo y sus alrededores.`
+},
+
+{
+tool:"ChatGPT",
+number:15,
+title:"Pruebas y corrección de errores",
+description:"Después de implementar la aplicación, realicé una revisión general. Fui comprobando la navegación, los botones, el cambio de tema, los mapas, las imágenes y la información para detectar y corregir los problemas que iban apareciendo.",
+images:[
+["22-pruebas-navegacion.png","Implementación de las diferentes páginas"],
+["23-pruebas-funcionalidades.png","Implementación de las diferentes páginas"],
+["24-pruebas-temas.png","Implementación de las diferentes páginas"],
+["25-correccion-errores.png","Implementación de las diferentes páginas"]
+],
+prompt:`Quiero revisar y terminar mi aplicación web turística sobre Rodanillo (Bembibre, León) partiendo de los archivos que ya tengo.
+
+No quiero empezar un diseño nuevo ni perder la estética que ya he conseguido. Quiero mantener las páginas, los colores y la estructura general, pero corregir los problemas y mejorar lo que sea necesario.
+
+Quiero que todas las secciones estén conectadas mediante una navegación común, que el menú marque correctamente la página activa y que todos los botones tengan una acción real.
+
+El modo claro y oscuro debe funcionar en todas las páginas sin cambiar de pantalla ni perder la posición de desplazamiento.
+
+Quiero que las imágenes estén guardadas localmente dentro de una carpeta organizada, con nombres claros para poder sustituirlas por fotografías propias.
+
+También quiero mejorar las portadas con imágenes panorámicas grandes, títulos destacados y textos bien distribuidos.
+
+Hay que revisar las tipografías, tamaños, contrastes, márgenes, tarjetas, transiciones y botones para conseguir un aspecto más profesional.
+
+La aplicación debe adaptarse correctamente a ordenador, tablet y móvil, con una navegación cómoda y sin elementos cortados.
+
+Es especialmente importante revisar la información para que corresponda realmente a Rodanillo de León. Quiero distinguir los lugares del propio pueblo de los destinos cercanos y de la comarca.
+
+No quiero datos inventados, horarios incorrectos, establecimientos inexistentes ni rutas que no estén documentadas.
+
+Por último, quiero comprobar que funcionen la navegación, los filtros, el buscador, las fichas de detalle, los favoritos, los mapas, los enlaces externos y las descargas.
+
+Mantén el diseño original siempre que sea posible y realiza las mejoras necesarias para conseguir una aplicación coherente, funcional, responsive y visualmente profesional.`
+},
+
+{
+tool:"ChatGPT",
+number:16,
+title:"Mejoras finales y contenido local",
+description:"En la última fase realicé los ajustes finales de la aplicación. Me centré en mejorar la portada, ampliar la variedad de imágenes, revisar las rutas, corregir los últimos problemas visuales y asegurarme de que la información estuviera relacionada con Rodanillo.",
+images:[
+["26-mejoras-portadas.png","Implementación de las diferentes páginas"],
+["27-mejoras-imagenes-rutas.png","Implementación de las diferentes páginas"],
+["28-mejoras-contenido-local.png","Implementación de las diferentes páginas"],
+["29-version-definitiva.png","Implementación de las diferentes páginas"]
+],
+prompt:`Quiero hacer unos últimos ajustes sobre la versión actual de Descubre Rodanillo, pero sin cambiar el diseño general ni tocar las partes que ya funcionan bien.
+
+1. Quiero que la portada de Inicio sea una imagen panorámica a pantalla completa, de extremo a extremo, con el título grande y los botones encima de la fotografía. No quiero que quede dentro de una tarjeta estrecha con márgenes laterales.
+
+2. Quiero añadir más variedad de imágenes y corregir las que estén asignadas a una sección que no corresponde. Mantén todos los archivos de imagen que ya existen y sus nombres, pero añade nuevas imágenes JPG con nombres descriptivos. Cada sección debe utilizar imágenes relacionadas con su contenido y evitar repetir la misma imagen en varias tarjetas de una misma página.
+
+3. En Rutas quiero que todas las tarjetas muestren una dificultad fácil, media o difícil. Utiliza los datos de la guía turística local cuando estén publicados y, cuando sea una estimación, indícalo claramente. En las cuatro tarjetas, los botones deben estar alineados: "Ver recorrido" y "Descargar .GPX". El texto del botón de descarga debe ser exactamente "Descargar .GPX".
+
+4. Revisa toda la web y elimina textos como "sin encontrar", "no publicado" o "dato provisional" cuando puedan sustituirse por información documentada o una estimación razonable. No inventes datos.
+
+5. En el pie de página, dentro del apartado "Explorar", mejora el contraste de los enlaces en modo claro para que se puedan leer sin tener que pasar el ratón por encima. Mantén el mismo resultado en modo oscuro.
+
+Conserva todas las páginas, el menú, la navegación, el buscador, los favoritos, los mapas, los filtros, el modo claro y oscuro, las transiciones y el diseño responsive.
+
+No rehagas la aplicación ni elimines elementos que ya funcionan. Quiero que los cambios sean exclusivamente los solicitados y que el resultado mantenga la identidad visual de las versiones anteriores.`
+}
+
+];
+
+
+/* =====================================================
+   GENERAR LAS FASES Y SUS CAPTURAS
+===================================================== */
+
+function createPhase(phase) {
+
+  const article = document.createElement("article");
+  article.className = "phase";
+  article.id = "fase-" + phase.number;
+
+  const imagesHTML = phase.images.map((img,index) => `
+    <figure class="capture">
+      <div class="capture-frame">
+        <img
+          data-filename="${img[0]}"
+          alt="${img[1]}"
+          loading="lazy"
+          decoding="async"
+        >
+        <div class="capture-placeholder">
+          <strong>Captura ${index + 1}</strong>
+          Añade aquí la imagen correspondiente a esta fase.
+        </div>
+      </div>
+      <figcaption>${img[1]}</figcaption>
+    </figure>
+  `).join("");
+
+  article.innerHTML = `
+    <div class="phase-number">
+      ${String(phase.number).padStart(2,"0")}
+    </div>
+
+    <div class="phase-card">
+
+      <div class="phase-header">
+        <h3>${phase.title}</h3>
+        <span class="phase-tag">${phase.tool}</span>
+      </div>
+
+      <p class="phase-description">${phase.description}</p>
+
+      <div class="capture-heading">
+        Capturas del proceso (${phase.images.length})
+      </div>
+
+      <div class="captures">
+        ${imagesHTML}
+      </div>
+
+      <details class="prompt">
+        <summary>Consultar el prompt utilizado</summary>
+        <pre></pre>
+        <div class="prompt-actions">
+          <button class="copy-btn" type="button">Copiar prompt</button>
+        </div>
+      </details>
+
+    </div>
+  `;
+
+  article.querySelector("pre").textContent = phase.prompt;
+
+  article.querySelector(".copy-btn").addEventListener("click", async function() {
+    try {
+      await navigator.clipboard.writeText(phase.prompt);
+      this.textContent = "¡Prompt copiado!";
+      setTimeout(() => {
+        this.textContent = "Copiar prompt";
+      },1500);
+    } catch(error) {
+      this.textContent = "Selecciona el texto para copiar";
+    }
+  });
+
+  return article;
+}
+
+const stitchContainer = document.getElementById("stitch-phases");
+const chatgptContainer = document.getElementById("chatgpt-phases");
+
+phases.forEach(phase => {
+  const element = createPhase(phase);
+
+  if (phase.tool === "Stitch AI") {
+    stitchContainer.appendChild(element);
+  } else {
+    chatgptContainer.appendChild(element);
+  }
+});
+
+
+/* =====================================================
+   CARGA DE IMÁGENES LOCALES
+===================================================== */
+
+// Las capturas se buscan primero en la carpeta recomendada:
+// assets/capturas. Se mantienen dos rutas alternativas por compatibilidad.
+document.querySelectorAll(".capture-frame img[data-filename]").forEach(img => {
+  const filename = img.dataset.filename;
+  const frame = img.closest(".capture-frame");
+  const candidates = [
+    `./assets/capturas/${filename}`,
+    `./assets/${filename}`,
+    `./capturas/${filename}`
+  ];
+  let index = 0;
+
+  const tryNextPath = () => {
+    if (index >= candidates.length) {
+      frame.classList.remove("loaded");
+      img.removeAttribute("src");
+      return;
+    }
+    img.src = new URL(candidates[index], document.baseURI).href;
+    index += 1;
+  };
+
+  img.addEventListener("load", () => {
+    if (img.naturalWidth > 0) frame.classList.add("loaded");
+  });
+
+  img.addEventListener("error", () => {
+    frame.classList.remove("loaded");
+    tryNextPath();
+  });
+
+  tryNextPath();
+});
+
+
+/* =====================================================
+   MODO CLARO Y OSCURO
+===================================================== */
+
+const root = document.documentElement;
+const themeButton = document.getElementById("theme");
+
+const savedTheme = localStorage.getItem("proceso-rodanillo-theme");
+
+if (savedTheme === "dark" || savedTheme === "light") {
+  root.dataset.theme = savedTheme;
+}
+
+function updateThemeIcon() {
+  themeButton.textContent =
+    root.dataset.theme === "dark" ? "☀" : "☾";
+}
+
+updateThemeIcon();
+
+themeButton.addEventListener("click",() => {
+
+  root.dataset.theme =
+    root.dataset.theme === "dark" ? "light" : "dark";
+
+  localStorage.setItem(
+    "proceso-rodanillo-theme",
+    root.dataset.theme
+  );
+
+  updateThemeIcon();
+});
+
+
+/* =====================================================
+   MENÚ MÓVIL
+===================================================== */
+
+const menuButton = document.getElementById("menu");
+const navigation = document.getElementById("nav");
+
+menuButton.addEventListener("click",() => {
+  navigation.classList.toggle("open");
+});
+
+navigation.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click",() => {
+    navigation.classList.remove("open");
+  });
+});
+
+
+/* =====================================================
+   ENLACES DEL RESULTADO
+===================================================== */
+
+function configureLink(id,url) {
+
+  const link = document.getElementById(id);
+
+  if (url && url.trim() !== "") {
+    link.href = url;
+    link.removeAttribute("aria-disabled");
+    link.style.opacity = "1";
+  } else {
+    link.href = "#";
+    link.setAttribute("aria-disabled","true");
+    link.style.opacity = ".65";
+
+    link.addEventListener("click",event => {
+      event.preventDefault();
+      alert("Este enlace estará disponible cuando se publique el proyecto.");
+    });
+  }
+}
+
+configureLink("app-link",APP_URL);
+configureLink("github-link",GITHUB_URL);
+
+</script>
+
+</body>
+</html>
