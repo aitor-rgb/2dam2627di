@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vida en Rodanillo · Descubre Rodanillo</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&amp;family=Playfair+Display:ital,wght@0,600;1,600&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface": "#FAF8F5",
+            "surface-dim": "#EDE8DE",
+            "surface-bright": "#FFFFFF",
+            "surface-canvas": "#FAF8F5",
+            "surface-sand": "#F0EBE1",
+            "surface-sand-muted": "#E5DFD3",
+            "primary": "#163820",
+            "primary-container": "#224A2D",
+            "botanical-sage": "#5E7D63",
+            "secondary": "#5E7D63",
+            "terracotta-warm": "#B85D38",
+            "terracotta-muted": "#9C4D2E",
+            "stone-charcoal": "#1C1E1B",
+            "on-surface": "#1C1E1B",
+            "on-surface-variant": "#4A524A",
+            "border-stone": "#DDD6C8",
+            "outline": "#7A857A",
+            "outline-variant": "#D6DCD4"
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            body: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+          },
+          borderRadius: {
+            '2xl': '1rem',
+            '3xl': '1.5rem',
+            '4xl': '2rem',
+          },
+          boxShadow: {
+            'warm': '0 8px 30px -4px rgba(22, 56, 32, 0.07), 0 2px 8px -2px rgba(22, 56, 32, 0.04)',
+            'warm-lg': '0 20px 40px -8px rgba(22, 56, 32, 0.12), 0 4px 12px -2px rgba(22, 56, 32, 0.05)',
+            'warm-card': '0 4px 20px -2px rgba(28, 30, 27, 0.05)',
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    .editorial-badge {
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+<link href="assets/css/app.css" rel="stylesheet"/></head><body class="bg-surface font-body text-stone-charcoal antialiased selection:bg-terracotta-warm selection:text-white" data-page="vida"><header class="sticky top-0 z-40 bg-[#FAF8F5]/90 backdrop-blur-md border-b border-border-stone transition-all duration-300">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+<!-- Brand Logo / Emblem -->
+<a class="flex items-center gap-3.5 group" href="index.html">
+<div class="w-11 h-11 rounded-xl bg-primary text-white flex items-center justify-center shadow-md group-hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-[24px]">nature_people</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-sans font-extrabold text-xl text-primary tracking-tight">Descubre Rodanillo</span>
+</div>
+<span class="editorial-badge text-[10px] text-botanical-sage font-bold">Patrimonio Berciano</span>
+</div>
+</a>
+<!-- Desktop Navigation Links -->
+<nav class="hidden lg:flex items-center gap-1 xl:gap-2">
+<a class="px-4 py-2 rounded-full text-sm font-semibold text-primary bg-surface-sand transition-colors" href="index.html">Inicio</a>
+<a class="px-4 py-2 rounded-full text-sm font-medium text-stone-charcoal/80 hover:text-primary hover:bg-surface-sand/60 transition-colors" href="queVer.html">Qué ver</a>
+<a class="px-4 py-2 rounded-full text-sm font-medium text-stone-charcoal/80 hover:text-primary hover:bg-surface-sand/60 transition-colors" href="gastronomia.html">Gastronomía</a>
+<a class="px-4 py-2 rounded-full text-sm font-medium text-stone-charcoal/80 hover:text-primary hover:bg-surface-sand/60 transition-colors" href="rutas.html">Rutas y naturaleza</a>
+<a class="px-4 py-2 rounded-full text-sm font-medium text-stone-charcoal/80 hover:text-primary hover:bg-surface-sand/60 transition-colors" href="vida.html">Vida en Rodanillo</a>
+<a class="px-4 py-2 rounded-full text-sm font-medium text-stone-charcoal/80 hover:text-primary hover:bg-surface-sand/60 transition-colors" href="mapa.html">Explorar mapa</a></nav>
+<!-- Utility Actions -->
+<div class="flex items-center gap-2.5">
+<button aria-label="Buscar en la web" class="w-10 h-10 rounded-full flex items-center justify-center text-stone-charcoal/70 hover:text-primary hover:bg-surface-sand transition-colors" type="button">
+<span class="material-symbols-outlined text-[21px]">search</span>
+</button>
+<button aria-label="Cambiar tema de color" class="w-10 h-10 rounded-full flex items-center justify-center text-stone-charcoal/70 hover:text-primary hover:bg-surface-sand transition-colors" id="theme-toggle" type="button">
+<span class="material-symbols-outlined text-[21px]">light_mode</span>
+</button>
+<!-- CTA Planifica tu visita -->
+<a class="hidden sm:inline-flex items-center gap-2 h-10 px-5 rounded-full bg-primary hover:bg-primary-container text-white text-xs font-bold uppercase tracking-wider transition-all shadow-sm" href="https://www.google.com/maps/dir/?api=1&amp;destination=Rodanillo%2C%20Bembibre%2C%20Le%C3%B3n%2C%20Espa%C3%B1a" rel="noopener" target="_blank">
+<span>Cómo Llegar</span>
+<span class="material-symbols-outlined text-[16px]">north_east</span>
+</a>
+<!-- Mobile Menu Trigger -->
+<button aria-label="Menú principal" class="lg:hidden w-10 h-10 rounded-full flex items-center justify-center text-stone-charcoal hover:bg-surface-sand" id="mobile-menu-btn" type="button">
+<span class="material-symbols-outlined text-[24px]">menu</span>
+</button>
+</div>
+</div>
+<!-- Mobile Drawer Menu Dropdown -->
+<div class="hidden lg:hidden border-t border-border-stone bg-surface-sand/95 px-6 py-4 flex flex-col gap-2 transition-all" id="mobile-menu">
+<a class="py-2.5 px-3 rounded-lg text-primary font-bold text-sm bg-white/60" href="index.html">Inicio</a>
+<a class="py-2.5 px-3 rounded-lg text-stone-charcoal font-medium text-sm hover:bg-white/40" href="queVer.html">Qué ver</a>
+<a class="py-2.5 px-3 rounded-lg text-stone-charcoal font-medium text-sm hover:bg-white/40" href="gastronomia.html">Gastronomía</a>
+<a class="py-2.5 px-3 rounded-lg text-stone-charcoal font-medium text-sm hover:bg-white/40" href="rutas.html">Rutas y naturaleza</a>
+<a class="py-2.5 px-3 rounded-lg text-stone-charcoal font-medium text-sm hover:bg-white/40" href="vida.html">Vida en Rodanillo</a>
+<a class="py-2.5 px-3 rounded-lg text-terracotta-warm font-semibold text-sm hover:bg-white/40 flex items-center justify-between" href="https://www.google.com/maps/dir/?api=1&amp;destination=Rodanillo%2C%20Bembibre%2C%20Le%C3%B3n%2C%20Espa%C3%B1a" rel="noopener" target="_blank">
+<span>Guía de llegada &amp; mapa</span>
+<span class="material-symbols-outlined text-[18px]">map</span>
+</a>
+</div>
+</header><main class="flex-1" id="contenido">
+<section class="relative min-h-[440px] md:min-h-[560px] flex items-end overflow-hidden"><img alt="Ilustración del paisaje de Rodanillo" class="absolute inset-0 w-full h-full object-cover" src="assets/images/paisaje-valle-berciano.jpg"/><div class="absolute inset-0 bg-gradient-to-t from-[#17291e]/95 via-[#17291e]/35 to-transparent"></div><div class="relative max-w-7xl mx-auto w-full px-5 md:px-10 pb-12 md:pb-16 text-white"><span class="inline-flex px-4 py-2 rounded-full bg-white/15 border border-white/30 text-xs font-bold uppercase tracking-widest mb-5">Bierzo Alto · León</span><h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-4">Vida en Rodanillo</h1><p class="text-lg md:text-xl max-w-3xl text-white/90">Historia, carretería, lagares, fiestas y memoria de un pueblo del municipio de Bembibre.</p></div></section>
+<section class="max-w-7xl mx-auto px-5 md:px-8 py-12"><div class="max-w-4xl"><span class="text-xs font-bold tracking-widest uppercase text-secondary">Historia local</span><h2 class="text-3xl md:text-4xl font-bold text-primary mt-2 mb-4">Un pueblo con memoria</h2><p class="text-lg leading-relaxed text-stone-charcoal/80">Rodanillo aparece documentado como núcleo de población desde 1085. Su historia está vinculada al paisaje rural del Bierzo Alto, a la actividad vitivinícola y a la tradición artesanal de los carreros. La iglesia parroquial de San Antolín, la antigua iglesia de San Salvador —hoy ermita del Santo Cristo— y los lagares conservan huellas de distintas épocas.</p></div>
+<div class="grid md:grid-cols-3 gap-5 mt-8"><article class="rounded-3xl bg-surface-sand p-6"><img alt="Ilustración de un carro tradicional" class="w-full h-40 object-cover rounded-2xl mb-4" src="assets/images/carro-tradicional.jpg"/><h3 class="text-xl font-bold text-primary">El pueblo de los carreros</h3><p class="text-sm mt-2">Rodanillo fue conocido en el Bierzo Alto y Laciana como “el pueblo de los carros” o “el pueblo de los carreros”. La fabricación y reparación de carros fue un oficio destacado.</p></article><article class="rounded-3xl bg-surface-sand p-6"><img alt="Ilustración del Lagar del Moro" class="w-full h-40 object-cover rounded-2xl mb-4" src="assets/images/lagar-del-moro.png"/><h3 class="text-xl font-bold text-primary">La cultura del lagar</h3><p class="text-sm mt-2">El Catastro de Ensenada de 1752 recogía nueve lagares en funcionamiento en Rodanillo. El Lagar del Moro fue restaurado y premiado en 2019.</p></article><article class="rounded-3xl bg-surface-sand p-6"><img alt="Ilustración de castañas" class="w-full h-40 object-cover rounded-2xl mb-4" src="assets/images/castanas-rodanillo.png"/><h3 class="text-xl font-bold text-primary">Castañas y paisaje</h3><p class="text-sm mt-2">Destacan las castañas entre los productos del entorno, también el magosto tradicional en noviembre.</p></article></div></section>
+<section class="bg-surface-sand py-12"><div class="max-w-7xl mx-auto px-5 md:px-8"><h2 class="text-3xl font-bold text-primary mb-3">Pequeña cronología documentada</h2><p class="text-stone-charcoal/70 mb-7">Fechas recogidas en la guía turística local “Conoce tu pueblo” (2023).</p><div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"><article class="rounded-2xl bg-white p-5"><span class="text-sm font-bold text-secondary">1085</span><h3 class="text-lg font-bold text-primary mt-1">Primeras referencias documentadas</h3><p class="text-sm mt-2">La guía turística local de 2023 señala 1085 como referencia documental del núcleo de población.</p></article><article class="rounded-2xl bg-white p-5"><span class="text-sm font-bold text-secondary">1245</span><h3 class="text-lg font-bold text-primary mt-1">San Salvador</h3><p class="text-sm mt-2">La antigua iglesia parroquial de San Salvador aparece documentada; hoy es la ermita del Santo Cristo.</p></article><article class="rounded-2xl bg-white p-5"><span class="text-sm font-bold text-secondary">1645</span><h3 class="text-lg font-bold text-primary mt-1">La esquila</h3><p class="text-sm mt-2">La esquila de la iglesia de San Antolín lleva esta fecha.</p></article><article class="rounded-2xl bg-white p-5"><span class="text-sm font-bold text-secondary">1688</span><h3 class="text-lg font-bold text-primary mt-1">Artesonado barroco</h3><p class="text-sm mt-2">La ermita del Santo Cristo conserva parte de un artesonado con la inscripción “Se hizo el 1688”.</p></article><article class="rounded-2xl bg-white p-5"><span class="text-sm font-bold text-secondary">1752</span><h3 class="text-lg font-bold text-primary mt-1">Nueve lagares</h3><p class="text-sm mt-2">El Catastro de Ensenada recoge nueve lagares en funcionamiento en Rodanillo.</p></article><article class="rounded-2xl bg-white p-5"><span class="text-sm font-bold text-secondary">2019</span><h3 class="text-lg font-bold text-primary mt-1">Restauración del Lagar del Moro</h3><p class="text-sm mt-2">El lagar restaurado recibe el primer premio de la Fundación Prada a Tope.</p></article></div></div></section>
+<section class="max-w-7xl mx-auto px-5 md:px-8 py-12"><div class="grid lg:grid-cols-2 gap-10"><div><h2 class="text-3xl font-bold text-primary mb-4">Fiestas y costumbres del calendario local</h2><p class="leading-relaxed text-stone-charcoal/80">San Antolín es el patrón de Rodanillo. Su festividad se celebra el 2 de septiembre para facilitar la asistencia de los vecinos que viven fuera, la celebración se trasladó al penúltimo sábado de agosto. También hay una fiesta de San Benito en julio: es una celebración distinta y San Benito no es el patrón del pueblo.</p><p class="text-sm text-stone-charcoal/60 mt-4">Se recoge además la Fiesta del Botillo en febrero, la Cena del Jabalí en torno a las fiestas de agosto, la Gran Chorizada como merienda popular del último día y el magosto en noviembre. El programa y las fechas concretas pueden variar cada año; confirma la información local antes de acudir.</p></div><div class="rounded-3xl overflow-hidden bg-surface-sand"><img alt="Ilustración de la iglesia de San Antolín" class="w-full h-64 object-cover" src="assets/images/iglesia-san-antolin.png"/><div class="p-6"><h3 class="text-xl font-bold text-primary">Tradición y comunidad</h3><p class="mt-2 text-sm">La iglesia, la plaza, los pozos y los caminos son espacios que ayudan a entender la vida cotidiana y la memoria compartida del pueblo.</p></div></div></div></section>
+<section class="bg-surface-sand py-12"><div class="max-w-7xl mx-auto px-5 md:px-8"><div class="grid md:grid-cols-2 gap-8 items-center"><div><span class="text-xs font-bold tracking-widest uppercase text-secondary">Tiempo libre y bienestar</span><h2 class="text-3xl md:text-4xl font-bold text-primary mt-2 mb-4">Deporte y actividad al aire libre</h2><p class="leading-relaxed text-stone-charcoal/80">Rodanillo también cuenta con espacios para el ocio activo. En el mapa local se señalan las piscinas y la zona deportiva; además, los caminos del entorno permiten disfrutar de paseos y senderismo en contacto con el paisaje del Bierzo.</p><p class="text-sm text-stone-charcoal/60 mt-3">La disponibilidad y el uso de las instalaciones pueden variar según la temporada; conviene confirmar la información local antes de la visita.</p></div><div class="rounded-3xl overflow-hidden"><img alt="Sendero entre árboles en el entorno natural" class="w-full h-64 md:h-72 object-cover" src="assets/images/sendero-bosque.jpg"/></div></div></div></section><section class="max-w-7xl mx-auto px-5 md:px-8 pb-14"><h2 class="text-3xl font-bold text-primary mb-3">¿Sabías que…?</h2><div class="grid sm:grid-cols-2 gap-4"><div class="rounded-2xl border border-border-stone p-5"><h3 class="font-bold text-primary">El pueblo de los carros</h3><p class="text-sm mt-2">El oficio de los carreros dio a Rodanillo un sobrenombre reconocido en el Bierzo Alto y Laciana.</p></div><div class="rounded-2xl border border-border-stone p-5"><h3 class="font-bold text-primary">Nueve lagares en 1752</h3><p class="text-sm mt-2">El Catastro de Ensenada registraba nueve lagares en funcionamiento en el pueblo.</p></div><div class="rounded-2xl border border-border-stone p-5"><h3 class="font-bold text-primary">Una esquila fechada</h3><p class="text-sm mt-2">La esquila de la iglesia parroquial de San Antolín lleva grabado el año 1645.</p></div><div class="rounded-2xl border border-border-stone p-5"><h3 class="font-bold text-primary">Un alcornocal cercano</h3><p class="text-sm mt-2">El alcornocal se encuentra en el entorno de Cobrana, localidad vecina, no en el núcleo de Rodanillo.</p></div></div></section>
+<section class="max-w-7xl mx-auto px-5 md:px-8 py-12"><div class="max-w-4xl mb-7"><span class="text-xs font-bold tracking-widest uppercase text-secondary">Historias y curiosidades</span><h2 class="text-3xl md:text-4xl font-bold text-primary mt-2 mb-3">Historias que guarda Rodanillo</h2><p class="text-stone-charcoal/75 leading-relaxed">Pequeños hallazgos documentales y artísticos permiten conocer mejor la memoria del pueblo.</p></div><div class="grid md:grid-cols-2 gap-5"><article class="rounded-3xl bg-surface-sand p-6"><span class="text-xs font-bold uppercase tracking-widest text-secondary">Memoria parroquial · siglo XVII</span><h3 class="text-xl font-bold text-primary mt-2">Sepulturas bajo el suelo de San Antolín</h3><p class="text-sm leading-relaxed mt-3">Un antiguo libro sacramental de Rodanillo recoge que, desde 1662, algunas personas fallecidas eran enterradas en el interior de la iglesia de San Antolín, diferenciando los espacios “del arco arriba” y “del arco abajo”. El manuscrito, conservado hoy en el Archivo Diocesano de Astorga, contiene registros de bautismos, matrimonios y defunciones de los años 1616–1676.</p><a class="inline-flex mt-4 text-primary font-bold underline" href="https://bembibredigital.com/culturayespectaculos/12057-rodanillo-un-libro-con-400-anos" target="_blank" rel="noopener">Leer la historia del libro sacramental ↗</a></article><article class="rounded-3xl bg-surface-sand p-6"><span class="text-xs font-bold uppercase tracking-widest text-secondary">Arte oculto · ermita del Santo Cristo</span><h3 class="text-xl font-bold text-primary mt-2">Pinturas escondidas junto al cementerio</h3><p class="text-sm leading-relaxed mt-3">La ermita del Santo Cristo, antigua iglesia de San Salvador y situada junto al cementerio, conserva un retablo rococó tras el que se identificó una pintura de Jerusalén. La cámara de un teléfono permitió comprobar en 2021 lo que se sospechaba desde 2004. Además, en la pared este se descubrieron pinturas murales ocultas bajo capas de cal, que representan escenas de la vida de Jesús y siguen pendientes de restauración.</p><a class="inline-flex mt-4 text-primary font-bold underline" href="https://www.diariodeleon.es/bierzo/240428/1528102/enigma-jerusalen-oculta-ermita-rodanillo.html" target="_blank" rel="noopener">Leer sobre las pinturas ocultas ↗</a></article></div></section><section class="max-w-7xl mx-auto px-5 md:px-8 pb-14"><div class="rounded-3xl bg-primary text-white p-7 md:p-10"><h2 class="text-2xl md:text-3xl font-bold">Conoce la historia local</h2><p class="text-white/80 mt-2 max-w-2xl">La información histórica de esta página se ha contrastado con la Guía Turística de Rodanillo (2023), “Conoce tu pueblo”.</p><a class="inline-flex mt-5 rounded-full bg-white text-primary px-6 py-3 font-bold" href="https://elbierzoolvidado.com/wp-content/uploads/2023/07/guia-turistica-de-rodanillo.pdf" rel="noopener" target="_blank">Consultar la guía turística ↗</a></div></section>
+</main><footer class="bg-[#1C1E1B] text-white pt-16 pb-12 border-t border-white/10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
+<!-- Col 1: Identity & Stamp -->
+<div class="lg:col-span-2 space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">nature_people</span>
+</div>
+<div>
+<span class="font-sans font-bold text-lg text-white tracking-tight">Descubre Rodanillo</span>
+<p class="text-botanical-sage text-xs font-semibold uppercase tracking-wider">Guía turística de Rodanillo</p>
+</div>
+</div>
+<p class="text-white/70 text-sm leading-relaxed max-w-sm font-normal">
+            Guía informativa independiente sobre Rodanillo, en el municipio de Bembibre (León).
+          </p>
+<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 text-xs font-semibold text-white/90">
+<span class="material-symbols-outlined text-[16px] text-terracotta-warm">verified_user</span>
+<span>Patrimonio y memoria local</span>
+</div>
+</div>
+<!-- Col 2: Secciones -->
+<div class="space-y-3">
+<div class="font-sans font-bold text-sm text-white uppercase tracking-wider">Explorar</div>
+<ul class="space-y-2 text-sm text-white/70">
+<li><a class="hover:text-terracotta-warm transition-colors" href="index.html">Inicio</a></li>
+<li><a class="hover:text-terracotta-warm transition-colors" href="queVer.html">Qué ver y patrimonio</a></li>
+<li><a class="hover:text-terracotta-warm transition-colors" href="gastronomia.html">Gastronomía y vinos</a></li>
+<li><a class="hover:text-terracotta-warm transition-colors" href="rutas.html">Rutas senderistas</a></li>
+<li><a class="hover:text-terracotta-warm transition-colors" href="vida.html">Vida en Rodanillo</a></li>
+</ul>
+</div>
+<!-- Col 3: Lugares Clave -->
+<div class="space-y-3">
+<div class="font-sans font-bold text-sm text-white uppercase tracking-wider">Patrimonio</div>
+<ul class="space-y-2 text-sm text-white/70">
+<li><span class="text-white/70">Iglesia de San Antolín</span></li>
+<li><span class="text-white/70">Entorno de Cobrana (localidad vecina)</span></li>
+<li><span class="text-white/70">Taller de Carreteros</span></li>
+<li><span class="text-white/70">Bodegas subterráneas</span></li>
+<li><span class="text-white/70">Mirador del Boeza</span></li>
+</ul>
+</div>
+<!-- Col 4: Contacto & Entorno -->
+<div class="space-y-3">
+<div class="font-sans font-bold text-sm text-white uppercase tracking-wider">Contacto &amp; Municipio</div>
+<p class="text-white/70 text-xs leading-relaxed">
+            Ayuntamiento de Bembibre<br/>
+            Plaza Mayor 1, 24300 Bembibre (León)<br/>
+            El Bierzo, España
+          </p>
+</div>
+</div>
+<!-- Bottom Credits -->
+<div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/50">
+<p>© 2025 Descubre Rodanillo. Todos los derechos reservados. Guía turística de Rodanillo.</p>
+<div class="flex items-center gap-6">
+<a class="hover:text-white transition-colors" href="legal.html#aviso">Aviso Legal</a>
+<a class="hover:text-white transition-colors" href="legal.html#privacidad">Privacidad</a>
+<a class="hover:text-white transition-colors" href="index.html#contenido">Accesibilidad</a>
+</div>
+</div>
+</div>
+</footer><script src="assets/js/app.js"></script></body></html>
