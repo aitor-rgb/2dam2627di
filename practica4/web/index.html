@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+
+<html class="scroll-smooth" data-page="index" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Descubre Rodanillo | Guía turística de Rodanillo</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&amp;family=Playfair+Display:ital,wght@0,600;1,600&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface": "#FAF8F5",
+            "surface-dim": "#EDE8DE",
+            "surface-bright": "#FFFFFF",
+            "surface-canvas": "#FAF8F5",
+            "surface-sand": "#F0EBE1",
+            "surface-sand-muted": "#E5DFD3",
+            "primary": "#163820",
+            "primary-container": "#224A2D",
+            "botanical-sage": "#5E7D63",
+            "secondary": "#5E7D63",
+            "terracotta-warm": "#B85D38",
+            "terracotta-muted": "#9C4D2E",
+            "stone-charcoal": "#1C1E1B",
+            "on-surface": "#1C1E1B",
+            "on-surface-variant": "#4A524A",
+            "border-stone": "#DDD6C8",
+            "outline": "#7A857A",
+            "outline-variant": "#D6DCD4"
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            body: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+          },
+          borderRadius: {
+            '2xl': '1rem',
+            '3xl': '1.5rem',
+            '4xl': '2rem',
+          },
+          boxShadow: {
+            'warm': '0 8px 30px -4px rgba(22, 56, 32, 0.07), 0 2px 8px -2px rgba(22, 56, 32, 0.04)',
+            'warm-lg': '0 20px 40px -8px rgba(22, 56, 32, 0.12), 0 4px 12px -2px rgba(22, 56, 32, 0.05)',
+            'warm-card': '0 4px 20px -2px rgba(28, 30, 27, 0.05)',
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    .editorial-badge {
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+<link href="assets/css/app.css" rel="stylesheet"/></head>
+<body class="bg-surface font-body text-stone-charcoal antialiased selection:bg-terracotta-warm selection:text-white" data-page="index">
+<!-- Top Announcement Bar -->
+<div class="bg-primary text-white text-xs tracking-wide py-2 px-4 text-center font-medium border-b border-white/10 flex items-center justify-center gap-3">
+<span class="inline-block w-2 h-2 rounded-full bg-terracotta-warm"></span>
+<span>El Bierzo Auténtico · Tierra de Carreteros, Castaños y Vinos Centenarios D.O. Bierzo</span>
+<span class="hidden md:inline text-white/50">|</span>
+<span class="hidden md:inline text-white/80">Altitud: 710 msnm</span>
+</div>
+<!-- Header / Navigation Bar -->
+<header class="sticky top-0 z-40 bg-[#FAF8F5]/90 backdrop-blur-md border-b border-border-stone transition-all duration-300">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+<!-- Brand Logo / Emblem -->
+<a class="flex items-center gap-3.5 group" href="index.html">
+<div class="w-11 h-11 rounded-xl bg-primary text-white flex items-center justify-center shadow-md group-hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-[24px]">nature_people</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-sans font-extrabold text-xl text-primary tracking-tight">Descubre Rodanillo</span>
+</div>
+<span class="editorial-badge text-[10px] text-botanical-sage font-bold">Patrimonio Berciano</span>
+</div>
+</a>
+<!-- Desktop Navigation Links -->
+<nav class="hidden lg:flex items-center gap-1 xl:gap-2">
+<a class="px-4 py-2 rounded-full text-sm font-semibold text-primary bg-surface-sand transition-colors" href="index.html">Inicio</a>
+<a class="px-4 py-2 rounded-full text-sm font-medium text-stone-charcoal/80 hover:text-primary hover:bg-surface-sand/60 transition-colors" href="queVer.html">Qué ver</a>
+<a class="px-4 py-2 rounded-full text-sm font-medium text-stone-charcoal/80 hover:text-primary hover:bg-surface-sand/60 transition-colors" href="gastronomia.html">Gastronomía</a>
+<a class="px-4 py-2 rounded-full text-sm font-medium text-stone-charcoal/80 hover:text-primary hover:bg-surface-sand/60 transition-colors" href="rutas.html">Rutas y naturaleza</a>
+<a class="px-4 py-2 rounded-full text-sm font-medium text-stone-charcoal/80 hover:text-primary hover:bg-surface-sand/60 transition-colors" href="vida.html">Vida en Rodanillo</a>
+<a class="px-4 py-2 rounded-full text-sm font-medium text-stone-charcoal/80 hover:text-primary hover:bg-surface-sand/60 transition-colors" href="mapa.html">Explorar mapa</a></nav>
+<!-- Utility Actions -->
+<div class="flex items-center gap-2.5">
+<button aria-label="Buscar en la web" class="w-10 h-10 rounded-full flex items-center justify-center text-stone-charcoal/70 hover:text-primary hover:bg-surface-sand transition-colors" type="button">
+<span class="material-symbols-outlined text-[21px]">search</span>
+</button>
+<button aria-label="Cambiar tema de color" class="w-10 h-10 rounded-full flex items-center justify-center text-stone-charcoal/70 hover:text-primary hover:bg-surface-sand transition-colors" id="theme-toggle" type="button">
+<span class="material-symbols-outlined text-[21px]">light_mode</span>
+</button>
+<!-- CTA Planifica tu visita -->
+<a class="hidden sm:inline-flex items-center gap-2 h-10 px-5 rounded-full bg-primary hover:bg-primary-container text-white text-xs font-bold uppercase tracking-wider transition-all shadow-sm" href="https://www.google.com/maps/dir/?api=1&amp;destination=Rodanillo%2C%20Bembibre%2C%20Le%C3%B3n%2C%20Espa%C3%B1a" rel="noopener" target="_blank">
+<span>Cómo Llegar</span>
+<span class="material-symbols-outlined text-[16px]">north_east</span>
+</a>
+<!-- Mobile Menu Trigger -->
+<button aria-label="Menú principal" class="lg:hidden w-10 h-10 rounded-full flex items-center justify-center text-stone-charcoal hover:bg-surface-sand" id="mobile-menu-btn" type="button">
+<span class="material-symbols-outlined text-[24px]">menu</span>
+</button>
+</div>
+</div>
+<!-- Mobile Drawer Menu Dropdown -->
+<div class="hidden lg:hidden border-t border-border-stone bg-surface-sand/95 px-6 py-4 flex flex-col gap-2 transition-all" id="mobile-menu">
+<a class="py-2.5 px-3 rounded-lg text-primary font-bold text-sm bg-white/60" href="index.html">Inicio</a>
+<a class="py-2.5 px-3 rounded-lg text-stone-charcoal font-medium text-sm hover:bg-white/40" href="queVer.html">Qué ver</a>
+<a class="py-2.5 px-3 rounded-lg text-stone-charcoal font-medium text-sm hover:bg-white/40" href="gastronomia.html">Gastronomía</a>
+<a class="py-2.5 px-3 rounded-lg text-stone-charcoal font-medium text-sm hover:bg-white/40" href="rutas.html">Rutas y naturaleza</a>
+<a class="py-2.5 px-3 rounded-lg text-stone-charcoal font-medium text-sm hover:bg-white/40" href="vida.html">Vida en Rodanillo</a>
+<a class="py-2.5 px-3 rounded-lg text-terracotta-warm font-semibold text-sm hover:bg-white/40 flex items-center justify-between" href="https://www.google.com/maps/dir/?api=1&amp;destination=Rodanillo%2C%20Bembibre%2C%20Le%C3%B3n%2C%20Espa%C3%B1a" rel="noopener" target="_blank">
+<span>Guía de llegada &amp; mapa</span>
+<span class="material-symbols-outlined text-[18px]">map</span>
+</a>
+</div>
+</header>
+<main class="w-full" id="contenido">
+<!-- Hero Section: Guía turística de Rodanillo Panoramic -->
+<section class="relative w-full px-0 pt-0 pb-12" id="inicio">
+<div class="relative w-full rounded-none overflow-hidden min-h-[680px] lg:min-h-[780px] flex flex-col justify-end p-6 sm:p-10 md:p-14 lg:p-20 shadow-warm-lg">
+<!-- Hero Background Image (IMAGE_23) -->
+<div class="absolute inset-0 z-0">
+<img alt="Imagen ilustrativa de un valle rural del Bierzo Alto; no es una fotografía documental de Rodanillo." class="w-full h-full object-cover object-center scale-[1.02] transition-transform duration-1000 ease-out" decoding="async" loading="eager" fetchpriority="high" src="assets/images/paisaje-valle-berciano.jpg"/>
+<!-- Multi-tier editorial gradients -->
+<div class="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/50 to-black/20"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-primary/80 via-transparent to-black/30"></div>
+</div>
+<!-- Floating Geographic & Heritage Tag Top Right -->
+<div class="absolute top-6 right-6 sm:top-8 sm:right-8 z-10 flex flex-col sm:flex-row items-end sm:items-center gap-2">
+<div class="backdrop-blur-md bg-white/90 border border-white/40 rounded-full px-4 py-1.5 flex items-center gap-2 shadow-sm text-stone-charcoal">
+<span class="w-2 h-2 rounded-full bg-botanical-sage"></span>
+<span class="font-sans font-bold text-xs tracking-wider uppercase">Valle del Boeza · 710m</span>
+</div>
+<div class="hidden md:flex backdrop-blur-md bg-terracotta-warm/95 text-white rounded-full px-4 py-1.5 items-center gap-1.5 font-bold text-xs uppercase tracking-wider shadow-sm">
+<span class="material-symbols-outlined text-[16px]">local_fire_department</span>
+<span>D.O. Bierzo</span>
+</div>
+</div>
+<!-- Hero Content Block -->
+<div class="relative z-10 max-w-3xl flex flex-col items-start gap-4 sm:gap-6 text-white">
+<!-- Badges cluster -->
+<div class="flex flex-wrap items-center gap-2.5">
+<span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-surface-sand text-primary font-bold text-xs tracking-wide">
+<span class="material-symbols-outlined text-[15px] text-terracotta-warm">verified</span>
+              El Bierzo Auténtico
+            </span>
+<span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white/20 backdrop-blur-sm text-white text-xs font-semibold">
+<span class="material-symbols-outlined text-[15px]">home_pin</span>
+              Municipio de Bembibre (León)
+            </span>
+<span class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-botanical-sage/40 backdrop-blur-sm text-white/90 text-xs font-medium">
+<span class="material-symbols-outlined text-[15px]">handyman</span>
+              Cuna de Maestros Carreteros
+            </span>
+</div>
+<!-- Titles -->
+<div class="space-y-3">
+<h1 class="font-sans text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.08]">Descubre Rodanillo</h1>
+<p class="font-sans text-base sm:text-lg md:text-xl text-white/90 max-w-2xl font-normal leading-relaxed">Un pueblo del Bierzo Alto con historia, patrimonio y caminos.</p>
+</div>
+<!-- Actions -->
+<div class="pt-2 flex flex-wrap items-center gap-3.5 w-full sm:w-auto">
+<a class="inline-flex items-center justify-center gap-2.5 h-12 px-7 rounded-full bg-terracotta-warm hover:bg-terracotta-muted text-white font-sans font-bold text-sm tracking-wide shadow-warm transition-transform active:scale-95" href="#descubre">
+<span>Comenzar a explorar</span>
+<span class="material-symbols-outlined text-[19px]">south</span>
+</a>
+<a class="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full bg-white/15 hover:bg-white/25 backdrop-blur-md text-white font-sans font-semibold text-sm transition-all border border-white/20" href="https://www.google.com/maps/search/?api=1&amp;query=Rodanillo%2C%20Bembibre%2C%20Le%C3%B3n%2C%20Espa%C3%B1a" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[20px]">explore</span>
+<span>Ubicación y mapa</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION: Descubre nuestro pueblo (4 Visual Cards with Distinct Character) -->
+<section class="py-12 md:py-20 bg-surface-canvas" id="descubre">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Header of section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+<div class="max-w-2xl">
+<div class="inline-flex items-center gap-2 text-terracotta-warm editorial-badge mb-2">
+<span class="w-1.5 h-1.5 rounded-full bg-terracotta-warm"></span>
+              Cuatro Senderos de Identidad
+            </div>
+<h2 class="font-sans text-3xl sm:text-4xl font-extrabold text-primary tracking-tight">
+              Descubre nuestro pueblo
+            </h2>
+<p class="mt-3 text-stone-charcoal/70 text-base leading-relaxed">Un pueblo del Bierzo Alto con patrimonio, memoria artesanal y caminos documentados.</p>
+</div>
+<div class="hidden md:flex items-center gap-3 text-xs font-semibold text-stone-charcoal/60 uppercase tracking-wider">
+<span class="material-symbols-outlined text-botanical-sage">eco</span>Guía local · Rodanillo</div>
+</div>
+<!-- 4 Distinct Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Card 1: Qué ver (Stone & Slate, Carros) -->
+<article class="group relative rounded-3xl bg-surface-sand p-7 border border-border-stone hover:border-primary/30 flex flex-col justify-between shadow-warm-card hover:shadow-warm-lg transition-all duration-300">
+<div>
+<div class="w-13 h-13 w-12 h-12 rounded-2xl bg-primary text-white flex items-center justify-center mb-6 shadow-sm group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[24px]">architecture</span>
+</div>
+<span class="editorial-badge text-botanical-sage">Patrimonio Vivo</span>
+<h3 class="font-sans text-xl font-bold text-primary mt-2 mb-3 group-hover:text-terracotta-warm transition-colors">
+                Qué ver
+              </h3>
+<p class="text-stone-charcoal/80 text-sm leading-relaxed">Iglesia de San Antolín, ermita del Santo Cristo, Lagar del Moro, Casona de los Vega y memoria de los carreros.</p>
+</div>
+<div class="mt-8 pt-4 border-t border-border-stone/60 flex items-center justify-between text-xs font-bold text-primary group-hover:text-terracotta-warm">
+<span>Iglesia y patrimonio local</span>
+<span class="material-symbols-outlined text-[18px] transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</article>
+<!-- Card 2: Gastronomía (Botillo, Mencía, Warm Terracotta Accent) -->
+<article class="group relative rounded-3xl bg-white p-7 border-2 border-terracotta-warm/20 hover:border-terracotta-warm flex flex-col justify-between shadow-warm-card hover:shadow-warm-lg transition-all duration-300">
+<div>
+<div class="w-12 h-12 rounded-2xl bg-terracotta-warm text-white flex items-center justify-center mb-6 shadow-sm group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[24px]">wine_bar</span>
+</div>
+<span class="editorial-badge text-terracotta-warm">Sabor y Terruño</span>
+<h3 class="font-sans text-xl font-bold text-primary mt-2 mb-3 group-hover:text-terracotta-warm transition-colors">
+                Gastronomía
+              </h3>
+<p class="text-stone-charcoal/80 text-sm leading-relaxed">Castañas de Rodanillo y platos tradicionales de El Bierzo, como el botillo y la empanada berciana.</p>
+</div>
+<div class="mt-8 pt-4 border-t border-stone-100 flex items-center justify-between text-xs font-bold text-terracotta-warm">
+<span>Sabores del Bierzo y castañas locales</span>
+<span class="material-symbols-outlined text-[18px] transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</article>
+<!-- Card 3: Rutas y Naturaleza (Sage & Forest) -->
+<article class="group relative rounded-3xl bg-surface-sand p-7 border border-border-stone hover:border-primary/30 flex flex-col justify-between shadow-warm-card hover:shadow-warm-lg transition-all duration-300">
+<div>
+<div class="w-12 h-12 rounded-2xl bg-primary-container text-white flex items-center justify-center mb-6 shadow-sm group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[24px]">hiking</span>
+</div>
+<span class="editorial-badge text-botanical-sage">Espacio Natural</span>
+<h3 class="font-sans text-xl font-bold text-primary mt-2 mb-3 group-hover:text-botanical-sage transition-colors">
+                Rutas y naturaleza
+              </h3>
+<p class="text-stone-charcoal/80 text-sm leading-relaxed">Cuatro recorridos documentados: Camino de la Barrera, Ruta del Santo Cristo, Ruta de la Conquista y Viejo Camino Olvidado.</p>
+</div>
+<div class="mt-8 pt-4 border-t border-border-stone/60 flex items-center justify-between text-xs font-bold text-primary group-hover:text-botanical-sage">
+<span>4 rutas documentadas</span>
+<span class="material-symbols-outlined text-[18px] transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</article>
+<!-- Card 4: Vida en Rodanillo (Community & Tradition) -->
+<article class="group relative rounded-3xl bg-[#F4F0E8] p-7 border border-border-stone hover:border-primary/30 flex flex-col justify-between shadow-warm-card hover:shadow-warm-lg transition-all duration-300">
+<div>
+<div class="w-12 h-12 rounded-2xl bg-[#3E5C44] text-white flex items-center justify-center mb-6 shadow-sm group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[24px]">groups</span>
+</div>
+<span class="editorial-badge text-primary">Comunidad Rural</span>
+<h3 class="font-sans text-xl font-bold text-primary mt-2 mb-3 group-hover:text-primary-container transition-colors">
+                Vida en Rodanillo
+              </h3>
+<p class="text-stone-charcoal/80 text-sm leading-relaxed">Historia local, carretería, lagares, fiestas de San Antolín y memoria de sus vecinos.</p>
+</div>
+<div class="mt-8 pt-4 border-t border-border-stone/60 flex items-center justify-between text-xs font-bold text-primary">
+<span>Tradición y calendario local</span>
+<span class="material-symbols-outlined text-[18px] transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- SECTION: Lugares Destacados con Fotografías Grandes -->
+<section class="py-12 md:py-24 bg-surface-sand/40 border-y border-border-stone">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center max-w-3xl mx-auto mb-16">
+<div class="inline-flex items-center gap-2 text-terracotta-warm editorial-badge mb-2">
+<span class="w-2 h-2 rounded-full bg-terracotta-warm"></span>
+            Imágenes de Nuestra Memoria
+          </div>
+<h2 class="font-sans text-3xl sm:text-4xl md:text-5xl font-extrabold text-primary tracking-tight">
+            Lugares destacados
+          </h2>
+<p class="mt-4 text-stone-charcoal/70 text-base md:text-lg">Patrimonio religioso, arquitectura tradicional y memoria artesanal del propio pueblo.</p>
+</div>
+<div class="space-y-12 lg:space-y-16">
+<!-- Spot 1: Iglesia de San Antolín (IMAGE_20) -->
+<div class="bg-white rounded-3xl md:rounded-4xl p-6 sm:p-8 lg:p-10 border border-border-stone shadow-warm flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
+<div class="w-full lg:w-3/5 rounded-2xl md:rounded-3xl overflow-hidden aspect-[16/10] sm:aspect-[16/9] relative group">
+<img alt="Ilustración editorial de la iglesia parroquial de San Antolín." class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" decoding="async" loading="lazy" src="assets/images/iglesia-san-antolin.png"/>
+<div class="absolute bottom-4 left-4 bg-primary/90 text-white backdrop-blur-md px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase">
+                Siglo XVIII · Centro Histórico
+              </div>
+</div>
+<div class="w-full lg:w-2/5 flex flex-col items-start">
+<span class="editorial-badge text-botanical-sage">Monumento Parroquial</span>
+<h3 class="font-sans text-2xl sm:text-3xl font-bold text-primary mt-1 mb-4">
+                Iglesia de San Antolín
+              </h3>
+<p class="text-stone-charcoal/80 text-sm sm:text-base leading-relaxed mb-6 font-normal">Iglesia parroquial dedicada al patrón del pueblo. Destacan el retablo churrigueresco del siglo XVIII y la pila bautismal de principios del XVII; la guía local también documenta una esquila fechada en 1645.</p>
+<div class="w-full bg-surface-sand p-4 rounded-2xl flex items-center justify-between text-xs font-semibold text-stone-charcoal mb-6">
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-primary text-[18px]">location_on</span> Centro de Rodanillo</span>
+<span class="text-botanical-sage">Acceso libre</span>
+</div>
+<button class="inline-flex items-center gap-2 text-primary font-bold text-sm hover:text-terracotta-warm transition-colors" onclick="location.href='detalles.html?item=iglesia-san-antolin'" type="button">
+<span>Ver detalles arquitectónicos</span>
+<span class="material-symbols-outlined text-[18px]">arrow_right_alt</span>
+</button>
+</div>
+</div>
+<!-- Spot 2: Entorno de Cobrana (localidad vecina) (IMAGE_18) - Alternating layout -->
+<div class="bg-white rounded-3xl md:rounded-4xl p-6 sm:p-8 lg:p-10 border border-border-stone shadow-warm flex flex-col lg:flex-row-reverse gap-8 lg:gap-12 items-center">
+<div class="w-full lg:w-3/5 rounded-2xl md:rounded-3xl overflow-hidden aspect-[16/10] sm:aspect-[16/9] relative group">
+<img alt="Ilustración editorial del alcornocal del entorno de Cobrana, localidad vecina." class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" decoding="async" loading="lazy" src="assets/images/alcornocal-cobrana.png"/>
+<div class="absolute bottom-4 left-4 bg-primary-container/90 text-white backdrop-blur-md px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase">
+                Bosque Singular Protegido
+              </div>
+</div>
+<div class="w-full lg:w-2/5 flex flex-col items-start">
+<span class="editorial-badge text-botanical-sage">Naturaleza Mágica</span>
+<h3 class="font-sans text-2xl sm:text-3xl font-bold text-primary mt-1 mb-4">Cobrana, localidad vecina</h3>
+<p class="text-stone-charcoal/80 text-sm sm:text-base leading-relaxed mb-6 font-normal">
+                El alcornocal pertenece al entorno de Cobrana, localidad vecina; no se encuentra en el núcleo de Rodanillo.
+              </p>
+<div class="w-full bg-surface-sand p-4 rounded-2xl flex items-center justify-between text-xs font-semibold text-stone-charcoal mb-6">
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-botanical-sage text-[18px]">forest</span> Sendero de la Senda Encantada</span>
+<span class="text-terracotta-warm">Dificultad baja</span>
+</div>
+<button class="inline-flex items-center gap-2 text-primary font-bold text-sm hover:text-terracotta-warm transition-colors" onclick="location.href='rutas.html'" type="button">Consultar rutas documentadas</button>
+</div>
+</div>
+<!-- Spot 3: Taller tradicional carretero (IMAGE_19) -->
+<div class="bg-white rounded-3xl md:rounded-4xl p-6 sm:p-8 lg:p-10 border border-border-stone shadow-warm flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
+<div class="w-full lg:w-3/5 rounded-2xl md:rounded-3xl overflow-hidden aspect-[16/10] sm:aspect-[16/9] relative group">
+<img alt="Ilustración del carro-monumento y la tradición de los carreros" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" decoding="async" loading="lazy" src="assets/images/carro-tradicional.jpg"/>
+<div class="absolute bottom-4 left-4 bg-terracotta-warm/95 text-white backdrop-blur-md px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase">
+                Oficio Histórico Berciano
+              </div>
+</div>
+<div class="w-full lg:w-2/5 flex flex-col items-start">
+<span class="editorial-badge text-terracotta-warm">Herencia Artesanal</span>
+<h3 class="font-sans text-2xl sm:text-3xl font-bold text-primary mt-1 mb-4">Plaza del Carro y memoria de los carreros</h3>
+<p class="text-stone-charcoal/80 text-sm sm:text-base leading-relaxed mb-6 font-normal">Rodanillo fue conocido en el Bierzo Alto y Laciana como el pueblo de los carros o de los carreros. La plaza del Carro recuerda este oficio tradicional.</p>
+<div class="w-full bg-surface-sand p-4 rounded-2xl flex items-center justify-between text-xs font-semibold text-stone-charcoal mb-6">
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-terracotta-warm text-[18px]">build</span> Colección Etnográfica</span>
+<span class="text-primary font-bold">Visita guiada</span>
+</div>
+<button class="inline-flex items-center gap-2 text-primary font-bold text-sm hover:text-terracotta-warm transition-colors" onclick="window.location.href='vida.html'" type="button">
+<span>Conocer la historia de los carreteros</span>
+<span class="material-symbols-outlined text-[18px]">arrow_right_alt</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION: Datos y Curiosidades sobre Rodanillo (Infografía Elegante) -->
+<section class="py-16 md:py-24 bg-primary text-white relative overflow-hidden">
+<!-- Subtle background graphic pattern -->
+<div class="absolute inset-0 opacity-5 pointer-events-none bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px]"></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-8 border-b border-white/10">
+<div>
+<div class="inline-flex items-center gap-2 text-botanical-sage editorial-badge mb-2">
+<span class="w-1.5 h-1.5 rounded-full bg-botanical-sage"></span>
+              Identidad en Números
+            </div>
+<h2 class="font-sans text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
+              Datos y curiosidades sobre Rodanillo
+            </h2>
+</div>
+<p class="text-white/70 max-w-md text-sm sm:text-base leading-relaxed">Rodanillo se encuentra a unos 5 km de Bembibre y 20 km de Ponferrada, a 710 metros de altitud. Wikipedia recoge 96 habitantes en 2024.</p>
+</div>
+<!-- 4 Metric Infographic Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Metric 1 -->
+<div class="bg-white/5 hover:bg-white/10 transition-colors p-8 rounded-3xl border border-white/10 flex flex-col justify-between">
+<div class="flex items-center justify-between mb-6">
+<span class="material-symbols-outlined text-botanical-sage text-[32px]">height</span>
+<span class="editorial-badge text-white/50 text-[10px]">Orografía</span>
+</div>
+<div>
+<div class="text-4xl lg:text-5xl font-extrabold text-white tracking-tight font-sans">
+                710 <span class="text-xl text-botanical-sage font-medium">m</span>
+</div>
+<div class="text-base font-bold text-white mt-2">Altitud de montaña suave</div>
+<p class="text-white/70 text-xs sm:text-sm mt-2 leading-relaxed">Rodanillo se encuentra en el Bierzo Alto, dentro del municipio de Bembibre, en la provincia de León.</p>
+</div>
+</div>
+<!-- Metric 2 -->
+<div class="bg-white/5 hover:bg-white/10 transition-colors p-8 rounded-3xl border border-white/10 flex flex-col justify-between">
+<div class="flex items-center justify-between mb-6">
+<span class="material-symbols-outlined text-terracotta-warm text-[32px]">rv_hookup</span>
+<span class="editorial-badge text-white/50 text-[10px]">Siglos de Oficio</span>
+</div>
+<div>
+<div class="text-4xl lg:text-5xl font-extrabold text-white tracking-tight font-sans">
+                +250 <span class="text-xl text-terracotta-warm font-medium">años</span>
+</div>
+<div class="text-base font-bold text-white mt-2">Tradición carreteril</div>
+<p class="text-white/70 text-xs sm:text-sm mt-2 leading-relaxed">La carretería fue un oficio destacado en Rodanillo y dio al pueblo el sobrenombre de “pueblo de los carros” o “pueblo de los carreros”.</p>
+</div>
+</div>
+<!-- Metric 3 -->
+<div class="bg-white/5 hover:bg-white/10 transition-colors p-8 rounded-3xl border border-white/10 flex flex-col justify-between">
+<div class="flex items-center justify-between mb-6">
+<span class="material-symbols-outlined text-botanical-sage text-[32px]">map</span>
+<span class="editorial-badge text-white/50 text-[10px]">Red de Rutas</span>
+</div>
+<div>
+<div class="text-4xl lg:text-5xl font-extrabold text-white tracking-tight font-sans">
+                47 <span class="text-xl text-botanical-sage font-medium">km</span>
+</div>
+<div class="text-base font-bold text-white mt-2">Senderos balizados</div>
+<p class="text-white/70 text-xs sm:text-sm mt-2 leading-relaxed">La guía local documenta cuatro rutas: Camino de la Barrera, Ruta del Santo Cristo, Ruta de la Conquista y Viejo Camino Olvidado.</p>
+</div>
+</div>
+<!-- Metric 4 -->
+<div class="bg-white/5 hover:bg-white/10 transition-colors p-8 rounded-3xl border border-white/10 flex flex-col justify-between">
+<div class="flex items-center justify-between mb-6">
+<span class="material-symbols-outlined text-terracotta-warm text-[32px]">nature</span>
+<span class="editorial-badge text-white/50 text-[10px]">Cepas Viejas</span>
+</div>
+<div>
+<div class="text-4xl lg:text-5xl font-extrabold text-white tracking-tight font-sans">
+                100% <span class="text-xl text-terracotta-warm font-medium">D.O.</span>
+</div>
+<div class="text-base font-bold text-white mt-2">Viñedos en solana</div>
+<p class="text-white/70 text-xs sm:text-sm mt-2 leading-relaxed">El Catastro de Ensenada de 1752 recogía nueve lagares en funcionamiento en Rodanillo.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION: Zona Final de Ubicación, Distancias y Cómo Llegar -->
+<section class="py-16 md:py-24 bg-surface-canvas" id="como-llegar">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="bg-surface-sand rounded-3xl md:rounded-4xl p-6 sm:p-10 lg:p-12 border border-border-stone shadow-warm">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+<!-- Left: Info & Practical Routes -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<div>
+<div class="inline-flex items-center gap-2 text-terracotta-warm editorial-badge mb-2">
+<span class="w-1.5 h-1.5 rounded-full bg-terracotta-warm"></span>
+                  Conexión y Accesos
+                </div>
+<h2 class="font-sans text-3xl font-extrabold text-primary tracking-tight">
+                  Cómo llegar a Rodanillo
+                </h2>
+<p class="text-stone-charcoal/70 text-sm sm:text-base mt-2 leading-relaxed">Rodanillo pertenece al municipio de Bembibre y se encuentra en la comarca de El Bierzo, en la provincia de León.</p>
+</div>
+<!-- Distance cards -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-white p-4 sm:p-5 rounded-2xl border border-border-stone">
+<div class="flex items-center gap-1.5 text-xs text-botanical-sage font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px]">pin_drop</span>
+                    Bembibre
+                  </div>
+<div class="text-2xl sm:text-3xl font-extrabold text-primary mt-1">5 km</div>
+<p class="text-stone-charcoal/60 text-xs mt-1">Consulta indicaciones actualizadas en el mapa.</p>
+</div>
+<div class="bg-white p-4 sm:p-5 rounded-2xl border border-border-stone">
+<div class="flex items-center gap-1.5 text-xs text-terracotta-warm font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px]">location_city</span>
+                    Ponferrada
+                  </div>
+<div class="text-2xl sm:text-3xl font-extrabold text-primary mt-1">19 km</div>
+<p class="text-stone-charcoal/60 text-xs mt-1">El acceso en coche depende del punto de partida y del tráfico.</p>
+</div>
+</div>
+<!-- Route breakdown box -->
+<div class="bg-white p-5 rounded-2xl border border-border-stone space-y-3">
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-sand flex items-center justify-center text-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">directions_car</span>
+</div>
+<div>
+<h3 class="text-xs font-bold uppercase text-primary tracking-wide">Cómo llegar en coche</h3>
+<p class="text-stone-charcoal/70 text-xs leading-relaxed mt-0.5">Consulta las indicaciones actualizadas desde tu punto de partida. El destino es Rodanillo, municipio de Bembibre (León).</p>
+</div>
+</div>
+<div class="flex items-start gap-3 pt-2 border-t border-border-stone/60">
+<div class="w-8 h-8 rounded-lg bg-surface-sand flex items-center justify-center text-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">train</span>
+</div>
+<div>
+<h3 class="text-xs font-bold uppercase text-primary tracking-wide">Transporte público</h3>
+<p class="text-stone-charcoal/70 text-xs leading-relaxed mt-0.5">Comprueba los horarios y las conexiones vigentes hasta Bembibre antes de viajar; la disponibilidad puede cambiar según el día.</p>
+</div>
+</div>
+</div>
+<!-- Button Open GPS -->
+<div class="flex items-center gap-3 pt-1">
+<a class="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full bg-primary hover:bg-primary-container text-white font-bold text-xs uppercase tracking-wider transition-all shadow-sm" href="https://www.google.com/maps/dir/?api=1&amp;destination=Rodanillo%2C%20Bembibre%2C%20Le%C3%B3n%2C%20Espa%C3%B1a" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]">near_me</span>
+<span>Abrir ruta en Google Maps</span>
+</a>
+</div>
+</div>
+<!-- Right: Stylized interactive map preview -->
+<div class="lg:col-span-7">
+<div class="relative w-full rounded-2xl md:rounded-3xl overflow-hidden shadow-warm-lg border border-border-stone bg-white aspect-[4/3] sm:aspect-[16/10]">
+<!-- Static map graphic texture -->
+<iframe class="w-full h-full min-h-[320px]" loading="lazy" title="Mapa de Rodanillo, Bembibre, León" src="https://www.openstreetmap.org/export/embed.html?bbox=-6.455%2C42.638%2C-6.434%2C42.649&amp;layer=mapnik&amp;marker=42.64344%2C-6.44454" style="width:100%;height:100%;min-height:320px;border:0"></iframe>
+<!-- Stylized Center Marker Overlay -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="relative flex items-center justify-center">
+<span class="animate-ping absolute inline-flex h-12 w-12 rounded-full bg-terracotta-warm opacity-30"></span>
+<div class="w-10 h-10 rounded-full bg-terracotta-warm text-white flex items-center justify-center shadow-lg border-2 border-white pointer-events-auto">
+<span class="material-symbols-outlined text-[20px]">villa</span>
+</div>
+</div>
+</div>
+<!-- Floating Map Card -->
+<div class="absolute bottom-4 left-4 right-4 sm:right-auto bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-md border border-border-stone max-w-sm">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-surface-sand flex items-center justify-center text-primary font-bold">
+<span class="material-symbols-outlined text-[20px]">explore</span>
+</div>
+<div>
+<h3 class="font-bold text-primary text-sm">Rodanillo (Bembibre)</h3>
+<p class="text-stone-charcoal/70 text-xs">Comarca de El Bierzo · León, España</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Editorial Heritage Footer -->
+<footer class="bg-[#1C1E1B] text-white pt-16 pb-12 border-t border-white/10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
+<!-- Col 1: Identity & Stamp -->
+<div class="lg:col-span-2 space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">nature_people</span>
+</div>
+<div>
+<span class="font-sans font-bold text-lg text-white tracking-tight">Descubre Rodanillo</span>
+<p class="text-botanical-sage text-xs font-semibold uppercase tracking-wider">Guía turística de Rodanillo</p>
+</div>
+</div>
+<p class="text-white/70 text-sm leading-relaxed max-w-sm font-normal">
+            Guía informativa independiente sobre Rodanillo, en el municipio de Bembibre (León).
+          </p>
+<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 text-xs font-semibold text-white/90">
+<span class="material-symbols-outlined text-[16px] text-terracotta-warm">verified_user</span>
+<span>Patrimonio y memoria local</span>
+</div>
+</div>
+<!-- Col 2: Secciones -->
+<div class="space-y-3">
+<div class="font-sans font-bold text-sm text-white uppercase tracking-wider">Explorar</div>
+<ul class="space-y-2 text-sm text-white/70">
+<li><a class="hover:text-terracotta-warm transition-colors" href="index.html">Inicio</a></li>
+<li><a class="hover:text-terracotta-warm transition-colors" href="queVer.html">Qué ver y patrimonio</a></li>
+<li><a class="hover:text-terracotta-warm transition-colors" href="gastronomia.html">Gastronomía y vinos</a></li>
+<li><a class="hover:text-terracotta-warm transition-colors" href="rutas.html">Rutas senderistas</a></li>
+<li><a class="hover:text-terracotta-warm transition-colors" href="vida.html">Vida en Rodanillo</a></li>
+</ul>
+</div>
+<!-- Col 3: Lugares Clave -->
+<div class="space-y-3">
+<div class="font-sans font-bold text-sm text-white uppercase tracking-wider">Patrimonio</div>
+<ul class="space-y-2 text-sm text-white/70">
+<li><span class="text-white/70">Iglesia de San Antolín</span></li>
+<li><span class="text-white/70">Entorno de Cobrana (localidad vecina)</span></li>
+<li><span class="text-white/70">Plaza del Carro y memoria de los carreros</span></li>
+<li><span class="text-white/70">Lagar del Moro</span></li>
+<li><span class="text-white/70">Casona de los Vega</span></li>
+</ul>
+</div>
+<!-- Col 4: Contacto & Entorno -->
+<div class="space-y-3">
+<div class="font-sans font-bold text-sm text-white uppercase tracking-wider">Contacto &amp; Municipio</div>
+<p class="text-white/70 text-xs leading-relaxed">
+            Ayuntamiento de Bembibre<br/>
+            Plaza Mayor 1, 24300 Bembibre (León)<br/>
+            El Bierzo, España
+          </p>
+</div>
+</div>
+<!-- Bottom Credits -->
+<div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/50">
+<p>© 2026 Descubre Rodanillo</p>
+<div class="flex items-center gap-6">
+<a class="hover:text-white transition-colors" href="legal.html#aviso">Aviso Legal</a>
+<a class="hover:text-white transition-colors" href="legal.html#privacidad">Privacidad</a>
+<a class="hover:text-white transition-colors" href="index.html#contenido">Accesibilidad</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- Microinteractions Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Mobile menu toggle
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (mobileBtn && mobileMenu) {
+        mobileBtn.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+      }
+
+      // Theme toggle simulated interaction
+      const themeBtn = document.getElementById('theme-toggle');
+      if (themeBtn) {
+        themeBtn.addEventListener('click', () => {
+          const icon = themeBtn.querySelector('.material-symbols-outlined');
+          if (icon.textContent === 'light_mode') {
+            icon.textContent = 'dark_mode';
+            document.documentElement.classList.add('dark');
+          } else {
+            icon.textContent = 'light_mode';
+            document.documentElement.classList.remove('dark');
+          }
+        });
+      }
+    });
+  </script>
+<script defer="True" src="assets/js/app.js"></script></body></html>
